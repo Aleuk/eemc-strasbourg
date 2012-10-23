@@ -27,7 +27,7 @@
   <!--                                           -->
   <body onload="document.enter.submit();">
   
-	<s:form name="enter" action="enter.action">
-	</s:form>
+	<form name="enter" action="/enter">
+	</form>
   </body>
 </html>

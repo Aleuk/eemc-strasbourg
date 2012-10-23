@@ -5,8 +5,9 @@
  
 <struts>
   <constant name="struts.action.excludePattern" value="_ah/*"/>
+  <constant name="struts.action.excludePattern" value="/"/>
   
-  <package name="home" extends="struts-default">
+  <package name="home" namespace="/" extends="struts-default">
 	<action name="enter" class="fr.eemcs.schedulemanager.action.EnterAction">
 		<result name="SUCCESS">/pages/home.jsp</result>
 		<result name="LOGIN">${url}</result>
