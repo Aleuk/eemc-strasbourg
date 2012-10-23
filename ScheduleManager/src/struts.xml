@@ -12,6 +12,11 @@
 		<result name="SUCCESS">/pages/home.jsp</result>
 		<result name="LOGIN">${url}</result>
 	</action>
+	
+	<action name="membres" class="fr.eemcs.schedulemanager.action.MembresAction">
+		<result name="SUCCESS">/pages/home.jsp</result>
+		<result name="LOGIN">${url}</result>
+	</action>
   </package>
  
 </struts>
