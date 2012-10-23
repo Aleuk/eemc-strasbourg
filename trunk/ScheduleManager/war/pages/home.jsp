@@ -26,9 +26,9 @@
   <!--                                           -->
   <body>
   
-	<div id="conteneur">
-	<jsp:include page="/pages/header.jsp"></jsp:include>
-    </div>
+	
+	<jsp:include page="/pages/menu.jsp"></jsp:include>
+    
 		<div class="fond_corps" id="corps"></div>
 		<div class="fond" id="footer"></div>
   </body>
