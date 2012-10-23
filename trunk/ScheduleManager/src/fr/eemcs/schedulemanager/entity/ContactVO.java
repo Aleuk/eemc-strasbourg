@@ -2,19 +2,11 @@ package fr.eemcs.schedulemanager.entity;
 
 import java.util.Date;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
-
-import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
-public class Contact {
-
-	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Key id;
+public class ContactVO extends ObjectVO{
 	
 	@Persistent
 	private String nom;
@@ -70,10 +62,6 @@ public class Contact {
 
 	public void setPrenomKH(String prenomKH) {
 		this.prenomKH = prenomKH;
-	}
-
-	public Key getId() {
-		return id;
 	}
 	
 	
