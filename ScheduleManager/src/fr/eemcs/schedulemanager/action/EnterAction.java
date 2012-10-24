@@ -26,9 +26,11 @@ public class EnterAction {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		if(user != null) {
+			System.out.println("success");
 			return IResponse.SUCCESS;
 		} else {
 			setUrl(userService.createLoginURL(req.getRequestURI()));
+			System.out.println(getUrl());
 			return IResponse.LOGIN;
 		}
 	}

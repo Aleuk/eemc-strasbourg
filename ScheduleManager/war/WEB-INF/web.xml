@@ -24,8 +24,6 @@
   </welcome-file-list>
   
   <!-- Servlets -->
-  
-  <!-- Default page to serve -->
 
   <servlet>
     <servlet-name>SystemServiceServlet</servlet-name>
