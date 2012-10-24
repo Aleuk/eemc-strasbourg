@@ -9,7 +9,6 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     
-    <link type="text/css" rel="stylesheet" href="css/screens.css">
     <title>EEMCS Schedule Manager</title>
     
     <!--                                           -->
@@ -26,11 +25,8 @@
   <!-- to create a completely dynamic UI.        -->
   <!--                                           -->
   <body>
-  
-	<form name="enter" action="enter">
-	</form>
   </body>
   <script>
-	document.enter.submit();
+	document.location.href="enter.action";
   </script>
 </html>
