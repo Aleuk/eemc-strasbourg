@@ -25,7 +25,6 @@
 	    	<div class="fond_menu" id="menu_left"></div>
 	    	<div class="fond_menu" id="menu_center">
 		    	<ul>
-			    	<li><a href="/">Accueil</a></li>
 			    	<li><a href="/programmes">Programmes</a></li>
 			    	<li><a href="/prieres">Sujets de prière</a></li>
 			    	<li><a href="/lecture">Plans de lecture</a></li>

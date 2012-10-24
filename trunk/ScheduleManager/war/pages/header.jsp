@@ -21,18 +21,5 @@
     	<div id="header">
     		<div id="header_left"></div><div id="header_center"><a href='<%= userService.createLogoutURL(req.getRequestURI()) %>'><img src="../images/deconnexion.png" /></a></div><div id="header_right"></div>
     	</div>
-	    <div id="menu">
-	    	<div class="fond_menu" id="menu_left"></div>
-	    	<div class="fond_menu" id="menu_center">
-		    	<ul>
-			    	<li><a href="/">Accueil</a></li>
-			    	<li><a href="/programmes">Programmes</a></li>
-			    	<li><a href="/prieres">Sujets de prière</a></li>
-			    	<li><a href="/lecture">Plans de lecture</a></li>
-			    	<li><a href="/membres">Membres</a></li>
-			    	<li><a href="/parametrage">Paramétrage</a></li>
-		    	</ul>
-		    </div>
-		    <div class="fond_menu" id="menu_right"></div>
-	    </div>
+	    <jsp:include page="/pages/menu.jsp"></jsp:include>
 </div>

@@ -25,9 +25,12 @@
   <!-- you can leave the body empty if you want  -->
   <!-- to create a completely dynamic UI.        -->
   <!--                                           -->
-  <body onload="document.enter.submit();">
+  <body>
   
-	<form name="enter" action="/enter">
+	<form name="enter" action="enter">
 	</form>
   </body>
+  <script>
+	document.enter.submit();
+  </script>
 </html>
