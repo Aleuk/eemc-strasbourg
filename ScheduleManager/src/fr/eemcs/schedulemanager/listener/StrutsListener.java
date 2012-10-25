@@ -48,6 +48,7 @@ public class StrutsListener implements ServletContextListener,
 
 	}
 
+	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub
 		OgnlRuntime.setSecurityManager(null);

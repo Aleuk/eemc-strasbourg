@@ -1,16 +1,15 @@
 package fr.eemcs.schedulemanager.action;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
-
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
+import com.opensymphony.xwork2.ActionSupport;
 
 import fr.eemcs.schedulemanager.constants.IResponse;
 
-public class EnterAction {
+public class EnterAction extends ActionSupport {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2313385370589598365L;
+	
 	private String url;
 	 
 	public String getUrl() {
@@ -22,17 +21,8 @@ public class EnterAction {
 	}
  
 	public String execute() {
-		HttpServletRequest req = ServletActionContext.getRequest();
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-		if(user != null) {
-			System.out.println("success");
-			return IResponse.SUCCESS;
-		} else {
-			setUrl(userService.createLoginURL(req.getRequestURI()));
-			System.out.println(getUrl());
-			return IResponse.LOGIN;
-		}
+		//TODO récupération des infos User
+		return IResponse.SUCCESS;
 	}
 	
 }

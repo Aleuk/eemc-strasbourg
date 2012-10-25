@@ -8,6 +8,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     
+    <link type="text/css" rel="stylesheet" href="css/screens.css">
     <title>EEMCS Schedule Manager</title>
     
     <!--                                           -->
@@ -15,8 +16,7 @@
     <!-- If you add any GWT meta tags, they must   -->
     <!-- be added before this line.                -->
     <!--                                           -->
-    <script type="text/javascript" src="/schedulemanager/schedulemanager.nocache.js"></script>
-    <jsp:include page="/pages/header.jsp" />
+    <script type="text/javascript" src="schedulemanager/schedulemanager.nocache.js"></script>
   </head>
 
   <!--                                           -->
@@ -27,7 +27,7 @@
   <body>
   
 	
-	<jsp:include page="/pages/menu.jsp" />
+	<jsp:include page="/pages/menu.jsp"></jsp:include>
     
 		<div class="fond_corps" id="corps"></div>
 		<div class="fond" id="footer"></div>

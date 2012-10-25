@@ -1,3 +1,6 @@
+<%@page import="com.google.appengine.api.users.User"%>
+<%@page import="com.google.appengine.api.users.UserServiceFactory"%>
+<%@page import="com.google.appengine.api.users.UserService"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <!-- The DOCTYPE declaration above will set the     -->
@@ -9,6 +12,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     
+    <link type="text/css" rel="stylesheet" href="css/screens.css">
     <title>EEMCS Schedule Manager</title>
     
     <!--                                           -->
@@ -25,8 +29,17 @@
   <!-- to create a completely dynamic UI.        -->
   <!--                                           -->
   <body>
+    <% 
+    	String url = "/enter";
+    	UserService userService = UserServiceFactory.getUserService();
+    	User user = userService.getCurrentUser();
+    	if(user == null) {
+			url = userService.createLoginURL(url);
+			System.out.println(url);
+		}
+    %>
   </body>
   <script>
-	document.location.href="enter.action";
+	document.location.href = '<%= url %>';
   </script>
 </html>
