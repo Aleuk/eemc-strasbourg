@@ -3,7 +3,7 @@
 <%@page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@page import="com.google.appengine.api.users.UserService"%>
 
-<div id="conteneur">
+
 <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
     
     <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
@@ -21,5 +21,3 @@
     	<div id="header">
     		<div id="header_left"></div><div id="header_center"><a href='<%= userService.createLogoutURL(req.getRequestURI()) %>'><img src="../images/deconnexion.png" /></a></div><div id="header_right"></div>
     	</div>
-	    <jsp:include page="/pages/menu.jsp"></jsp:include>
-</div>

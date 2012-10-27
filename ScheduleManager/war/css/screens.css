@@ -12,7 +12,7 @@ html {
 	text-align:center;
 }
 
-/* HEADER */
+/* HEADER - bandeau*/
 #header {
 	position: relative;
 }
@@ -50,63 +50,66 @@ html {
 	width: 50%;
 }
 
-/* MENU */
-.fond_menu {
-	background: url(../images/bouton_hover.png) repeat-x;
-}
-
+/* MENU - menu à gauche*/
 #menu_left {
-	position: absolute;
-	float: left;
-	top: 140;
-	left: 0;
-	height: 30px;
-	width: 50%;
+	font-size:.9em;
+	background-color:#C6E1E5;
+	border:1px solid #C6E1E5;
+	border-radius: 10px;
+	width:200px;
+	height:480px;
+	margin-top:15px
 }
 
-#menu_right {
-	position: absolute;
-	float: right;
-	top: 140;
-	right: 0;
-	height: 30px;
-	width: 50%;
+#menu {
+	margin-top:5px
 }
 
-#menu_center {
-	position: absolute;
-	width:1024px;
-	height: 30px;
-	font-size: 15px;
-	top: 140;
-	left: 50%;
-	margin-left: -512px;
-	z-index: 2;
-}
-
-#menu_center ul {
+#menu ul {
 	list-style-type:none;
-	margin: 0;
 	padding: 0;
 }
 
-#menu_center li {
+#menu li {
+	line-height:20px;
+	background-color:#C6E1E5;
 	margin-left:2px;
- 	float:left;
+	margin-top:5px
 }
 
-#menu_center ul li a {
-	display: block;
-	float: left;   
+#menu a {
+	color:#eee;
+	text-decoration:none;
+	border:1px solid #036;
+	display:block;
+	padding:0 10px
+}
+
+#menu a:hover {
+	border:1px solid #fff;
+	text-decoration:none;
+	background: url(../images/bouton.png) repeat-x;
+	color: #E4E6F2;
+}
+
+#menu ul li a {
+	display: block; 
 	width: 166px;
 	line-height: 30px; /*hauteur de l'image de fond*/
 	background: url(../images/bouton_hover.png) repeat-x;
-	color: #E4E6F2;
+	border-radius: 10px;
 	text-decoration: none;
 	text-align: center;
 }
 
-#menu_center ul li a:hover {
-	background: url(../images/bouton.png) repeat-x;
-	color: #E4E6F2;
+/* CORPS */
+.fond_corps {
+	font-size:.9em;
+	background-color:#C6E1E5;
+	border:1px solid #E4E6F2;
+	border-radius: 10px;
+	height:482px;
+	margin-left:210px;
+	margin-top:-483px;
+	min-width:50px
 }

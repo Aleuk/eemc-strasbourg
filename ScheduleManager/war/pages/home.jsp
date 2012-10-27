@@ -26,10 +26,11 @@
   <!--                                           -->
   <body>
   
-	
-	<jsp:include page="/pages/menu.jsp"></jsp:include>
-    
+	<div id="conteneur">
+		<jsp:include page="/pages/header.jsp"></jsp:include>
+		<jsp:include page="/pages/menu.jsp"></jsp:include>
 		<div class="fond_corps" id="corps"></div>
-		<div class="fond" id="footer"></div>
+		<jsp:include page="/pages/footer.jsp"></jsp:include>
+    </div>
   </body>
 </html>
