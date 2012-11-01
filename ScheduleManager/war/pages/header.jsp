@@ -15,9 +15,8 @@
     </noscript>
     <script>
     <% UserService userService = UserServiceFactory.getUserService();
-       HttpServletRequest req = ServletActionContext.getRequest();
     %>
     </script>
     	<div id="header">
-    		<div id="header_left"></div><div id="header_center"><a href='<%= userService.createLogoutURL(req.getRequestURI()) %>'><img src="../images/deconnexion.png" /></a></div><div id="header_right"></div>
+    		<div id="header_left"></div><div id="header_center"><a href='<%= userService.createLogoutURL(request.getRequestURI()) %>'><img src="../images/deconnexion.png" /></a></div><div id="header_right"></div>
     	</div>
