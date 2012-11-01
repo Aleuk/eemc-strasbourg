@@ -11,8 +11,8 @@
 		<result name="SUCCESS">/pages/home.jsp</result>
 	</action>
 	
-	<action name="membres" class="fr.eemcs.schedulemanager.action.MembresAction">
-		<result name="SUCCESS">/pages/home.jsp</result>
+	<action name="membres_*" method="{1}" class="fr.eemcs.schedulemanager.action.MembresAction">
+		<result name="LIST">/pages/listMembres.jsp</result>
 		<result name="LOGIN">/pages/home.jsp</result>
 	</action>
   </package>
