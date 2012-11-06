@@ -7,6 +7,10 @@
   <constant name="struts.action.excludePattern" value="/_ah/.*,^/$"/>
   
   <package name="home" namespace="/" extends="struts-default">
+	<result-types>  
+	    <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />  
+	</result-types>
+        
 	<action name="enter" class="fr.eemcs.schedulemanager.action.EnterAction">
 		<result type="tiles" name="SUCCESS">home.def</result>
 	</action>
