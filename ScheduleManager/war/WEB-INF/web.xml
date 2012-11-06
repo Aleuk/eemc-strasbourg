@@ -7,22 +7,34 @@
 	org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
     </filter-class>
   </filter>
-  
   <filter-mapping>
 	<filter-name>struts2</filter-name>
 	<url-pattern>/*</url-pattern>
   </filter-mapping>
 
   <listener>
-	<listener-class>
-		fr.eemcs.schedulemanager.listener.StrutsListener
-	</listener-class>
+      <listener-class>
+          org.apache.struts2.tiles.StrutsTilesListener
+      </listener-class>
   </listener>
   
+  <context-param>
+      <param-name>tilesDefinitions</param-name>
+      <param-value>/WEB-INF/tiles.xml</param-value>
+  </context-param>
+    
   <welcome-file-list>
 	<welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
+  <jsp-config> 
+      <taglib>
+           <taglib-uri>/tags/struts-tiles</taglib-uri>
+           <taglib-location>http://struts.apache.org/tags-tiles</taglib-location>
+      </taglib>
+  </jsp-config>
+    
+    
   <!-- Servlets -->
 
   <servlet>

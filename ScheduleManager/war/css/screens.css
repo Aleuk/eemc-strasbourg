@@ -53,8 +53,8 @@ html {
 /* MENU - menu à gauche*/
 #menu_left {
 	font-size:.9em;
-	background-color:#C6E1E5;
-	border:1px solid #C6E1E5;
+	background-color:#FFFFFF;
+	border:1px solid #FFFFFF;
 	border-radius: 10px;
 	width:200px;
 	height:480px;
@@ -72,7 +72,7 @@ html {
 
 #menu li {
 	line-height:20px;
-	background-color:#C6E1E5;
+	background-color:#FFFFFF;
 	margin-left:2px;
 	margin-top:5px
 }
@@ -105,8 +105,8 @@ html {
 /* CORPS */
 .fond_corps {
 	font-size:.9em;
-	background-color:#C6E1E5;
-	border:1px solid #E4E6F2;
+	background-color:#FFFFFF;
+	border:1px solid #FFFFFF;
 	border-radius: 10px;
 	height:482px;
 	margin-left:210px;
