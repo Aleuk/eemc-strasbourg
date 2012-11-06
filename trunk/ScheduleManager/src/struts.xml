@@ -8,12 +8,12 @@
   
   <package name="home" namespace="/" extends="struts-default">
 	<action name="enter" class="fr.eemcs.schedulemanager.action.EnterAction">
-		<result name="SUCCESS">/pages/home.jsp</result>
+		<result type="tiles" name="SUCCESS">home.def</result>
 	</action>
 	
 	<action name="membres_*" method="{1}" class="fr.eemcs.schedulemanager.action.MembresAction">
-		<result name="LIST">/pages/listMembres.jsp</result>
-		<result name="LOGIN">/pages/home.jsp</result>
+		<result type="tiles" name="LIST">listeMembres.def</result>
+		<result type="tiles" name="LOGIN">home.def</result>
 	</action>
   </package>
  
