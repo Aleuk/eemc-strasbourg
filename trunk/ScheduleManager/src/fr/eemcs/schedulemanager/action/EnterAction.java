@@ -1,14 +1,8 @@
 package fr.eemcs.schedulemanager.action;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 import fr.eemcs.schedulemanager.constants.IResponse;
 
-public class EnterAction extends ActionSupport {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2313385370589598365L;
+public class EnterAction {
 	
 	private String url;
 	 
