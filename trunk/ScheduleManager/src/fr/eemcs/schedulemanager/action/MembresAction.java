@@ -13,6 +13,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
+import fr.eemcs.schedulemanager.DAO.interfaces.IContactDAO;
 import fr.eemcs.schedulemanager.constants.IResponse;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.ContactVO;
@@ -21,6 +22,7 @@ import fr.eemcs.schedulemanager.helper.FormatHelper;
 public class MembresAction extends LoggerAction{
 	private String url;
 	
+	private IContactDAO contactDAO;
 	private List<ContactVO> listeMembres = new ArrayList<ContactVO>();
 	 
 	public String getUrl() {
@@ -52,18 +54,17 @@ public class MembresAction extends LoggerAction{
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	public String list() {
-		HttpServletRequest req = ServletActionContext.getRequest();
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-		if(user != null) {
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			String query = "select from " + ContactVO.class.getName();
-			listeMembres = (List<ContactVO>)pm.newQuery(query).execute();
-			pm.close();
+		boolean logged = super.isLogged();
+		if(logged) {
+			List<ContactVO> contacts = contactDAO.getContacts();
+			if(contacts != null && contacts.size() > 0) {
+				listeMembres = contacts;
+			}
 			return IResponse.LIST;
 		} else {
+			HttpServletRequest req = ServletActionContext.getRequest();
+			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return IResponse.LOGIN;
 		}
@@ -79,6 +80,18 @@ public class MembresAction extends LoggerAction{
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return IResponse.LOGIN;
 		}
+	}
+
+	public List<ContactVO> getListeMembres() {
+		return listeMembres;
+	}
+
+	public void setListeMembres(List<ContactVO> listeMembres) {
+		this.listeMembres = listeMembres;
+	}
+
+	public void setContactDAO(IContactDAO contactDAO) {
+		this.contactDAO = contactDAO;
 	}
 	
 }
