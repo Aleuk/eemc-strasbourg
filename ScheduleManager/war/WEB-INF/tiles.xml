@@ -1,12 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
         "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-        "http://struts.apache.org/dtds/tiles-config_2_0.dtd">
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
         
 <tiles-definitions>
 
 	<definition name="maindef" template="/templates/common-layout.jsp">
+		<put-attribute name="title" value="title.template" />
 		<put-attribute name="header" value="/templates/header.jsp" />
 		<put-attribute name="menu" value="/templates/menu.jsp" />
+		<put-attribute name="body" value="/templates/body.jsp"/>
 		<put-attribute name="footer" value="/templates/footer.jsp" />
 	</definition>
 	

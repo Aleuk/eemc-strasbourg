@@ -1,15 +1,13 @@
-<!doctype html>
-<!-- The DOCTYPE declaration above will set the     -->
-<!-- browser's rendering engine into                -->
-<!-- "Standards Mode". Replacing this declaration   -->
-<!-- with a "Quirks Mode" doctype is not supported. -->
-<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+   
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     
     <link type="text/css" rel="stylesheet" href="/css/screens.css">
-    <title>EEMCS Schedule Manager</title>
+    <title><tiles:insertAttribute name="title" ignore="true" /></title>
     
     <!--                                           -->
     <!-- This script loads your compiled module.   -->
@@ -27,10 +25,10 @@
   <body>
   
 	<div id="conteneur">
-		<tiles:insert attribute="header"/>
-		<tiles:insert attribute="menu"/>
-		<tiles:insert attribute="body"/>
-		<tiles:insert attribute="footer"/>
+		<tiles:insertAttribute name="header" />
+		<tiles:insertAttribute name="menu"/>
+		<tiles:insertAttribute name="body"/>
+		<tiles:insertAttribute name="footer"/>
     </div>
   </body>
 </html>
