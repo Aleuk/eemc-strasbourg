@@ -18,8 +18,8 @@ public class ContactDAO implements IContactDAO{
 		try {
 			String query = "select from " + ContactVO.class.getName();
 			result = (List<ContactVO>)pm.newQuery(query).execute();
-		} finally {
-			pm.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 		return result;
 	}
