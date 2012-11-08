@@ -6,6 +6,7 @@ gaeHrdEnabled=true
 gaeIsEclipseDefaultInstPath=true
 googleCloudSqlEnabled=false
 localDevMySqlEnabled=false
+ormEnhancementInclusions=test/|src/
 testDatabaseName=ScheduleManager
 testDatabasePassword=eemcs
 testDatabaseUser=eemcs

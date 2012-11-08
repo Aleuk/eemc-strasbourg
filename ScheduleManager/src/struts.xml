@@ -5,7 +5,6 @@
  
 <struts>
   <constant name="struts.action.excludePattern" value="/_ah/.*,^/$"/>
-  <constant name="struts.objectFactory" value="spring" />
   
   <package name="home" namespace="/" extends="struts-default">
 	<result-types>  

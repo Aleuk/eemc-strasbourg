@@ -6,46 +6,46 @@
   
   <!-- STRUTS 2 -->
   <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/applicationContext.xml</param-value>		
+  </context-param>
+  
+  <context-param>
 	<param-name>org.apache.tiles.CONTAINER_FACTORY</param-name>
 	<param-value>org.apache.struts2.tiles.StrutsTilesContainerFactory</param-value>
   </context-param>
   
   <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/applicationContext.xml</param-value>		
-  </context-param>
+    <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+    <param-value>/WEB-INF/tiles.xml</param-value>
+   </context-param>
 	
+	<listener>
+       <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    <listener>
+       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+       <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+    </listener>
+    <listener>
+       <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
   <filter>
-    <filter-name>struts2</filter-name>
+    <filter-name>struts2-gae</filter-name>
     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
   </filter>
   <filter-mapping>
-	<filter-name>struts2</filter-name>
+	<filter-name>struts2-gae</filter-name>
 	<url-pattern>/*</url-pattern>
   </filter-mapping>
   
-  <filter>
-    <filter-name>Tiles Filter</filter-name>
-    <filter-class>org.apache.tiles.web.startup.TilesFilter</filter-class>
-    <init-param>
-      <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
-	  <param-value>/WEB-INF/tiles.xml</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>Tiles Filter</filter-name>
-    <url-pattern>*.def</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-  </filter-mapping>
-
   <listener>
-      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-	
-  <listener>
-      <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
-  </listener>
-    
+                <listener-class>com.struts2.gae.listener.OgnlListener</listener-class>
+        </listener>
+  
   <!-- FIN STRUTS 2 -->
   
     
