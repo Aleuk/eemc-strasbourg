@@ -19,6 +19,11 @@
 		<result type="tiles" name="LIST">listeMembres.def</result>
 		<result type="tiles" name="LOGIN">home.def</result>
 	</action>
+	
+	<action name="parametrage_*" method="{1}" class="fr.eemcs.schedulemanager.action.ParametrageAction">
+		<result type="tiles" name="LIST">listeParametrage.def</result>
+		<result type="tiles" name="LOGIN">home.def</result>
+	</action>
   </package>
  
 </struts>
