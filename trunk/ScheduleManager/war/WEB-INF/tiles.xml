@@ -23,6 +23,11 @@
 		<put-attribute name="body" value="/pages/listeMembres.jsp" />
 	</definition>
 	
+	<definition name="membreForm.def" extends="maindef">
+		<put-attribute name="title" value="title.membreForm.def" />
+		<put-attribute name="body" value="/forms/membreForm.jsp" />
+	</definition>
+	
 	<definition name="listeParametrage.def" extends="maindef">
 		<put-attribute name="title" value="title.listeParametrage" />
 		<put-attribute name="body" value="/pages/parametrage.jsp" />

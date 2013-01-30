@@ -9,6 +9,8 @@ import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+import fr.eemcs.schedulemanager.helper.FormatHelper;
+
 @PersistenceCapable
 public class ContactVO {
 	@PrimaryKey
@@ -29,6 +31,9 @@ public class ContactVO {
 	
 	@Persistent
 	private String prenomKH;
+	
+	@Persistent
+	private String civilite;
 
 	public ContactVO(String nom, String prenom, Date dateNaissance) {
 		this.nom = nom;
@@ -60,6 +65,10 @@ public class ContactVO {
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
+	
+	public void setDateNaissance(String dateNaissance) {
+		this.dateNaissance = FormatHelper.getDate(dateNaissance, "dd/MM/yyyy");
+	}
 
 	public String getNomKH() {
 		return nomKH;
@@ -75,6 +84,18 @@ public class ContactVO {
 
 	public void setPrenomKH(String prenomKH) {
 		this.prenomKH = prenomKH;
+	}
+
+	public Key getId() {
+		return id;
+	}
+
+	public String getCivilite() {
+		return civilite;
+	}
+
+	public void setCivilite(String civilite) {
+		this.civilite = civilite;
 	}
 	
 	

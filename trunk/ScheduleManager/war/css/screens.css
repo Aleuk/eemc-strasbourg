@@ -57,8 +57,8 @@ html {
 	border:1px solid #FFFFFF;
 	border-radius: 10px;
 	width:200px;
-	height:480px;
-	margin-top:15px
+	height:590px;
+	margin-top:5px
 }
 
 #menu {
@@ -103,13 +103,25 @@ html {
 }
 
 /* CORPS */
+.fond_chemin {
+	text-align:left;
+	font-size:.9em;
+	background-color:#FFFFFF;
+	border:1px solid #FFFFFF;
+	border-radius: 5px;
+	height:20px;
+	margin-left:210px;
+	margin-top:-591px;
+	min-width:50px
+}
+
 .fond_corps {
 	font-size:.9em;
 	background-color:#FFFFFF;
 	border:1px solid #FFFFFF;
 	border-radius: 10px;
-	height:482px;
+	height:565px;
 	margin-left:210px;
-	margin-top:-483px;
+	margin-top:3px;
 	min-width:50px
 }
