@@ -23,7 +23,10 @@ public class MembresAction extends LoggerAction{
 	private String url;
 	
 	private IContactDAO contactDAO;
+	private ContactVO contact;
 	private List<ContactVO> listeMembres = new ArrayList<ContactVO>();
+	private List<String> listeCivilites = new ArrayList<String>();
+	private String dateNaissance;
 	 
 	public String getUrl() {
 		return url;
@@ -75,6 +78,27 @@ public class MembresAction extends LoggerAction{
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		if(user != null) {
+			contact = new ContactVO("", "", null);
+			listeCivilites.add("Monsieur");
+			listeCivilites.add("Madame");
+			listeCivilites.add("Mademoiselle");
+			return IResponse.FORM;
+		} else {
+			setUrl(userService.createLoginURL(req.getRequestURI()));
+			return IResponse.LOGIN;
+		}
+	}
+	
+	public String save() {
+		HttpServletRequest req = ServletActionContext.getRequest();
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+		if(user != null) {
+			if(contact != null) {
+				if(!"".equals(dateNaissance)) {
+					contact.setDateNaissance(dateNaissance);
+				}
+			}
 			return IResponse.LIST;
 		} else {
 			setUrl(userService.createLoginURL(req.getRequestURI()));
@@ -92,6 +116,30 @@ public class MembresAction extends LoggerAction{
 
 	public void setContactDAO(IContactDAO contactDAO) {
 		this.contactDAO = contactDAO;
+	}
+
+	public ContactVO getContact() {
+		return contact;
+	}
+
+	public void setContact(ContactVO contact) {
+		this.contact = contact;
+	}
+
+	public List<String> getListeCivilites() {
+		return listeCivilites;
+	}
+
+	public void setListeCivilites(List<String> listeCivilites) {
+		this.listeCivilites = listeCivilites;
+	}
+
+	public String getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(String dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
 	
 }

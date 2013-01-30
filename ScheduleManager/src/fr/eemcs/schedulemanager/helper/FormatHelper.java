@@ -23,4 +23,19 @@ public class FormatHelper {
 
 		return parsed;
 	}
+	
+	/**
+	 * 
+	 * @param date date à formatter
+	 * @param pattern format de la date
+	 * @return string
+	 */
+	public static String formatDate(Date date, String pattern) {
+		if(date != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+			return sdf.format(date);
+		} else {
+			return null;
+		}
+	}
 }

@@ -7,6 +7,7 @@
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     
     <link type="text/css" rel="stylesheet" href="/css/screens.css">
+    <link type="text/css" rel="stylesheet" href="/css/styles.css">
     <title><tiles:insertAttribute name="title" ignore="true" /></title>
     
     <!--                                           -->
