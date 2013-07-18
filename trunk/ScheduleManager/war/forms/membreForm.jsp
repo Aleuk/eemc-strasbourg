@@ -28,7 +28,7 @@
 					<s:textfield 	id="contact.nom" 
 										name="contact.nom" 
 										size="20" 
-										maxlength="32" 
+										maxlength="50" 
 										tabindex="1" 
 										required="true"
 										label="Nom"/>
@@ -37,7 +37,7 @@
 					<s:textfield 	id="contact.prenom" 
 										name="contact.prenom" 
 										size="20" 
-										maxlength="32" 
+										maxlength="50" 
 										tabindex="2"  
 										required="true"
 										label="Prénom"/>
@@ -47,20 +47,74 @@
 					<td><input type="text" 	class="inputKH" id="contact.nomKH" 
 										name="contact.nomKH" 
 										size="26" 
-										maxlength="32" 
-										tabindex="1"/></td>
+										maxlength="50" 
+										tabindex="3"/></td>
 				</tr>
 				<tr>
 					<td align="right">Prénom en khmer :</td>
 					<td><input type="text" 	class="inputKH" id="contact.prenomKH" 
 										name="contact.prenomKH" 
 										size="26" 
-										maxlength="32" 
-										tabindex="1"/></td>
+										maxlength="50" 
+										tabindex="4"/></td>
 				</tr>
 				<tr>
 					<td class="tdLabel">Date de naissance :</td>
-					<td><input type="date" id="contact.dateNaissance" name="dateNaissance"></td>
+					<td><input type="date" id="contact.dateNaissance" name="dateNaissance" tabindex="5"></td>
+				</tr>
+				<tr>
+					<s:textfield 	id="contact.adresse" 
+										name="contact.adresse" 
+										size="20" 
+										maxlength="50" 
+										tabindex="6" 
+										required="true"
+										label="Adresse"/>
+				</tr>
+				<tr>
+					<s:textfield 	id="contact.codePostal" 
+										name="contact.codePostal" 
+										size="20" 
+										maxlength="50" 
+										tabindex="7"  
+										required="true"
+										label="Code Postal"/>
+				</tr>
+				<tr>
+					<s:textfield 	id="contact.ville" 
+										name="contact.ville" 
+										size="20" 
+										maxlength="50" 
+										tabindex="8"  
+										required="true"
+										label="Code Postal"/>
+				</tr>
+				<tr>
+					<s:textfield 	id="contact.email" 
+										name="contact.email" 
+										size="20" 
+										maxlength="50" 
+										tabindex="9" 
+										required="true"
+										label="Email"/>
+				</tr>
+				<tr>
+					<s:textfield 	id="contact.telephone1" 
+										name="contact.telephone1" 
+										size="20" 
+										maxlength="50" 
+										tabindex="10"  
+										required="true"
+										label="Téléphone fixe"/>
+				</tr>
+				<tr>
+					<s:textfield 	id="contact.telephone2" 
+										name="contact.telephone2" 
+										size="20" 
+										maxlength="50" 
+										tabindex="11"  
+										required="true"
+										label="Téléphone portable"/>
 				</tr>
 				<tr>
 					<td class="tdLabel"><input type="button" value="Annuler" onclick="javascript:annuler();"/></td>
