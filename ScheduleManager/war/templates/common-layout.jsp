@@ -2,9 +2,13 @@
    "http://www.w3.org/TR/html4/loose.dtd">
    
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
+
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     
     <link type="text/css" rel="stylesheet" href="/css/screens.css">
     <link type="text/css" rel="stylesheet" href="/css/styles.css">

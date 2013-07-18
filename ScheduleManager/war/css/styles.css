@@ -1,9 +1,19 @@
 @CHARSET "ISO-8859-1";
 
+@font-face {
+	font-family:"khmerUnicode";
+	src:url('lmns1.ttf');
+}
+
 .tdLabel {
 	text-align:right;
 }
 
 .required {
 	color: red;
+}
+
+.inputKH {
+	font-size:22px;
+	font-family:"khmerUnicode";
 }

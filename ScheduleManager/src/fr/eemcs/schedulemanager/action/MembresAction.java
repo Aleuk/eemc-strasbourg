@@ -95,7 +95,7 @@ public class MembresAction extends LoggerAction{
 		User user = userService.getCurrentUser();
 		if(user != null) {
 			if(contact != null) {
-				if(!"".equals(dateNaissance)) {
+				if(!"".equals(dateNaissance)) { //AAAA-mm-dd
 					contact.setDateNaissance(dateNaissance);
 				}
 			}
