@@ -43,22 +43,20 @@
 										label="Prénom"/>
 				</tr>
 				<tr>
-					<s:textfield 	id="contact.nomKH" 
+					<td align="right">Nom en khmer :</td>
+					<td><input type="text" 	class="inputKH" id="contact.nomKH" 
 										name="contact.nomKH" 
-										size="20" 
+										size="26" 
 										maxlength="32" 
-										tabindex="1" 
-										required="true"
-										label="Nom en khmer"/>
+										tabindex="1"/></td>
 				</tr>
 				<tr>
-					<s:textfield 	id="contact.prenomKH" 
+					<td align="right">Prénom en khmer :</td>
+					<td><input type="text" 	class="inputKH" id="contact.prenomKH" 
 										name="contact.prenomKH" 
-										size="20" 
+										size="26" 
 										maxlength="32" 
-										tabindex="2"  
-										required="true"
-										label="Prénom en khmer"/>
+										tabindex="1"/></td>
 				</tr>
 				<tr>
 					<td class="tdLabel">Date de naissance :</td>

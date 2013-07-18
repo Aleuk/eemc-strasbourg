@@ -53,7 +53,7 @@ html {
 /* MENU - menu à gauche*/
 #menu_left {
 	font-size:.9em;
-	background-color:#FFFFFF;
+	background-color:#E4E6F2;
 	border:1px solid #FFFFFF;
 	border-radius: 10px;
 	width:200px;
@@ -72,7 +72,7 @@ html {
 
 #menu li {
 	line-height:20px;
-	background-color:#FFFFFF;
+	background-color:#E4E6F2;
 	margin-left:2px;
 	margin-top:5px
 }
@@ -106,9 +106,9 @@ html {
 .fond_chemin {
 	text-align:left;
 	font-size:.9em;
-	background-color:#FFFFFF;
+	background-color:#E4E6F2;
 	border:1px solid #FFFFFF;
-	border-radius: 5px;
+	border-radius: 10px;
 	height:20px;
 	margin-left:210px;
 	margin-top:-591px;
