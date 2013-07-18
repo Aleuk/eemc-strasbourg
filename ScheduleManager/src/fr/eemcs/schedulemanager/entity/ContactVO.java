@@ -34,6 +34,24 @@ public class ContactVO {
 	
 	@Persistent
 	private String civilite;
+	
+	@Persistent
+	private String email;
+	
+	@Persistent
+	private String adresse;
+	
+	@Persistent
+	private String codePostal;
+	
+	@Persistent
+	private String ville;
+	
+	@Persistent
+	private String telephone1;
+	
+	@Persistent
+	private String telephone2;
 
 	public ContactVO(String nom, String prenom, Date dateNaissance) {
 		this.nom = nom;
@@ -96,6 +114,54 @@ public class ContactVO {
 
 	public void setCivilite(String civilite) {
 		this.civilite = civilite;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	public String getTelephone1() {
+		return telephone1;
+	}
+
+	public void setTelephone1(String telephone1) {
+		this.telephone1 = telephone1;
+	}
+
+	public String getTelephone2() {
+		return telephone2;
+	}
+
+	public void setTelephone2(String telephone2) {
+		this.telephone2 = telephone2;
+	}
+
+	public String getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
 	}
 	
 	
