@@ -9,6 +9,11 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache" max-age="1" must-revalidate>
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache" content="no store">
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="last-modified" content="" />
     
     <link type="text/css" rel="stylesheet" href="/css/screens.css">
     <link type="text/css" rel="stylesheet" href="/css/styles.css">

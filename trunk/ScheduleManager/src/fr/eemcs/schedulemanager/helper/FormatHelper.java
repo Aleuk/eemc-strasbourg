@@ -38,4 +38,8 @@ public class FormatHelper {
 			return null;
 		}
 	}
+	
+	public static String getId(String oId) {
+		return oId.substring(oId.indexOf("(")+1, oId.indexOf(")"));
+	}
 }

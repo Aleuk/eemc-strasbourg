@@ -23,4 +23,16 @@ public class ContactDAO implements IContactDAO{
 		}
 		return result;
 	}
+	
+	public ContactVO getContact(String id) {
+		ContactVO contact = null;
+		PersistenceManager pm = PMF.get().getPersistenceManager(); //TODO use getObjectById
+		try {
+			String query = "select from " + ContactVO.class.getName() + "where id = " + id;
+			contact = (ContactVO)pm.newQuery(query).execute();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return contact;
+	}
 }

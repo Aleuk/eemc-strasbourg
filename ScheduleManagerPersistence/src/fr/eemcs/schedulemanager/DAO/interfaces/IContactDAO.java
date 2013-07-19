@@ -7,4 +7,6 @@ import fr.eemcs.schedulemanager.entity.ContactVO;
 public interface IContactDAO {
 
 	public List<ContactVO> getContacts();
+	
+	public ContactVO getContact(String id);
 }

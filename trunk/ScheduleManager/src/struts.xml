@@ -19,6 +19,7 @@
 		<result type="tiles" name="LIST">listeMembres.def</result>
 		<result type="tiles" name="FORM">membreForm.def</result>
 		<result type="tiles" name="LOGIN">home.def</result>
+		<result type="tiles" name="ERROR">error.def</result>
 	</action>
 	
 	<action name="parametrage_*" method="{1}" class="fr.eemcs.schedulemanager.action.ParametrageAction">

@@ -18,6 +18,11 @@
 		<put-attribute name="body" value="/pages/home.jsp" />
 	</definition>
 	
+	<definition name="error.def" extends="maindef">
+		<put-attribute name="title" value="title.error" />
+		<put-attribute name="body" value="/pages/error.jsp" />
+	</definition>
+	
 	<definition name="listeMembres.def" extends="maindef">
 		<put-attribute name="title" value="title.listeMembres" />
 		<put-attribute name="body" value="/pages/listeMembres.jsp" />
