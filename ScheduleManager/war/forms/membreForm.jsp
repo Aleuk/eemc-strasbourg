@@ -5,6 +5,7 @@
 	</div>
 	<div class="fond_corps" id="corps">
 		<s:form action="membres_save" validate="true" theme="xhtml">
+			<input type="hidden" id="idContact" name="idContact" value="${idContact}" />
 			<table>
 				<tr>
 					<td colspan="2"><s:text name="title.new.membre"/></td>
@@ -46,6 +47,7 @@
 					<td align="right">Nom en khmer :</td>
 					<td><input type="text" 	class="inputKH" id="contact.nomKH" 
 										name="contact.nomKH" 
+										value="${contact.nomKH}"
 										size="26" 
 										maxlength="50" 
 										tabindex="3"/></td>
@@ -54,21 +56,21 @@
 					<td align="right">Prénom en khmer :</td>
 					<td><input type="text" 	class="inputKH" id="contact.prenomKH" 
 										name="contact.prenomKH" 
+										value="${contact.prenomKH}"
 										size="26" 
 										maxlength="50" 
 										tabindex="4"/></td>
 				</tr>
 				<tr>
 					<td class="tdLabel">Date de naissance :</td>
-					<td><input type="date" id="contact.dateNaissance" name="dateNaissance" tabindex="5"></td>
+					<td><input type="date" id="contact.dateNaissance" name="dateNaissance" value="${dateNaissance}" tabindex="5"></td>
 				</tr>
 				<tr>
 					<s:textfield 	id="contact.adresse" 
 										name="contact.adresse" 
 										size="20" 
 										maxlength="50" 
-										tabindex="6" 
-										required="true"
+										tabindex="6"
 										label="Adresse"/>
 				</tr>
 				<tr>
@@ -76,8 +78,7 @@
 										name="contact.codePostal" 
 										size="20" 
 										maxlength="50" 
-										tabindex="7"  
-										required="true"
+										tabindex="7"
 										label="Code Postal"/>
 				</tr>
 				<tr>
@@ -85,17 +86,15 @@
 										name="contact.ville" 
 										size="20" 
 										maxlength="50" 
-										tabindex="8"  
-										required="true"
-										label="Code Postal"/>
+										tabindex="8"
+										label="Ville"/>
 				</tr>
 				<tr>
 					<s:textfield 	id="contact.email" 
 										name="contact.email" 
 										size="20" 
 										maxlength="50" 
-										tabindex="9" 
-										required="true"
+										tabindex="9"
 										label="Email"/>
 				</tr>
 				<tr>
@@ -103,8 +102,7 @@
 										name="contact.telephone1" 
 										size="20" 
 										maxlength="50" 
-										tabindex="10"  
-										required="true"
+										tabindex="10"
 										label="Téléphone fixe"/>
 				</tr>
 				<tr>
@@ -112,8 +110,7 @@
 										name="contact.telephone2" 
 										size="20" 
 										maxlength="50" 
-										tabindex="11"  
-										required="true"
+										tabindex="11"
 										label="Téléphone portable"/>
 				</tr>
 				<tr>

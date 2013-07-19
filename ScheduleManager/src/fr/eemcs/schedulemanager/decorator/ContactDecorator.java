@@ -13,7 +13,7 @@ public class ContactDecorator extends TableDecorator {
 	
 	public String getNomKH() {
 		ContactVO contact = (ContactVO)getCurrentRowObject();
-		return (null != contact.getNomKH()) ? contact.getNomKH() + " " : (null != contact.getPrenomKH()) ? contact.getPrenomKH() : "";
+		return contact.getNomKH() + " " + contact.getPrenomKH();
 	}
 	
 	public String getDateNaissance() {
@@ -21,15 +21,25 @@ public class ContactDecorator extends TableDecorator {
 		return FormatHelper.formatDate(contact.getDateNaissance(), "dd/MM/yyyy");
 	}
 	
+	public String getEmail() {
+		ContactVO contact = (ContactVO)getCurrentRowObject();
+		return contact.getEmail();
+	}
+	
+	public String getTelephone() {
+		ContactVO contact = (ContactVO)getCurrentRowObject();
+		return contact.getTelephone1() + " / " + contact.getTelephone2();
+	}
+	
 	public String getActions() {
 		ContactVO contact = (ContactVO)getCurrentRowObject();
 		String actions = "";
 		if("Monsieur".equals(contact.getCivilite())) {
-			actions += "<a href=\"javascript:modifierContact('" + contact.getId() + "');\"><img src=\"../images/modifierHomme.png\" /></a>";
+			actions += "<a href=\"javascript:modifierContact(" + FormatHelper.getId(contact.getId().toString()) + ");\"><img height=\"20px\" src=\"../images/modifierHomme.png\" /></a>";
 		} else {
-			actions += "<a href=\"javascript:modifierContact('" + contact.getId() + "');\"><img src=\"../images/modifierFemme.png\" /></a>";
+			actions += "<a href=\"javascript:modifierContact(" + FormatHelper.getId(contact.getId().toString()) + ");\"><img height=\"20px\" src=\"../images/modifierFemme.png\" /></a>";
 		}
-		actions += "<a href=\"javascript:supprimerContact('" + contact.getId() + "', '" + contact.getNom() + " " + contact.getPrenom() + "');\"><img src=\"../images/supprimer.png\" /></a>";
+		actions += "<a href=\"javascript:supprimerContact(" + FormatHelper.getId(contact.getId().toString()) + ", '" + contact.getNom() + " " + contact.getPrenom() + "');\"><img height=\"20px\" src=\"../images/supprimer.png\" /></a>";
 		return actions;
 	}
 }

@@ -5,7 +5,7 @@
 	</div>
 	<div class="fond_corps" id="corps">
 		<s:if test="%{listeMembres.size() == 0}">
-			<p>La liste est vide</p>
+			<p>Il n'y a pas de membres pour le moment.</p>
 		</s:if>
 		<s:else>
 			<display:table id="dataTable" name="listeMembres"
@@ -13,23 +13,24 @@
 				<display:column property="nom" title="table.title.nom" />
 				<display:column property="nomKH" title="table.title.nomKH" />
 				<display:column property="dateNaissance" title="table.title.dateNaissance" />
+				<display:column property="email" title="table.title.email" />
+				<display:column property="telephone" title="table.title.telephone" />
 				<display:column property="actions" title="table.title.actions" />
 			</display:table>
 		
 			<s:iterator value="listeMembres">
 				<p><s:property value="nom"/> <s:property value="prenom"/></p>
 			</s:iterator>
-			<p>La liste n'est pas vide</p>
 		</s:else>
 	</div>
 	<script>
 		function supprimerContact(id, nom) {
 			if(confirm('Êtes-vous sûr de vouloir supprimer ' + nom + ' ?')) {
-				
+				window.location.href = "/membres_delete?idContact=" + id;
 			}
 		}
 		function modifierContact(id) {
-			alert('TODO à modifier');
+			window.location.href = "/membres_modif?idContact=" + id;
 		}
 		function ajouterContact() {
 			window.location.href = "/membres_add";
