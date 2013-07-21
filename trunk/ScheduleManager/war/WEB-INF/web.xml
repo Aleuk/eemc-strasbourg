@@ -5,6 +5,7 @@
   </welcome-file-list>
   
   <!-- STRUTS 2 -->
+  <message-resources parameter="package"/>
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/applicationContext.xml</param-value>		

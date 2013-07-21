@@ -17,3 +17,13 @@
 	font-size:22px;
 	font-family:"khmerUnicode";
 }
+
+#dataTable {
+	cellspacing:15px;
+}
+
+.odd {
+	background-color:#775986;
+	border-collapse: separate;
+    border-spacing: 5px 8px; 
+}
