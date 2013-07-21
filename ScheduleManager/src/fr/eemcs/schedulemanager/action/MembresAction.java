@@ -100,7 +100,7 @@ public class MembresAction extends LoggerAction{
 						modifContact.setNomKH(contact.getNomKH());
 						modifContact.setPrenomKH(contact.getPrenomKH());
 						if(!"".equals(dateNaissance)) { //AAAA-mm-dd
-							modifContact.setDateNaissance(FormatHelper.getDate(dateNaissance, "yyyy-mm-dd"));
+							modifContact.setDateNaissance(FormatHelper.getDate(dateNaissance, "yyyy-MM-dd"));
 						}
 						modifContact.setEmail(contact.getEmail());
 						modifContact.setAdresse(contact.getAdresse());
@@ -118,7 +118,7 @@ public class MembresAction extends LoggerAction{
 				} else {
 					try {
 						if(!"".equals(dateNaissance)) { //AAAA-mm-dd
-							contact.setDateNaissance(FormatHelper.getDate(dateNaissance, "yyyy-mm-dd"));
+							contact.setDateNaissance(FormatHelper.getDate(dateNaissance, "yyyy-MM-dd"));
 						}
 						pm.makePersistent(contact);
 					} finally {
@@ -151,7 +151,7 @@ public class MembresAction extends LoggerAction{
 			if(contact == null) {
 				return IResponse.ERROR;
 			} else {
-				dateNaissance = FormatHelper.formatDate(contact.getDateNaissance(), "yyyy-mm-dd");
+				dateNaissance = FormatHelper.formatDate(contact.getDateNaissance(), "yyyy-MM-dd");
 			}
 			return IResponse.FORM;
 		} else {

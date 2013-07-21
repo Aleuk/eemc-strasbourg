@@ -2,6 +2,7 @@
    "http://www.w3.org/TR/html4/loose.dtd">
    
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page pageEncoding="UTF-8"%>
@@ -14,6 +15,7 @@
 	<meta http-equiv="Cache" content="no store">
 	<meta http-equiv="expires" content="0" />
 	<meta http-equiv="last-modified" content="" />
+	<meta name="gwt:property" content="locale=fr_FR">
     
     <link type="text/css" rel="stylesheet" href="/css/screens.css">
     <link type="text/css" rel="stylesheet" href="/css/styles.css">
@@ -33,7 +35,6 @@
   <!-- to create a completely dynamic UI.        -->
   <!--                                           -->
   <body>
-  
 	<div id="conteneur">
 		<tiles:insertAttribute name="header" />
 		<tiles:insertAttribute name="menu"/>
