@@ -42,4 +42,11 @@ public class FormatHelper {
 	public static String getId(String oId) {
 		return oId.substring(oId.indexOf("(")+1, oId.indexOf(")"));
 	}
+	
+	public static String addPaddingToTD(String s) {
+		if(s != null) {
+			return "<span style=\"padding-left:7px;padding-right:7px\">" + s + "</span>";
+		}
+		return s;
+	}
 }

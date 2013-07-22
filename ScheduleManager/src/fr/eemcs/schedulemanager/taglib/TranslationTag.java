@@ -17,7 +17,7 @@ public class TranslationTag extends TagSupport {
 		try {
 			ResourceBundle RB = ResourceBundle.getBundle("package");
 			pageContext.getOut().println(RB.getString(name));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			throw new JspException ("I/O Error", e); 
 		} 
 		return Tag.SKIP_BODY; 

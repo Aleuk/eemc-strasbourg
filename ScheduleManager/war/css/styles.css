@@ -20,10 +20,9 @@
 
 #dataTable {
 	cellspacing:15px;
+	cellpadding:20;
 }
 
 .odd {
-	background-color:#775986;
-	border-collapse: separate;
-    border-spacing: 5px 8px; 
+	background-color:#CDC9EA;
 }
