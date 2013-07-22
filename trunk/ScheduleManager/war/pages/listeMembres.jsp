@@ -12,18 +12,17 @@
 		<s:else>
 				<display:table id="dataTable" name="listeMembres"
 					pagesize="15" decorator="fr.eemcs.schedulemanager.decorator.ContactDecorator">
-					<display:column property="nom" title="<t:get name='table.title.nom' />" />
-					<display:column property="nomKH" titleKey="table.title.nomKH" />
-					<display:column property="dateNaissance" titleKey="table.title.dateNaissance" />
-					<display:column property="email" titleKey="table.title.email" />
-					<display:column property="telephone" titleKey="table.title.telephone" />
-					<display:column property="actions" titleKey="table.title.actions" />
+					<display:column property="nom" keyTitle="table.title.nom" />
+					<display:column property="nomKH" class="inputKH"  keyTitle="table.title.nomKH" />
+					<display:column property="dateNaissance" keyTitle="table.title.dateNaissance" />
+					<display:column property="email" keyTitle="table.title.email" />
+					<display:column property="telephone" keyTitle="table.title.telephone" />
+					<display:column property="actions" keyTitle="table.title.actions" />
 				</display:table>
 		
 			<s:iterator value="listeMembres">
 				<p><s:property value="nom"/> <s:property value="prenom"/></p>
 			</s:iterator>
-			nom = <t:get name='table.title.nom' /> et <s:text name="table.title.nom"/>
 		</s:else>
 	</div>
 	<script>
