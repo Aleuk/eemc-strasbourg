@@ -8,12 +8,15 @@
 <%@page import="fr.eemcs.schedulemanager.entity.ContactVO"%>
 <%@page import="fr.eemcs.schedulemanager.database.PMF"%>
 <%@page import="javax.jdo.PersistenceManager"%>
+
+<%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
+
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     
     <link type="text/css" rel="stylesheet" href="css/screens.css">
-    <title>EEMCS Schedule Manager</title>
+    <title><t:get name="title.eemcs" /></title>
     
     <!--                                           -->
     <!-- This script loads your compiled module.   -->

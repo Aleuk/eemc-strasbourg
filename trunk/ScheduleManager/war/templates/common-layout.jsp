@@ -3,6 +3,7 @@
    
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page pageEncoding="UTF-8"%>
@@ -19,7 +20,9 @@
     
     <link type="text/css" rel="stylesheet" href="/css/screens.css">
     <link type="text/css" rel="stylesheet" href="/css/styles.css">
-    <title><tiles:insertAttribute name="title" ignore="true" /></title>
+    <tiles:useAttribute id="key" name="title"/>
+	<title><t:get name="${key}" /></title>
+    <!-- <title><tiles:insertAttribute name="title" ignore="true" /></title>-->
     
     <!--                                           -->
     <!-- This script loads your compiled module.   -->
