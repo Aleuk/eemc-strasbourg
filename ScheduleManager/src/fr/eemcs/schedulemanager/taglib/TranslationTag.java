@@ -16,7 +16,11 @@ public class TranslationTag extends TagSupport {
 	public int doStartTag() throws JspException { 
 		try {
 			ResourceBundle RB = ResourceBundle.getBundle("package");
-			pageContext.getOut().println(RB.getString(name));
+			if(RB != null && RB.getString(name) != null) {
+				pageContext.getOut().println(RB.getString(name));
+			} else {
+				pageContext.getOut().println("???" + name + "???");
+			}
 		} catch (Exception e) {
 			throw new JspException ("I/O Error", e); 
 		} 
