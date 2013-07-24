@@ -29,8 +29,48 @@
 	</definition>
 	
 	<definition name="membreForm.def" extends="maindef">
-		<put-attribute name="title" value="title.membreForm.def" />
+		<put-attribute name="title" value="title.membreForm" />
 		<put-attribute name="body" value="/forms/membreForm.jsp" />
+	</definition>
+	
+	<definition name="listeProgrammes.def" extends="maindef">
+		<put-attribute name="title" value="title.listeProgrammes" />
+		<put-attribute name="body" value="/pages/listeProgrammes.jsp" />
+	</definition>
+	
+	<definition name="programmeForm.def" extends="maindef">
+		<put-attribute name="title" value="title.programmeForm" />
+		<put-attribute name="body" value="/forms/programmeForm.jsp" />
+	</definition>
+	
+	<definition name="listePrieres.def" extends="maindef">
+		<put-attribute name="title" value="title.listePrieres" />
+		<put-attribute name="body" value="/pages/listePrieres.jsp" />
+	</definition>
+	
+	<definition name="priereForm.def" extends="maindef">
+		<put-attribute name="title" value="title.priereForm" />
+		<put-attribute name="body" value="/forms/priereForm.jsp" />
+	</definition>
+	
+	<definition name="listeLectures.def" extends="maindef">
+		<put-attribute name="title" value="title.listeLectures" />
+		<put-attribute name="body" value="/pages/listeLectures.jsp" />
+	</definition>
+	
+	<definition name="lectureForm.def" extends="maindef">
+		<put-attribute name="title" value="title.lectureForm" />
+		<put-attribute name="body" value="/forms/lectureForm.jsp" />
+	</definition>
+	
+	<definition name="listeTemoignages.def" extends="maindef">
+		<put-attribute name="title" value="title.listeTemoignages" />
+		<put-attribute name="body" value="/pages/listeTemoignages.jsp" />
+	</definition>
+	
+	<definition name="temoignageForm.def" extends="maindef">
+		<put-attribute name="title" value="title.temoignageForm" />
+		<put-attribute name="body" value="/forms/temoignageForm.jsp" />
 	</definition>
 	
 	<definition name="listeParametrage.def" extends="maindef">
