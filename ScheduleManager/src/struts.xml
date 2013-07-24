@@ -26,6 +26,34 @@
 		<result type="tiles" name="LIST">listeParametrage.def</result>
 		<result type="tiles" name="LOGIN">home.def</result>
 	</action>
+	
+	<action name="programmes_*" method="{1}" class="fr.eemcs.schedulemanager.action.ProgrammesAction">
+		<result type="tiles" name="LIST">listeProgrammes.def</result>
+		<result type="tiles" name="FORM">programmeForm.def</result>
+		<result type="tiles" name="LOGIN">home.def</result>
+		<result type="tiles" name="ERROR">error.def</result>
+	</action>
+	
+	<action name="prieres_*" method="{1}" class="fr.eemcs.schedulemanager.action.PrieresAction">
+		<result type="tiles" name="LIST">listePrieres.def</result>
+		<result type="tiles" name="FORM">priereForm.def</result>
+		<result type="tiles" name="LOGIN">home.def</result>
+		<result type="tiles" name="ERROR">error.def</result>
+	</action>
+	
+	<action name="lectures_*" method="{1}" class="fr.eemcs.schedulemanager.action.LecturesAction">
+		<result type="tiles" name="LIST">listeLectures.def</result>
+		<result type="tiles" name="FORM">lectureForm.def</result>
+		<result type="tiles" name="LOGIN">home.def</result>
+		<result type="tiles" name="ERROR">error.def</result>
+	</action>
+	
+	<action name="temoignages_*" method="{1}" class="fr.eemcs.schedulemanager.action.TemoignagesAction">
+		<result type="tiles" name="LIST">listeTemoignages.def</result>
+		<result type="tiles" name="FORM">temoignageForm.def</result>
+		<result type="tiles" name="LOGIN">home.def</result>
+		<result type="tiles" name="ERROR">error.def</result>
+	</action>
   </package>
  
 </struts>

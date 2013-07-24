@@ -1,8 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
 	<div class="fond_chemin" id="chemin">
-		&nbsp;<t:get name="path.membre.form" />
+		&nbsp;Création d'un profil
 	</div>
 	<div class="fond_corps" id="corps">
 		<s:form action="membres_save" validate="true" theme="xhtml">
