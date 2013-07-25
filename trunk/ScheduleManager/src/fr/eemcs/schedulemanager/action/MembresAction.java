@@ -109,6 +109,8 @@ public class MembresAction extends LoggerAction{
 						modifContact.setTelephone1(contact.getTelephone1());
 						modifContact.setTelephone2(contact.getTelephone2());
 						
+						modifContact.setModification(new Date(), user);
+						
 						pm.currentTransaction().commit();
 					} catch (Exception e) {
 						pm.currentTransaction().rollback();
@@ -120,13 +122,14 @@ public class MembresAction extends LoggerAction{
 						if(!"".equals(dateNaissance)) { //AAAA-mm-dd
 							contact.setDateNaissance(FormatHelper.getDate(dateNaissance, "yyyy-MM-dd"));
 						}
+						contact.setCreation(new Date(), user);
 						pm.makePersistent(contact);
 					} finally {
 						pm.close();
 					}
 				}
 			}
-			return IResponse.LIST;
+			return IResponse.SUCCESS;
 		} else {
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return IResponse.LOGIN;

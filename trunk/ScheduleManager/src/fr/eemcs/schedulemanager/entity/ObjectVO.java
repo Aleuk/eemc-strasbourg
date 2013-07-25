@@ -2,7 +2,12 @@ package fr.eemcs.schedulemanager.entity;
 
 import java.util.Date;
 
+import javax.jdo.annotations.Discriminator;
+import javax.jdo.annotations.DiscriminatorStrategy;
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -10,7 +15,8 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 
-@PersistenceCapable
+@PersistenceCapable (identityType = IdentityType.APPLICATION)
+@Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public class ObjectVO {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -27,14 +33,10 @@ public class ObjectVO {
 	
 	@Persistent
 	private Date modificationDate;
-	
-	@Persistent
-	private boolean valide;
 
 	public ObjectVO() {
 		this.creationDate = new Date();
 		this.modificationDate = new Date();
-		this.valide = true;
 	}
 	
 	public Key getId() {
@@ -72,12 +74,16 @@ public class ObjectVO {
 	public void setModificationDate(Date modificationDate) {
 		this.modificationDate = modificationDate;
 	}
-
-	public boolean isValide() {
-		return valide;
+	
+	public void setCreation(Date date, User user) {
+		this.creationDate = new Date();
+		this.modificationDate = new Date();
+		this.creationUser = user;
+		this.modificationUser = user;
 	}
-
-	public void setValide(boolean valide) {
-		this.valide = valide;
+	
+	public void setModification(Date date, User user) {
+		this.modificationDate = new Date();
+		this.modificationUser = user;
 	}
 }
