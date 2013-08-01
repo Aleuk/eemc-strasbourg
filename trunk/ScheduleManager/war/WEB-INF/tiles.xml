@@ -23,14 +23,14 @@
 		<put-attribute name="body" value="/pages/error.jsp" />
 	</definition>
 	
-	<definition name="listeMembres.def" extends="maindef">
-		<put-attribute name="title" value="title.listeMembres" />
-		<put-attribute name="body" value="/pages/listeMembres.jsp" />
+	<definition name="listeContacts.def" extends="maindef">
+		<put-attribute name="title" value="title.listeContacts" />
+		<put-attribute name="body" value="/pages/listeContacts.jsp" />
 	</definition>
 	
-	<definition name="membreForm.def" extends="maindef">
-		<put-attribute name="title" value="title.membreForm" />
-		<put-attribute name="body" value="/forms/membreForm.jsp" />
+	<definition name="contactForm.def" extends="maindef">
+		<put-attribute name="title" value="title.contactForm" />
+		<put-attribute name="body" value="/forms/contactForm.jsp" />
 	</definition>
 	
 	<definition name="listeProgrammes.def" extends="maindef">

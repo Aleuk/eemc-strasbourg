@@ -4,7 +4,7 @@
 		&nbsp;Création d'un profil
 	</div>
 	<div class="fond_corps" id="corps">
-		<s:form action="membres_save" validate="true" theme="xhtml">
+		<s:form action="contacts_save" validate="true" theme="xhtml">
 			<input type="hidden" id="idContact" name="idContact" value="${idContact}" />
 			<table>
 				<tr>
@@ -122,7 +122,7 @@
 	</div>
 	<script>
 		function annuler() {
-			window.location.href = "/membres_list";
+			window.location.href = "/contacts_list";
 		}
 		
 		function save() {

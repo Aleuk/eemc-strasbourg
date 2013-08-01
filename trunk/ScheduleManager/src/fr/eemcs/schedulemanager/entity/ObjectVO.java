@@ -2,8 +2,6 @@ package fr.eemcs.schedulemanager.entity;
 
 import java.util.Date;
 
-import javax.jdo.annotations.Discriminator;
-import javax.jdo.annotations.DiscriminatorStrategy;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Inheritance;

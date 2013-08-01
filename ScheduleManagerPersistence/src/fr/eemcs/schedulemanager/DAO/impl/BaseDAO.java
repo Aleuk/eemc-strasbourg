@@ -5,11 +5,12 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 
-import fr.eemcs.schedulemanager.DAO.interfaces.IContactDAO;
+import fr.eemcs.schedulemanager.DAO.interfaces.IBaseDAO;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.ContactVO;
+import fr.eemcs.schedulemanager.entity.LieuVO;
 
-public class ContactDAO implements IContactDAO{
+public class BaseDAO implements IBaseDAO{
 
 	@SuppressWarnings("unchecked")
 	public List<ContactVO> getContacts() {
@@ -34,5 +35,18 @@ public class ContactDAO implements IContactDAO{
 			System.out.println(e.getMessage());
 		}
 		return contact;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<LieuVO> getLieux() {
+		List<LieuVO> result = new ArrayList<LieuVO>();
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			String query = "select from " + LieuVO.class.getName();
+			result = (List<LieuVO>)pm.newQuery(query).execute();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return result;
 	}
 }
