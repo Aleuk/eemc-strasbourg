@@ -2,14 +2,14 @@
 <%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
 	<div class="fond_chemin" id="chemin">
-		&nbsp;<t:get name="path.membre.form" />
+		&nbsp;<t:get name="path.contact.form" />
 	</div>
 	<div class="fond_corps" id="corps">
-		<s:form action="membres_save" validate="true" theme="xhtml">
+		<s:form action="contact_save" validate="true" theme="xhtml">
 			<input type="hidden" id="idContact" name="idContact" value="${idContact}" />
 			<table>
 				<tr>
-					<td colspan="2"><s:text name="title.new.membre"/></td>
+					<td colspan="2"><t:get name="form.title.nouveau.contact"/></td>
 				</tr>
 				<tr>
 					<td align="right">
@@ -45,7 +45,7 @@
 										label="Prénom"/>
 				</tr>
 				<tr>
-					<td align="right">Nom en khmer :</td>
+					<td align="right"><t:get name="form.contact.label.nom.cambodgien" /> :</td>
 					<td><input type="text" 	class="inputKH" id="contact.nomKH" 
 										name="contact.nomKH" 
 										value="${contact.nomKH}"
@@ -54,7 +54,7 @@
 										tabindex="3"/></td>
 				</tr>
 				<tr>
-					<td align="right">Prénom en khmer :</td>
+					<td align="right"><t:get name="form.contact.label.prenom.cambodgien" /> :</td>
 					<td><input type="text" 	class="inputKH" id="contact.prenomKH" 
 										name="contact.prenomKH" 
 										value="${contact.prenomKH}"
@@ -63,7 +63,7 @@
 										tabindex="4"/></td>
 				</tr>
 				<tr>
-					<td class="tdLabel">Date de naissance :</td>
+					<td class="tdLabel"><t:get name="form.contact.label.dateNaissance" /> :</td>
 					<td><input type="date" id="contact.dateNaissance" name="dateNaissance" value="${dateNaissance}" tabindex="5"></td>
 				</tr>
 				<tr>
@@ -115,6 +115,21 @@
 										label="Téléphone portable"/>
 				</tr>
 				<tr>
+					<td>
+						<s:checkbox name="contact.predicateur" value="contact.predicateur" label="Prédicateur"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<s:checkbox name="contact.conducteurLouange" value="contact.conducteurLouange" label="Conducteur de louange"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<s:checkbox name="contact.responsable" value="contact.responsable" label="Responsable"/>
+					</td>
+				</tr>
+				<tr>
 					<td class="tdLabel"><input type="button" value="Annuler" onclick="javascript:annuler();"/></td>
 					<td><input type="button" value="Enregistrer" onclick="javascript:save();"/></td>
 				</tr>
@@ -123,7 +138,7 @@
 	</div>
 	<script>
 		function annuler() {
-			window.location.href = "/membres_list";
+			window.location.href = "/contact_list";
 		}
 		
 		function save() {

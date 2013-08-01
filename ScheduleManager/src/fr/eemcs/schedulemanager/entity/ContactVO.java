@@ -2,15 +2,8 @@ package fr.eemcs.schedulemanager.entity;
 
 import java.util.Date;
 
-import javax.jdo.annotations.Discriminator;
-import javax.jdo.annotations.DiscriminatorStrategy;
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
-
-import com.google.appengine.api.datastore.Key;
 
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
@@ -51,7 +44,16 @@ public class ContactVO extends ObjectVO{
 	
 	@Persistent
 	private String telephone2;
-
+	
+	@Persistent
+	private Boolean predicateur;
+	
+	@Persistent
+	private Boolean conducteurLouange;
+	
+	@Persistent
+	private Boolean responsable;
+	
 	public ContactVO(String nom, String prenom, Date dateNaissance) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -157,6 +159,30 @@ public class ContactVO extends ObjectVO{
 
 	public void setVille(String ville) {
 		this.ville = ville;
+	}
+
+	public boolean isPredicateur() {
+		return predicateur;
+	}
+
+	public void setPredicateur(boolean predicateur) {
+		this.predicateur = predicateur;
+	}
+
+	public boolean isConducteurLouange() {
+		return conducteurLouange;
+	}
+
+	public void setConducteurLouange(boolean conducteurLouange) {
+		this.conducteurLouange = conducteurLouange;
+	}
+
+	public boolean isResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(boolean responsable) {
+		this.responsable = responsable;
 	}
 	
 	

@@ -13,18 +13,18 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import fr.eemcs.schedulemanager.DAO.interfaces.IContactDAO;
+import fr.eemcs.schedulemanager.DAO.interfaces.IBaseDAO;
 import fr.eemcs.schedulemanager.constants.IResponse;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.ContactVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
-public class MembresAction extends LoggerAction{
+public class ContactAction extends LoggerAction{
 	private String url;
 	
-	private IContactDAO contactDAO;
+	private IBaseDAO baseDAO;
 	private ContactVO contact;
-	private List<ContactVO> listeMembres = new ArrayList<ContactVO>();
+	private List<ContactVO> listeContacts = new ArrayList<ContactVO>();
 	private List<String> listeCivilites = new ArrayList<String>();
 	private String dateNaissance;
 	private int idContact = -1;
@@ -52,10 +52,9 @@ public class MembresAction extends LoggerAction{
 	public String list() {
 		boolean logged = super.isLogged();
 		if(logged) {
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			List<ContactVO> contacts = contactDAO.getContacts();
+			List<ContactVO> contacts = baseDAO.getContacts();
 			if(contacts != null && contacts.size() > 0) {
-				listeMembres = contacts;
+				listeContacts = contacts;
 			}
 			return IResponse.LIST;
 		} else {
@@ -108,6 +107,9 @@ public class MembresAction extends LoggerAction{
 						modifContact.setVille(contact.getVille());
 						modifContact.setTelephone1(contact.getTelephone1());
 						modifContact.setTelephone2(contact.getTelephone2());
+						modifContact.setPredicateur(contact.isPredicateur());
+						modifContact.setConducteurLouange(contact.isConducteurLouange());
+						modifContact.setResponsable(contact.isResponsable());
 						
 						modifContact.setModification(new Date(), user);
 						
@@ -182,16 +184,16 @@ public class MembresAction extends LoggerAction{
 		}
 	}
 
-	public List<ContactVO> getListeMembres() {
-		return listeMembres;
+	public List<ContactVO> getListeContacts() {
+		return listeContacts;
 	}
 
-	public void setListeMembres(List<ContactVO> listeMembres) {
-		this.listeMembres = listeMembres;
+	public void setListeContacts(List<ContactVO> listeContacts) {
+		this.listeContacts = listeContacts;
 	}
 
-	public void setContactDAO(IContactDAO contactDAO) {
-		this.contactDAO = contactDAO;
+	public void setBaseDAO(IBaseDAO contactDAO) {
+		this.baseDAO = contactDAO;
 	}
 
 	public ContactVO getContact() {
