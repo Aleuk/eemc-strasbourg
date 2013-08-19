@@ -3,7 +3,7 @@
 <%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
 	<div class="fond_chemin" id="chemin">
-		&nbsp;<a href="javascript:ajouterLieu();"><img src="../images/ajouterLieu.png" height="20px" width="20px"/> Créer</a>
+		&nbsp;<a href="/lieu_add"><img src="../images/ajouterLieu.png" height="25px" width="25px" style="vertical-align:middle"/> Créer</a>
 	</div>
 	<div class="fond_corps" id="corps">
 		<s:if test="%{listeLieux.size() == 0}">
@@ -13,13 +13,10 @@
 				<display:table id="dataTable" name="listeLieux"
 					pagesize="15" decorator="fr.eemcs.schedulemanager.decorator.LieuDecorator">
 					<display:column property="nom" keyTitle="table.title.nom" />
+					<display:column property="nomKH" class="inputKH" keyTitle="table.title.nomKH" />
 					<display:column property="adresse" keyTitle="table.title.adresse" />
 					<display:column property="actions" keyTitle="table.title.actions" />
 				</display:table>
-		
-			<s:iterator value="listeLieux">
-				<p><s:property value="nom"/></p>
-			</s:iterator>
 		</s:else>
 	</div>
 	<script>

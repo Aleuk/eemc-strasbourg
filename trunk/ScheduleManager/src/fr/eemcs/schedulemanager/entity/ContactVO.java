@@ -60,6 +60,10 @@ public class ContactVO extends ObjectVO{
 		this.dateNaissance = dateNaissance;
 	}
 	
+	public String getNomPrenom() {
+		return nom + " " + prenom;
+	}
+	
 	// GETTERS & SETTERS
 	public String getNom() {
 		return nom;

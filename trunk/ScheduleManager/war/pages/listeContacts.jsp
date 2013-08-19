@@ -3,7 +3,7 @@
 <%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
 	<div class="fond_chemin" id="chemin">
-		&nbsp;<a href="javascript:ajouterContact();"><img src="../images/ajouterContact.png" height="20px" width="20px"/> Créer</a>
+		&nbsp;<a href="javascript:ajouterContact();"><img src="../images/ajouterContact.png" height="25px" width="25px" style="vertical-align:middle"/> Créer</a>
 	</div>
 	<div class="fond_corps" id="corps">
 		<s:if test="%{listeContacts.size() == 0}">

@@ -9,6 +9,9 @@ public class LieuVO extends ObjectVO{
 	private String nom;
 	
 	@Persistent
+	private String nomKH;
+	
+	@Persistent
 	private String adresse;
 	
 	@Persistent
@@ -18,7 +21,7 @@ public class LieuVO extends ObjectVO{
 	private String ville;
 	
 	@Persistent
-	private ContactVO contact;
+	private String idContact;
 
 	public LieuVO() {
 		
@@ -58,12 +61,20 @@ public class LieuVO extends ObjectVO{
 		this.ville = ville;
 	}
 
-	public ContactVO getContact() {
-		return contact;
+	public String getNomKH() {
+		return nomKH;
 	}
 
-	public void setContact(ContactVO contact) {
-		this.contact = contact;
+	public void setNomKH(String nomKH) {
+		this.nomKH = nomKH;
+	}
+
+	public String getIdContact() {
+		return idContact;
+	}
+
+	public void setIdContact(String idContact) {
+		this.idContact = idContact;
 	}
 	
 }

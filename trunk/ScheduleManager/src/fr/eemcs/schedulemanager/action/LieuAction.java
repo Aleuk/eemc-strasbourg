@@ -16,6 +16,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import fr.eemcs.schedulemanager.DAO.interfaces.IBaseDAO;
 import fr.eemcs.schedulemanager.constants.IResponse;
 import fr.eemcs.schedulemanager.database.PMF;
+import fr.eemcs.schedulemanager.entity.ContactVO;
 import fr.eemcs.schedulemanager.entity.LieuVO;
 
 public class LieuAction extends LoggerAction{
@@ -24,8 +25,7 @@ public class LieuAction extends LoggerAction{
 	private IBaseDAO baseDAO;
 	private LieuVO lieu;
 	private List<LieuVO> listeLieux = new ArrayList<LieuVO>();
-	private List<String> listeCivilites = new ArrayList<String>();
-	private String dateNaissance;
+	private List<ContactVO> listeContacts = new ArrayList<ContactVO>();
 	private int idLieu = -1;
 	 
 	public String getUrl() {
@@ -70,6 +70,7 @@ public class LieuAction extends LoggerAction{
 		User user = userService.getCurrentUser();
 		if(user != null) {
 			lieu = new LieuVO();
+			listeContacts = baseDAO.getContacts();
 			return IResponse.FORM;
 		} else {
 			setUrl(userService.createLoginURL(req.getRequestURI()));
@@ -89,7 +90,10 @@ public class LieuAction extends LoggerAction{
 						pm.currentTransaction().begin();
 						
 						LieuVO modifLieu = pm.getObjectById(LieuVO.class, idLieu);
+						
+						modifLieu.setIdContact(lieu.getIdContact());
 						modifLieu.setNom(lieu.getNom());
+						modifLieu.setNomKH(lieu.getNomKH());
 						modifLieu.setAdresse(lieu.getAdresse());
 						modifLieu.setCodePostal(lieu.getCodePostal());
 						modifLieu.setVille(lieu.getVille());
@@ -123,13 +127,11 @@ public class LieuAction extends LoggerAction{
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		if(user != null) {
-			listeCivilites.add("Monsieur");
-			listeCivilites.add("Madame");
-			listeCivilites.add("Mademoiselle");
 			
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
 				lieu = pm.getObjectById(LieuVO.class, idLieu);
+				listeContacts = baseDAO.getContacts();
 			} finally {
 				pm.close();
 			}
@@ -182,28 +184,20 @@ public class LieuAction extends LoggerAction{
 		this.lieu = lieu;
 	}
 
-	public List<String> getListeCivilites() {
-		return listeCivilites;
-	}
-
-	public void setListeCivilites(List<String> listeCivilites) {
-		this.listeCivilites = listeCivilites;
-	}
-
-	public String getDateNaissance() {
-		return dateNaissance;
-	}
-
-	public void setDateNaissance(String dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-
 	public int getIdLieu() {
 		return idLieu;
 	}
 
 	public void setIdLieu(int idLieu) {
 		this.idLieu = idLieu;
+	}
+
+	public List<ContactVO> getListeContacts() {
+		return listeContacts;
+	}
+
+	public void setListeContacts(List<ContactVO> listeContacts) {
+		this.listeContacts = listeContacts;
 	}
 	
 }

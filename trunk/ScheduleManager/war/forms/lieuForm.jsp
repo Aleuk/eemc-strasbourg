@@ -20,6 +20,14 @@
 					</td>
 				</tr>
 				<tr>
+					<s:select label="Contact" 
+								headerKey="-1" headerValue="Contact"
+								list="listeContacts"
+								listKey="key"
+								listValue="nomPrenom" 
+								name="lieu.idContact" />
+				</tr>
+				<tr>
 					<s:textfield 	id="lieu.nom" 
 										name="lieu.nom" 
 										size="50" 
@@ -27,6 +35,15 @@
 										tabindex="1" 
 										required="true"
 										label="Nom"/>
+				</tr>
+				<tr>
+					<td align="right"><t:get name="form.label.nom.cambodgien" /> :</td>
+					<td><input type="text" 	class="inputKH" id="lieu" 
+										name="lieu.nomKH" 
+										value="${lieu.nomKH}"
+										size="50" 
+										maxlength="50" 
+										tabindex="3"/></td>
 				</tr>
 				<tr>
 					<s:textfield 	id="lieu.adresse" 

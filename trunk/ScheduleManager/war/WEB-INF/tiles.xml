@@ -75,7 +75,17 @@
 	
 	<definition name="listeParametrage.def" extends="maindef">
 		<put-attribute name="title" value="title.listeParametrage" />
-		<put-attribute name="body" value="/pages/parametrage.jsp" />
+		<put-attribute name="body" value="/pages/listeParametrage.jsp" />
+	</definition>
+	
+	<definition name="listeLieux.def" extends="maindef">
+		<put-attribute name="title" value="title.listeLieux" />
+		<put-attribute name="body" value="/pages/listeLieux.jsp" />
+	</definition>
+	
+	<definition name="lieuForm.def" extends="maindef">
+		<put-attribute name="title" value="title.lieuForm" />
+		<put-attribute name="body" value="/forms/lieuForm.jsp" />
 	</definition>
 	
 </tiles-definitions>
