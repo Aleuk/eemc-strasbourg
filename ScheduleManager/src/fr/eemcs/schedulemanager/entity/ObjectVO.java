@@ -13,6 +13,8 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 
+import fr.eemcs.schedulemanager.helper.FormatHelper;
+
 @PersistenceCapable (identityType = IdentityType.APPLICATION)
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public class ObjectVO {
@@ -39,6 +41,10 @@ public class ObjectVO {
 	
 	public Key getId() {
 		return id;
+	}
+	
+	public String getKey() {
+		return FormatHelper.getId(id.toString());
 	}
 
 	public User getCreationUser() {

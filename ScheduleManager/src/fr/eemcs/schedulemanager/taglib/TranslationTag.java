@@ -1,6 +1,6 @@
 package fr.eemcs.schedulemanager.taglib;
 
-import java.io.IOException;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import javax.servlet.jsp.JspException;
@@ -21,6 +21,12 @@ public class TranslationTag extends TagSupport {
 			} else {
 				pageContext.getOut().println("???" + name + "???");
 			}
+		} catch (MissingResourceException mre) {
+			try {
+				pageContext.getOut().println("???" + name + "???");
+			} catch (Exception e) {
+				throw new JspException ("I/O Error", e); 
+			} 
 		} catch (Exception e) {
 			throw new JspException ("I/O Error", e); 
 		} 

@@ -45,7 +45,7 @@
 										label="Prénom"/>
 				</tr>
 				<tr>
-					<td align="right"><t:get name="form.contact.label.nom.cambodgien" /> :</td>
+					<td align="right"><t:get name="form.label.nom.cambodgien" /> :</td>
 					<td><input type="text" 	class="inputKH" id="contact.nomKH" 
 										name="contact.nomKH" 
 										value="${contact.nomKH}"
@@ -54,7 +54,7 @@
 										tabindex="3"/></td>
 				</tr>
 				<tr>
-					<td align="right"><t:get name="form.contact.label.prenom.cambodgien" /> :</td>
+					<td align="right"><t:get name="form.label.prenom.cambodgien" /> :</td>
 					<td><input type="text" 	class="inputKH" id="contact.prenomKH" 
 										name="contact.prenomKH" 
 										value="${contact.prenomKH}"
@@ -63,7 +63,7 @@
 										tabindex="4"/></td>
 				</tr>
 				<tr>
-					<td class="tdLabel"><t:get name="form.contact.label.dateNaissance" /> :</td>
+					<td class="tdLabel"><t:get name="form.label.dateNaissance" /> :</td>
 					<td><input type="date" id="contact.dateNaissance" name="dateNaissance" value="${dateNaissance}" tabindex="5"></td>
 				</tr>
 				<tr>

@@ -30,7 +30,10 @@
 	
 	<action name="lieu_*" method="{1}" class="fr.eemcs.schedulemanager.action.LieuAction">
 		<result type="tiles" name="LIST">listeLieux.def</result>
+		<result type="tiles" name="FORM">lieuForm.def</result>
+		<result type="redirectAction" name="SUCCESS">lieu_list</result>
 		<result type="tiles" name="LOGIN">home.def</result>
+		<result type="tiles" name="ERROR">error.def</result>
 	</action>
 	
 	<action name="programme_*" method="{1}" class="fr.eemcs.schedulemanager.action.ProgrammeAction">
