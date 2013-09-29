@@ -39,7 +39,7 @@ public class LieuAction extends LoggerAction{
 	public String execute() {
 		boolean logged = super.isLogged();
 		if(logged) {
-			return IResponse.LIST;
+			return IResponse.LIEU_LIST;
 		} else {
 			HttpServletRequest req = ServletActionContext.getRequest();
 			UserService userService = UserServiceFactory.getUserService();
@@ -55,7 +55,7 @@ public class LieuAction extends LoggerAction{
 			if(lieux != null && lieux.size() > 0) {
 				listeLieux = lieux;
 			}
-			return IResponse.LIST;
+			return IResponse.LIEU_LIST;
 		} else {
 			HttpServletRequest req = ServletActionContext.getRequest();
 			UserService userService = UserServiceFactory.getUserService();
@@ -71,7 +71,7 @@ public class LieuAction extends LoggerAction{
 		if(user != null) {
 			lieu = new LieuVO();
 			listeContacts = baseDAO.getContacts();
-			return IResponse.FORM;
+			return IResponse.LIEU_FORM;
 		} else {
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return IResponse.LOGIN;
@@ -115,7 +115,7 @@ public class LieuAction extends LoggerAction{
 					}
 				}
 			}
-			return IResponse.SUCCESS;
+			return "SUCCESS";
 		} else {
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return IResponse.LOGIN;
@@ -138,7 +138,7 @@ public class LieuAction extends LoggerAction{
 			if(lieu == null) {
 				return IResponse.ERROR;
 			}
-			return IResponse.FORM;
+			return IResponse.LIEU_FORM;
 		} else {
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return IResponse.LOGIN;
@@ -157,7 +157,7 @@ public class LieuAction extends LoggerAction{
 			} finally {
 				pm.close();
 			}
-			return IResponse.LIST;
+			return IResponse.LIEU_LIST;
 		} else {
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return IResponse.LOGIN;

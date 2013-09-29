@@ -1,11 +1,14 @@
 package fr.eemcs.schedulemanager.constants;
 
 public interface IResponse {
-
-	public final static String SUCCESS = "SUCCESS";
-	public final static String LOGIN = "LOGIN";
-	public final static String LIST = "LIST";
-	public final static String FORM = "FORM";
-	public final static String RESULT = "RESULT";
-	public final static String ERROR = "ERROR";
+	
+	public final static String LOGIN = "home.def";
+	public final static String ERROR = "error.def";
+	
+	public final static String CONTACT_LIST = "listeContacts.def";
+	public final static String CONTACT_FORM = "contactForm.def";
+	
+	public final static String LIEU_LIST = "listeLieux.def";
+	public final static String LIEU_FORM = "lieuForm.def";
+	
 }
