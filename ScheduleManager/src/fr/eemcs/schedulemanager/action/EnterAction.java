@@ -1,7 +1,12 @@
 package fr.eemcs.schedulemanager.action;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
 import fr.eemcs.schedulemanager.constants.IResponse;
 
+@Controller
 public class EnterAction {
 	
 	private String url;
@@ -14,9 +19,11 @@ public class EnterAction {
 		this.url = _url;
 	}
  
-	public String execute() {
+	@RequestMapping("/enter")
+	public ModelAndView execute() {
 		//TODO récupération des infos User
-		return IResponse.SUCCESS;
+		//return IResponse.SUCCESS;
+		return new ModelAndView("home.def");
 	}
 	
 }

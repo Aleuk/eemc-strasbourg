@@ -46,13 +46,16 @@ public class ContactVO extends ObjectVO{
 	private String telephone2;
 	
 	@Persistent
-	private Boolean predicateur;
+	private boolean predicateur = false;
 	
 	@Persistent
-	private Boolean conducteurLouange;
+	private boolean conducteurLouange = false;
 	
 	@Persistent
-	private Boolean responsable;
+	private boolean responsable = false;
+	
+	@Persistent
+	private boolean membre = false;
 	
 	public ContactVO(String nom, String prenom, Date dateNaissance) {
 		this.nom = nom;
@@ -189,5 +192,11 @@ public class ContactVO extends ObjectVO{
 		this.responsable = responsable;
 	}
 	
-	
+	public boolean isMembre() {
+		return membre;
+	}
+
+	public void setMembre(boolean membre) {
+		this.membre = membre;
+	}
 }

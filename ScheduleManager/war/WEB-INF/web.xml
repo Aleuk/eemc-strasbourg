@@ -1,25 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
-  <welcome-file-list>
-	<welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    version="2.5" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   
-  <!-- STRUTS 2 -->
-  <message-resources parameter="package"/>
+  <message-resources parameter="message"/>
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/applicationContext.xml</param-value>		
   </context-param>
-  
-  <context-param>
-	<param-name>org.apache.tiles.CONTAINER_FACTORY</param-name>
-	<param-value>org.apache.struts2.tiles.StrutsTilesContainerFactory</param-value>
-  </context-param>
-  
-  <context-param>
-    <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
-    <param-value>/WEB-INF/tiles.xml</param-value>
-   </context-param>
 	
 	<listener>
        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
@@ -28,27 +17,22 @@
        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <listener>
-       <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
-    </listener>
-    <listener>
        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
-
-  <filter>
-    <filter-name>struts2-gae</filter-name>
-    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-  </filter>
-  <filter-mapping>
-	<filter-name>struts2-gae</filter-name>
-	<url-pattern>/*</url-pattern>
-  </filter-mapping>
   
-  <listener>
-                <listener-class>com.struts2.gae.listener.OgnlListener</listener-class>
-        </listener>
-  
-  <!-- FIN STRUTS 2 -->
-  
+  <display-name>Spring3MVC</display-name>  
+    <welcome-file-list>  
+        <welcome-file>index.jsp</welcome-file>  
+    </welcome-file-list>  
+    <servlet>  
+        <servlet-name>spring</servlet-name>  
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  
+        <load-on-startup>1</load-on-startup>  
+    </servlet>  
+    <servlet-mapping>  
+        <servlet-name>spring</servlet-name>  
+        <url-pattern>/controller/*</url-pattern>  
+    </servlet-mapping>
     
   <!-- Servlets -->
   <servlet>

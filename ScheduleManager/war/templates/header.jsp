@@ -19,5 +19,5 @@
     %>
     </script>
     	<div id="header">
-    		<div id="header_left"></div><div id="header_center"><a href='<%= userService.createLogoutURL("/") %>'><img src="../images/deconnexion.png" /></a></div><div id="header_right"></div>
+    		<div id="header_left"></div><div id="header_center"><a href='<%= userService.createLogoutURL("/") %>'><img src="/images/deconnexion.png" /></a></div><div id="header_right"></div>
     	</div>

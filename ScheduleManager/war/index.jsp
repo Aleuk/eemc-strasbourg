@@ -30,7 +30,7 @@
   <!--                                           -->
   <body>
     <% 
-    	String url = "/enter";
+    	String url = "/controller/enter";
     	UserService userService = UserServiceFactory.getUserService();
     	User user = userService.getCurrentUser();
     	if(user == null) {
