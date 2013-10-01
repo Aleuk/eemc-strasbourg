@@ -61,7 +61,7 @@ public class ContactAction extends LoggerAction{
 			if(contacts != null && contacts.size() > 0) {
 				listeContacts = contacts;
 			}
-			return new ModelAndView(IResponse.CONTACT_LIST);
+			return new ModelAndView(IResponse.CONTACT_LIST, "listeContacts", listeContacts);
 		} else {
 			HttpServletRequest req = ServletActionContext.getRequest();
 			UserService userService = UserServiceFactory.getUserService();
@@ -134,7 +134,7 @@ public class ContactAction extends LoggerAction{
 				} else {
 					try {
 						if(!"".equals(dateNaissance)) { //AAAA-mm-dd
-							contact.setDateNaissance(FormatHelper.getDate(dateNaissance, "yyyy-MM-dd"));
+							//contact.setDateNaissance(FormatHelper.getDate(dateNaissance, "yyyy-MM-dd"));
 						}
 						contact.setCreation(new Date(), user);
 						pm.makePersistent(contact);
