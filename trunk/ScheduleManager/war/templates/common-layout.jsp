@@ -39,8 +39,8 @@
   <!--                                           -->
   <body>
 	<div id="conteneur">
-		<tiles:insertAttribute name="header" />
 		<tiles:insertAttribute name="menu"/>
+		<tiles:insertAttribute name="header" />
 		<tiles:insertAttribute name="body"/>
 		<tiles:insertAttribute name="footer"/>
     </div>

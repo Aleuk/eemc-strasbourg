@@ -15,6 +15,7 @@ html {
 /* HEADER - bandeau*/
 #header {
 	position: relative;
+	top:50px;
 }
 
 #header div {
@@ -51,56 +52,30 @@ html {
 }
 
 /* MENU - menu à gauche*/
-#menu_left {
-	font-size:.9em;
-	background-color:#E4E6F2;
-	border:1px solid #FFFFFF;
-	border-radius: 10px;
-	width:200px;
-	height:590px;
-	margin-top:5px
-}
-
-#menu {
-	margin-top:5px
-}
-
-#menu ul {
-	list-style-type:none;
-	padding: 0;
-}
-
-#menu li {
-	line-height:20px;
-	background-color:#E4E6F2;
-	margin-left:2px;
-	margin-top:5px
-}
-
-#menu a {
-	color:#eee;
-	text-decoration:none;
-	border:1px solid #036;
-	display:block;
-	padding:0 10px
-}
-
-#menu a:hover {
-	border:1px solid #fff;
-	text-decoration:none;
-	background: url(../images/bouton.png) repeat-x;
-	color: #E4E6F2;
-}
-
+ul {
+ padding:0;
+ margin:0;
+ list-style-type:none;
+ }
+li {
+ float:left; /*pour IE*/
+background-color:#E4E6F2;
+ }
 #menu ul li a {
-	display: block; 
-	width: 166px;
-	line-height: 30px; /*hauteur de l'image de fond*/
-	background: url(../images/bouton_hover.png) repeat-x;
-	border-radius: 10px;
-	text-decoration: none;
-	text-align: center;
-}
+ display:block;
+ float:left;   
+ width:110px;
+ line-height:30px; /*hauteur de l'image de fond*/
+ background:url(../images/bouton_hover.png) repeat-x;
+ color: #E4E6F2;
+ text-decoration:none;
+ text-align:center;
+ }
+#menu ul li a:hover {
+ background: url(../images/bouton2_cambodge.png) repeat-x;
+ color:white;
+ text-decoration:none;
+ }  
 
 /* CORPS */
 .fond_chemin {
@@ -110,8 +85,6 @@ html {
 	border:1px solid #FFFFFF;
 	border-radius: 10px;
 	height:25px;
-	margin-left:210px;
-	margin-top:-591px;
 	min-width:50px
 }
 
