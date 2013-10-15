@@ -13,48 +13,19 @@ html {
 }
 
 /* HEADER - bandeau*/
-#header {
-	position: relative;
-	top:50px;
-}
 
-#header div {
-	height: 140px;	
-}
 
-#header_center {
-	background-image: url(../images/header.png); 
-	background-repeat: no-repeat;
-	position: relative;
-	top: 0;
-	left: 50%;
-	width: 1024px;
-	margin-left: -512px;
-	z-index: 2;
-}
 
 #header_left {
 	background-color: #FFFFFF;
-	position: absolute;
-	float: left;
-	top: 0;
-	left: 0;
-	width: 50%;
 }
 
 #header_right {
 	background-color: #0477BF;
-	position: absolute;
-	float: right;
-	top: 0;
-	right: 0;
-	width: 50%;
 }
 
 /* MENU - menu à gauche*/
 ul {
- padding:0;
- margin:0;
  list-style-type:none;
  }
 li {
@@ -62,8 +33,7 @@ li {
 background-color:#E4E6F2;
  }
 #menu ul li a {
- display:block;
- float:left;   
+ display:block;   
  width:110px;
  line-height:30px; /*hauteur de l'image de fond*/
  background:url(../images/bouton_hover.png) repeat-x;
