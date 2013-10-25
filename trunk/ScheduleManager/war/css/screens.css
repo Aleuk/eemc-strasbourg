@@ -17,54 +17,62 @@ html {
 
 
 #header_left {
-	background-color: #FFFFFF;
+	background-color: #E4E6F2;
 }
 
 #header_right {
-	background-color: #0477BF;
+	background-color: #E4E6F2;
 }
 
 /* MENU - menu à gauche*/
 ul {
- list-style-type:none;
- }
+	list-style-type:none;
+}
+ 
 li {
- float:left; /*pour IE*/
-background-color:#E4E6F2;
- }
+	float:left; /*pour IE*/
+	background-color:#E4E6F2;
+}
+ 
 #menu ul li a {
- display:block;   
- width:110px;
- line-height:30px; /*hauteur de l'image de fond*/
- background:url(../images/bouton_hover.png) repeat-x;
- color: #E4E6F2;
- text-decoration:none;
- text-align:center;
- }
+	display:block;   
+	width:120px;
+	line-height:30px; /*hauteur de l'image de fond*/
+	background:url(../images/bouton_hover.png) repeat-x;
+	color: #E4E6F2;
+	text-decoration:none;
+	font-weight:bold;
+	text-align:center;
+}
 #menu ul li a:hover {
- background: url(../images/bouton2_cambodge.png) repeat-x;
- color:white;
- text-decoration:none;
- }  
+	background: url(../images/bouton2_cambodge.png) repeat-x;
+	color:white;
+	text-decoration:none;
+}  
 
+#menu ul li ul {
+	display:none;
+}
+ 
+#menu ul li:hover ul {
+	display:block;
+}
+
+#menu li:hover ul li {
+	float:none;
+}
+ 
+#menu li ul {
+	position:absolute;
+}
+ 
 /* CORPS */
-.fond_chemin {
-	text-align:left;
+
+.fond_corps {
 	font-size:.9em;
 	background-color:#E4E6F2;
 	border:1px solid #FFFFFF;
 	border-radius: 10px;
-	height:25px;
-	min-width:50px
-}
-
-.fond_corps {
-	font-size:.9em;
-	background-color:#FFFFFF;
-	border:1px solid #FFFFFF;
-	border-radius: 10px;
 	height:560px;
-	margin-left:210px;
-	margin-top:3px;
 	min-width:50px
 }
