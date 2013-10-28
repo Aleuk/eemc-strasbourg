@@ -5,10 +5,11 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 public class LoggerAction {
- 
+	User user = null;
+	
 	public boolean isLogged() {
 		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
+		user = userService.getCurrentUser();
 		
 		return (user != null);
 	}

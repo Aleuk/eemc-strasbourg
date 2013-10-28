@@ -1,7 +1,5 @@
-<div class="row">
-	<div class="span12">
-		<div class="fond_corps" id="corps">
+
+	<div class="col-lg-10">
 		Bienvenue Toi
-		</div>
 	</div>
-</div>
+

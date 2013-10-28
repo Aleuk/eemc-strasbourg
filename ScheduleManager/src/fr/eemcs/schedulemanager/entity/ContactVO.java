@@ -63,6 +63,11 @@ public class ContactVO extends ObjectVO{
 		this.dateNaissance = dateNaissance;
 	}
 	
+	
+	public String toString() {
+		return nom + " " + prenom; 
+	}
+	
 	public String getNomPrenom() {
 		return nom + " " + prenom;
 	}

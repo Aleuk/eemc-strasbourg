@@ -8,13 +8,16 @@ import java.util.Map;
 
 import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.appengine.api.users.User;
@@ -47,8 +50,7 @@ public class ContactAction extends LoggerAction{
 	
 	@RequestMapping("/contact/list")
 	public ModelAndView list() {
-		boolean logged = super.isLogged();
-		if(logged) {
+		if(super.isLogged()) {
 			//List<ContactVO> contacts = baseDAO.getContacts();
 			List<ContactVO> contacts = new ArrayList<ContactVO>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -71,36 +73,59 @@ public class ContactAction extends LoggerAction{
 	}
 	
 	@RequestMapping("/contact/add")
-	public ModelAndView add(Model model) {
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-		if(user != null) {
+	public ModelAndView add(ModelMap model) {
+		if(super.isLogged()) {
 			ContactVO contact = new ContactVO("", "", null);
 			model.addAttribute("contactForm", contact);
-			listeCivilites.add("Monsieur");
-			listeCivilites.add("Madame");
-			listeCivilites.add("Mademoiselle");
-			Map<String,String> mapCivilites = new LinkedHashMap();
-			mapCivilites.put("Monsieur", "Monsieur");
-			mapCivilites.put("Madame", "Madame");
-			mapCivilites.put("Mademoiselle", "Mademoiselle");
-			model.addAttribute("mapCivilites", mapCivilites);
+			
+			loadPage(model);
 			return new ModelAndView(IResponse.CONTACT_FORM, "contact", new ContactVO("", "", null));
 		} else {
 			HttpServletRequest req = ServletActionContext.getRequest();
+			UserService userService = UserServiceFactory.getUserService();
+			setUrl(userService.createLoginURL(req.getRequestURI()));
+			return new ModelAndView(IResponse.LOGIN);
+		}
+	}
+	
+	@RequestMapping("/contact/modif")
+	public ModelAndView modif(ModelMap model, @RequestParam(value="idContact", required=true) String idContact, HttpServletRequest request,  
+            HttpServletResponse response) {
+		if(super.isLogged()) {
+			loadPage(model);
+			
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			ContactVO contact = null;
+			try {
+				if(!"".equals(idContact)) {
+					contact = pm.getObjectById(ContactVO.class, Integer.parseInt(idContact));
+				}
+			} finally {
+				pm.close();
+			}
+			if(contact == null) {
+				return new ModelAndView(IResponse.ERROR);
+			} else {
+				dateNaissance = FormatHelper.formatDate(contact.getDateNaissance(), "yyyy-MM-dd");
+				model.addAttribute("contactForm", contact);
+			}
+			return new ModelAndView(IResponse.CONTACT_FORM, "contact", contact);
+		} else {
+			HttpServletRequest req = ServletActionContext.getRequest();
+			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return new ModelAndView(IResponse.LOGIN);
 		}
 	}
 	
 	@RequestMapping("/contact/save")
-	public ModelAndView save(@ModelAttribute("contactForm") ContactVO contact, BindingResult result) {
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-		if(user != null) {
+	public ModelAndView save(@ModelAttribute("contactForm") ContactVO contact, BindingResult result, HttpServletRequest request,  
+            HttpServletResponse response) {
+		if(super.isLogged()) {
 			if(contact != null) {
 				PersistenceManager pm = PMF.get().getPersistenceManager();
-				if(idContact > 0) {
+				String idContact = (String) request.getParameter("idContact");
+				if(idContact != null && !"".equals(idContact)) {
 					try {
 						pm.currentTransaction().begin();
 						
@@ -146,35 +171,7 @@ public class ContactAction extends LoggerAction{
 			return new ModelAndView("redirect:/controller/contact/list");
 		} else {
 			HttpServletRequest req = ServletActionContext.getRequest();
-			setUrl(userService.createLoginURL(req.getRequestURI()));
-			return new ModelAndView(IResponse.LOGIN);
-		}
-	}
-	
-	@RequestMapping("contact/modif")
-	public ModelAndView modif() {
-		HttpServletRequest req = ServletActionContext.getRequest();
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-		if(user != null) {
-			listeCivilites.add("Monsieur");
-			listeCivilites.add("Madame");
-			listeCivilites.add("Mademoiselle");
-			
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			ContactVO contact = null;
-			try {
-				contact = pm.getObjectById(ContactVO.class, idContact);
-			} finally {
-				pm.close();
-			}
-			if(contact == null) {
-				return new ModelAndView(IResponse.ERROR);
-			} else {
-				dateNaissance = FormatHelper.formatDate(contact.getDateNaissance(), "yyyy-MM-dd");
-			}
-			return new ModelAndView(IResponse.CONTACT_FORM);
-		} else {
+			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return new ModelAndView(IResponse.LOGIN);
 		}
@@ -182,10 +179,7 @@ public class ContactAction extends LoggerAction{
 	
 	@RequestMapping("/contact/delete")
 	public ModelAndView delete() {
-		HttpServletRequest req = ServletActionContext.getRequest();
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-		if(user != null) {
+		if(super.isLogged()) {
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			ContactVO contact = null;
 			try {
@@ -196,9 +190,19 @@ public class ContactAction extends LoggerAction{
 			}
 			return new ModelAndView(IResponse.CONTACT_LIST);
 		} else {
+			HttpServletRequest req = ServletActionContext.getRequest();
+			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(req.getRequestURI()));
 			return new ModelAndView(IResponse.LOGIN);
 		}
+	}
+	
+	public void loadPage(ModelMap model) {
+		Map<String,String> mapCivilites = new LinkedHashMap();
+		mapCivilites.put("Monsieur", "Monsieur"); //TODO le passer en enum
+		mapCivilites.put("Madame", "Madame");
+		mapCivilites.put("Mademoiselle", "Mademoiselle");
+		model.addAttribute("mapCivilites", mapCivilites);
 	}
 
 	public List<ContactVO> getListeContacts() {

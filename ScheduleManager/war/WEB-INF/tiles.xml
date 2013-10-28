@@ -7,9 +7,12 @@
 
 	<definition name="maindef" template="/templates/common-layout.jsp">
 		<put-attribute name="title" value="title.template" />
-		<put-attribute name="header" value="/templates/header.jsp" />
 		<put-attribute name="menu" value="/templates/menu.jsp" />
+		<put-attribute name="header" value="/templates/header.jsp" />
+		<put-attribute name="path" value="/templates/path.jsp" />
+		<put-attribute name="pub" value="/templates/pub.jsp" />
 		<put-attribute name="body" value="/templates/body.jsp"/>
+		<put-attribute name="planning" value="/templates/planning.jsp" />
 		<put-attribute name="footer" value="/templates/footer.jsp" />
 	</definition>
 	
@@ -25,6 +28,7 @@
 	
 	<definition name="listeContacts.def" extends="maindef">
 		<put-attribute name="title" value="title.listeContacts" />
+		<put-attribute name="path" value="/paths/pathContacts.jsp" />
 		<put-attribute name="body" value="/pages/listeContacts.jsp" />
 	</definition>
 	
