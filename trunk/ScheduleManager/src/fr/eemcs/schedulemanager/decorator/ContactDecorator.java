@@ -36,10 +36,10 @@ public class ContactDecorator extends TableDecorator {
 		String actions = "";
 		if("Monsieur".equals(contact.getCivilite())) {
 			actions += "<a href=\"javascript:modifierContact(" + contact.getKey() + ");\"><img height=\"25px\" src=\"/images/modifierHomme.png\" /></a>";
-			actions += "<a href=\"javascript:supprimerContact(" + contact.getKey() + ", '" + contact.getNom() + " " + contact.getPrenom() + "');\"><img height=\"25px\" src=\"../images/supprimerHomme.png\" /></a>";
+			actions += "<a href=\"javascript:supprimerContact(" + contact.getKey() + ", '" + contact.getNom() + " " + contact.getPrenom() + "');\"><img height=\"25px\" src=\"/images/supprimerHomme.png\" /></a>";
 		} else {
 			actions += "<a href=\"javascript:modifierContact(" + contact.getKey() + ");\"><img height=\"25px\" src=\"/images/modifierFemme.png\" /></a>";
-			actions += "<a href=\"javascript:supprimerContact(" + contact.getKey() + ", '" + contact.getNom() + " " + contact.getPrenom() + "');\"><img height=\"25px\" src=\"../images/supprimerFemme.png\" /></a>";
+			actions += "<a href=\"javascript:supprimerContact(" + contact.getKey() + ", '" + contact.getNom() + " " + contact.getPrenom() + "');\"><img height=\"25px\" src=\"/images/supprimerFemme.png\" /></a>";
 		}
 		return FormatHelper.addPaddingToTD(actions);
 	}

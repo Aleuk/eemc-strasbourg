@@ -1,20 +1,10 @@
 @CHARSET "ISO-8859-1";
 /* GENERAL */
 html {
-	background-color: #E4E6F2
-}
-
-#conteneur{
-	position: absolute;
-	width: 99%;
-	padding: 0;
-	margin: 0;
-	text-align:center;
+	background-color: #FFFFFF;
 }
 
 /* HEADER - bandeau*/
-
-
 
 #header_left {
 	background-color: #E4E6F2;
@@ -24,54 +14,12 @@ html {
 	background-color: #E4E6F2;
 }
 
-/* MENU - menu à gauche*/
-ul {
-	list-style-type:none;
-}
- 
-li {
-	float:left; /*pour IE*/
-	background-color:#E4E6F2;
-}
- 
-#menu ul li a {
-	display:block;   
-	width:120px;
-	line-height:30px; /*hauteur de l'image de fond*/
-	background:url(../images/bouton_hover.png) repeat-x;
-	color: #E4E6F2;
-	text-decoration:none;
-	font-weight:bold;
-	text-align:center;
-}
-#menu ul li a:hover {
-	background: url(../images/bouton2_cambodge.png) repeat-x;
-	color:white;
-	text-decoration:none;
-}  
-
-#menu ul li ul {
-	display:none;
-}
- 
-#menu ul li:hover ul {
-	display:block;
-}
-
-#menu li:hover ul li {
-	float:none;
-}
- 
-#menu li ul {
-	position:absolute;
-}
- 
 /* CORPS */
 
 .fond_corps {
 	font-size:.9em;
-	background-color:#E4E6F2;
-	border:1px solid #FFFFFF;
+	background-color:#FFFFFF;
+	border:1px solid black;
 	border-radius: 10px;
 	height:560px;
 	min-width:50px

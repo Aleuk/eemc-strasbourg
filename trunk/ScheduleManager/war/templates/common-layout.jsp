@@ -11,7 +11,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache" max-age="1" must-revalidate>
+    <meta http-equiv="Cache-Control" content="no-cache">
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Cache" content="no store">
 	<meta http-equiv="expires" content="0" />
@@ -26,7 +26,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="all">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -44,12 +44,6 @@
     <!--                                           -->
     <script type="text/javascript" src="/schedulemanager/schedulemanager.nocache.js"></script>
   </head>
-
-  <!--                                           -->
-  <!-- The body can have arbitrary html, or      -->
-  <!-- you can leave the body empty if you want  -->
-  <!-- to create a completely dynamic UI.        -->
-  <!--                                           -->
   <body>
   
   <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
@@ -61,11 +55,16 @@
         in order for this application to display correctly.
       </div>
     </noscript>
-    <div class="container">
 		<tiles:insertAttribute name="menu"/>
-		<tiles:insertAttribute name="header" />
-		<tiles:insertAttribute name="body"/>
-		<tiles:insertAttribute name="footer"/>
-    </div>
+		<div class="container">
+			<tiles:insertAttribute name="header" />
+			<tiles:insertAttribute name="path"/>
+			<div class="row">
+				<tiles:insertAttribute name="pub"/>
+				<tiles:insertAttribute name="body"/>
+				<tiles:insertAttribute name="planning"/>
+			</div>
+			<tiles:insertAttribute name="footer"/>
+		</div>
   </body>
 </html>

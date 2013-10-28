@@ -5,24 +5,7 @@
 	src:url('lmns1.ttf');
 }
 
-.tdLabel {
-	text-align:right;
-}
-
-.required {
-	color: red;
-}
-
 .inputKH {
 	font-size:22px;
 	font-family:"khmerUnicode";
-}
-
-#dataTable {
-	cellspacing:15px;
-	cellpadding:20;
-}
-
-.odd {
-	background-color:#CDC9EA;
 }
