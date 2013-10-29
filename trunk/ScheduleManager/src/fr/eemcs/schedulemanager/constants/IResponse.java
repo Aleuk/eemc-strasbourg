@@ -2,7 +2,7 @@ package fr.eemcs.schedulemanager.constants;
 
 public interface IResponse {
 	
-	public final static String LOGIN = "home.def";
+	public final static String LOGIN = "/_ah/login?continue?";
 	public final static String ERROR = "error.def";
 	
 	public final static String CONTACT_LIST = "listeContacts.def";
