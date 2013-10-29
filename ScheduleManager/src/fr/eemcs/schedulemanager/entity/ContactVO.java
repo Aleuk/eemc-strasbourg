@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 @PersistenceCapable
@@ -16,6 +18,7 @@ public class ContactVO extends ObjectVO{
 	private String prenom;
 	
 	@Persistent
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateNaissance;
 	
 	@Persistent

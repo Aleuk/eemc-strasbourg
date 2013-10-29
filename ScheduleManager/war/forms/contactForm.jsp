@@ -6,7 +6,7 @@
 			<s:form modelAttribute="contactForm" action="/controller/contact/save" validate="true" theme="xhtml" class="form-horizontal">
 			<fieldset>
 				<legend>Création d'un nouveau contact</legend>
-					<s:hidden path="id" id="idContact" name="idContact" />
+					<s:hidden path="id" id="idContact" />
 					<div class="form-group">
 						<label for="selectCivilite" class="col-lg-2 control-label"><t:get name="form.label.civilite" /></label>
 						<div class="col-lg-10">
@@ -49,7 +49,7 @@
 						<div class="col-lg-10">
 							<input type="text" 	id="nomKH" 
 												name="nomKH" 
-												value="${nomKH}"
+												value="${contact.nomKH}"
 												size="26" 
 												maxlength="50" 
 												tabindex="3"
@@ -61,7 +61,7 @@
 						<div class="col-lg-10">
 							<input type="text" 	class="inputKH" id="prenomKH" 
 												name="prenomKH" 
-												value="${prenomKH}"
+												value="${contact.prenomKH}"
 												size="26" 
 												maxlength="50" 
 												tabindex="4"/>
@@ -70,7 +70,7 @@
 					<div class="form-group">
 						<label for="inputDateNaissance" class="col-lg-2 control-label"><t:get name="form.label.dateNaissance" /></label>
 						<div class="col-lg-10">
-							<input type="date" id="dateNaissance" name="dateNaissance" value="${dateNaissance}" tabindex="5">
+							<s:input path="dateNaissance" type="date" tabindex="5"/>
 						</div>
 					</div>
 					<div class="form-group">
