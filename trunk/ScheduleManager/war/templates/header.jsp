@@ -1,8 +1,8 @@
 
     	<div class="row">
-    		<div class="span12">
+    		<div class="span12 text-center">
 		    	<div id="header">
-		    		<img src="/images/header.png"/>
+		    		<img src="/images/bandeau_eemc.png" width="800px" class="img"/>
 		    	</div>
 		    </div>
 		</div>
