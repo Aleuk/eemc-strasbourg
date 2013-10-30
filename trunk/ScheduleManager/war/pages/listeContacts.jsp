@@ -2,9 +2,9 @@
 <%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
 
-		<div class="col-lg-10">
+		
 			<display:table id="dataTable" name="listeContacts"
-				pagesize="15" class="table table-striped table-bordered table-hover" decorator="fr.eemcs.schedulemanager.decorator.ContactDecorator">
+				pagesize="15" requestURI="/controller/contact/list" class="table table-striped table-bordered table-hover" decorator="fr.eemcs.schedulemanager.decorator.ContactDecorator">
 				<display:column property="nom" keyTitle="table.title.nom" />
 				<display:column property="nomKH" class="inputKH"  keyTitle="table.title.nomKH" />
 				<display:column property="dateNaissance" keyTitle="table.title.dateNaissance" />
@@ -12,7 +12,7 @@
 				<display:column property="telephone" keyTitle="table.title.telephone" />
 				<display:column property="actions" keyTitle="table.title.actions" />
 			</display:table>
-		</div>
+		
 
 	<script>
 		function supprimerContact(id, nom) {

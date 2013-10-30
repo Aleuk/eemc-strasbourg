@@ -1,15 +1,15 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
-	<div class="col-lg-10">
+	
 		<div class="well">
 			<s:form modelAttribute="contactForm" action="/controller/contact/save" validate="true" theme="xhtml" class="form-horizontal">
 			<fieldset>
 				<legend>Création d'un nouveau contact</legend>
 					<s:hidden path="id" id="idContact" />
 					<div class="form-group">
-						<label for="selectCivilite" class="col-lg-2 control-label"><t:get name="form.label.civilite" /></label>
-						<div class="col-lg-10">
+						<label for="selectCivilite" class="col-lg-4 control-label"><t:get name="form.label.civilite" /></label>
+						<div class="col-lg-8">
 							<s:select label="Civilité" 
 										headerKey="-1" headerValue="Civilité" 
 										name="civilite"
@@ -19,8 +19,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputNom" class="col-lg-2 control-label"><t:get name="form.label.nom" /></label>
-						<div class="col-lg-10">
+						<label for="inputNom" class="col-lg-4 control-label"><t:get name="form.label.nom" /></label>
+						<div class="col-lg-8">
 							<s:input	id="nom" 
 												name="nom" 
 												path="nom"
@@ -32,8 +32,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPrenom" class="col-lg-2 control-label"><t:get name="form.label.prenom" /></label>
-						<div class="col-lg-10">
+						<label for="inputPrenom" class="col-lg-4 control-label"><t:get name="form.label.prenom" /></label>
+						<div class="col-lg-8">
 							<s:input 	id="prenom" 
 												name="prenom"
 												path="prenom" 
@@ -45,8 +45,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputNomKH" class="col-lg-2 control-label"><t:get name="form.label.nom.cambodgien" /></label>
-						<div class="col-lg-10">
+						<label for="inputNomKH" class="col-lg-4 control-label"><t:get name="form.label.nom.cambodgien" /></label>
+						<div class="col-lg-8">
 							<input type="text" 	id="nomKH" 
 												name="nomKH" 
 												value="${contact.nomKH}"
@@ -57,8 +57,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPrenomKH" class="col-lg-2 control-label"><t:get name="form.label.prenom.cambodgien" /></label>
-						<div class="col-lg-10">
+						<label for="inputPrenomKH" class="col-lg-4 control-label"><t:get name="form.label.prenom.cambodgien" /></label>
+						<div class="col-lg-8">
 							<input type="text" 	class="inputKH" id="prenomKH" 
 												name="prenomKH" 
 												value="${contact.prenomKH}"
@@ -68,14 +68,14 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputDateNaissance" class="col-lg-2 control-label"><t:get name="form.label.dateNaissance" /></label>
-						<div class="col-lg-10">
-							<s:input path="dateNaissance" type="date" tabindex="5"/>
+						<label for="inputDateNaissance" class="col-lg-4 control-label"><t:get name="form.label.dateNaissance" /></label>
+						<div class="col-lg-8">
+							<s:input path="dateNaissance" type="date" tabindex="5" value="${dateNaissance}"/>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputAdresse" class="col-lg-2 control-label"><t:get name="form.label.adresse" /></label>
-						<div class="col-lg-10">
+						<label for="inputAdresse" class="col-lg-4 control-label"><t:get name="form.label.adresse" /></label>
+						<div class="col-lg-8">
 							<s:input 	id="adresse" 
 												name="adresse" 
 												path="adresse"
@@ -86,8 +86,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputCodePostal" class="col-lg-2 control-label"><t:get name="form.label.codePostal" /></label>
-						<div class="col-lg-10">
+						<label for="inputCodePostal" class="col-lg-4 control-label"><t:get name="form.label.codePostal" /></label>
+						<div class="col-lg-8">
 							<s:input 	id="codePostal" 
 												name="codePostal" 
 												path="codePostal"
@@ -98,8 +98,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputVille" class="col-lg-2 control-label"><t:get name="form.label.ville" /></label>
-						<div class="col-lg-10">
+						<label for="inputVille" class="col-lg-4 control-label"><t:get name="form.label.ville" /></label>
+						<div class="col-lg-8">
 							<s:input 	id="ville" 
 												name="ville" 
 												path="ville"
@@ -110,8 +110,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputEmail" class="col-lg-2 control-label"><t:get name="form.label.email" /></label>
-						<div class="col-lg-10">
+						<label for="inputEmail" class="col-lg-4 control-label"><t:get name="form.label.email" /></label>
+						<div class="col-lg-8">
 							<s:input 	id="email" 
 												name="email" 
 												path="email"
@@ -122,8 +122,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputTelephone1" class="col-lg-2 control-label"><t:get name="form.label.telephone1" /></label>
-						<div class="col-lg-10">
+						<label for="inputTelephone1" class="col-lg-4 control-label"><t:get name="form.label.telephone1" /></label>
+						<div class="col-lg-8">
 							<s:input 	id="telephone1" 
 												name="telephone1" 
 												path="telephone1"
@@ -133,8 +133,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputTelephone2" class="col-lg-2 control-label"><t:get name="form.label.telephone2" /></label>
-						<div class="col-lg-10">
+						<label for="inputTelephone2" class="col-lg-4 control-label"><t:get name="form.label.telephone2" /></label>
+						<div class="col-lg-8">
 							<s:input 	id="telephone2" 
 												name="telephone2" 
 												path="telephone2"
@@ -144,8 +144,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-lg-2 control-label">&nbsp;</label>
-						<div class="col-lg-10">
+						<label class="col-lg-4 control-label">&nbsp;</label>
+						<div class="col-lg-8">
 							<div class="checkbox">
 								<label>
 									<s:checkbox name="predicateur" path="predicateur" label="Prédicateur"/>
@@ -154,8 +154,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-lg-2 control-label">&nbsp;</label>
-						<div class="col-lg-10">
+						<label class="col-lg-4 control-label">&nbsp;</label>
+						<div class="col-lg-8">
 							<div class="checkbox">
 								<label>
 									<s:checkbox name="conducteurLouange" path="conducteurLouange" label="Conducteur de louange"/>
@@ -164,8 +164,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-lg-2 control-label">&nbsp;</label>
-						<div class="col-lg-10">
+						<label class="col-lg-4 control-label">&nbsp;</label>
+						<div class="col-lg-8">
 							<div class="checkbox">
 								<label>
 									<s:checkbox name="responsable" path="responsable" label="Responsable"/>
@@ -173,22 +173,31 @@
 							</div>
 						</div>
 					</div>
+					<div class="form-group">
+						<label class="col-lg-4 control-label">&nbsp;</label>
+						<div class="col-lg-8">
+							<div class="checkbox">
+								<label>
+									<s:checkbox name="traducteur" path="traducteur" label="Traducteur"/>
+								</label>
+							</div>
+						</div>
+					</div>
 					
 					<div class="form-group">
-						<div class="col-lg-10 col-lg-offset-2">
-							<button class="btn btn-default" onclick="javascript:annuler();"><t:get name="button.annuler" /></button>
-							<button class="btn btn-primary" onclick="javascript:save();"><t:get name="button.sauvegarder"/></button>
+						<div class="col-lg-8 col-lg-offset-4">
+							<a class="btn btn-default" onclick="javascript:annuler();"><t:get name="button.annuler" /></a>
+							<button class="btn btn-primary"><t:get name="button.sauvegarder"/></button>
 						</div>
 					</div>
 				</fieldset>
 			</s:form>
 		</div>
-	</div>
+	
 	<script>
 		function annuler() {
 			window.location.href = "/controller/contact/list";
 		}
-		
 		function save() {
 			document.forms[0].submit();
 		}

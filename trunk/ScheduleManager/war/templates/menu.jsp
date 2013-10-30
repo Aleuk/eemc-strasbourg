@@ -5,7 +5,7 @@
         		System.out.println(request.getRequestURI());
     %>
     
-    		<div class="navbar navbar-inverse">
+    		<div class="navbar navbar-inverse" style="margin-bottom:0;">
                 <div class="container">
                   <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
