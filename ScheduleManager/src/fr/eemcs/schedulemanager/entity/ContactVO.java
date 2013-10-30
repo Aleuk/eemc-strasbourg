@@ -18,8 +18,8 @@ public class ContactVO extends ObjectVO{
 	private String prenom;
 	
 	@Persistent
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Date dateNaissance;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dateNaissance = new Date();
 	
 	@Persistent
 	private String nomKH;
@@ -49,16 +49,19 @@ public class ContactVO extends ObjectVO{
 	private String telephone2;
 	
 	@Persistent
-	private boolean predicateur = false;
+	private Boolean predicateur;
 	
 	@Persistent
-	private boolean conducteurLouange = false;
+	private Boolean conducteurLouange;
 	
 	@Persistent
-	private boolean responsable = false;
+	private Boolean responsable;
 	
 	@Persistent
-	private boolean membre = false;
+	private Boolean traducteur;
+	
+	@Persistent
+	private Boolean membre;
 	
 	public ContactVO(String nom, String prenom, Date dateNaissance) {
 		this.nom = nom;
@@ -176,35 +179,45 @@ public class ContactVO extends ObjectVO{
 		this.ville = ville;
 	}
 
-	public boolean isPredicateur() {
+	public Boolean getPredicateur() {
 		return predicateur;
 	}
 
-	public void setPredicateur(boolean predicateur) {
+	public void setPredicateur(Boolean predicateur) {
 		this.predicateur = predicateur;
 	}
 
-	public boolean isConducteurLouange() {
+	public Boolean getConducteurLouange() {
 		return conducteurLouange;
 	}
 
-	public void setConducteurLouange(boolean conducteurLouange) {
+	public void setConducteurLouange(Boolean conducteurLouange) {
 		this.conducteurLouange = conducteurLouange;
 	}
 
-	public boolean isResponsable() {
+	public Boolean getResponsable() {
 		return responsable;
 	}
 
-	public void setResponsable(boolean responsable) {
+	public void setResponsable(Boolean responsable) {
 		this.responsable = responsable;
 	}
 	
-	public boolean isMembre() {
+	public Boolean getMembre() {
 		return membre;
 	}
 
-	public void setMembre(boolean membre) {
+	public void setMembre(Boolean membre) {
 		this.membre = membre;
+	}
+
+
+	public Boolean getTraducteur() {
+		return traducteur;
+	}
+
+
+	public void setTraducteur(Boolean traducteur) {
+		this.traducteur = traducteur;
 	}
 }

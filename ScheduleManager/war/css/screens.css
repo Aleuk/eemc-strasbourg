@@ -5,13 +5,9 @@ html {
 }
 
 /* HEADER - bandeau*/
-
-#header_left {
-	background-color: #E4E6F2;
-}
-
-#header_right {
-	background-color: #E4E6F2;
+img { 
+  max-width: 100%;
+  max-height: 25%;
 }
 
 /* CORPS */
