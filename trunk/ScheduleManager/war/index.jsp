@@ -1,7 +1,6 @@
 <%@page import="com.google.appengine.api.users.User"%>
 <%@page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@page import="com.google.appengine.api.users.UserService"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <!-- The DOCTYPE declaration above will set the     -->
 <!-- browser's rendering engine into                -->
