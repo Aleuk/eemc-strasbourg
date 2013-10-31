@@ -18,6 +18,7 @@ import fr.eemcs.schedulemanager.constants.IResponse;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.ContactVO;
 import fr.eemcs.schedulemanager.entity.LieuVO;
+import fr.eemcs.schedulemanager.entity.ProgrammeVO;
 
 @Controller
 public class ParametrageController extends LoggerController{
@@ -35,17 +36,16 @@ public class ParametrageController extends LoggerController{
 	@RequestMapping("/parametrage/programme/list")
 	public ModelAndView programmeList(ModelMap model, HttpServletRequest request) {
 		if(super.isLogged()) {
-			//List<ContactVO> contacts = baseDAO.getContacts();
-			List<LieuVO> lieux = new ArrayList<LieuVO>();
+			List<ProgrammeVO> programmes = new ArrayList<ProgrammeVO>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
-				String query = "select from " + LieuVO.class.getName();
-				lieux = (List<LieuVO>)pm.newQuery(query).execute();
-				model.addAttribute("listeLieux", lieux);
+				String query = "select from " + ProgrammeVO.class.getName();
+				programmes = (List<ProgrammeVO>)pm.newQuery(query).execute();
+				model.addAttribute("listeProgrammes", programmes);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return new ModelAndView(IResponse.LIEU_LIST);
+			return new ModelAndView(IResponse.PROGRAMME_LIST);
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));
