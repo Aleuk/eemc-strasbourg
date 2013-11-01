@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 @PersistenceCapable
-public class ContactVO extends ObjectVO{
+public class ContactVO extends ObjectVO {
 	@Persistent
 	private String nom;
 	
@@ -63,12 +63,14 @@ public class ContactVO extends ObjectVO{
 	@Persistent
 	private Boolean membre;
 	
+	public ContactVO() {
+	}
+	
 	public ContactVO(String nom, String prenom, Date dateNaissance) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
 	}
-	
 	
 	public String toString() {
 		return nom + " " + prenom; 

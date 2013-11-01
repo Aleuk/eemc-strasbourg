@@ -1,6 +1,5 @@
 package fr.eemcs.schedulemanager.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -18,7 +17,7 @@ import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 @PersistenceCapable (identityType = IdentityType.APPLICATION)
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
-public class ObjectVO implements Serializable {
+public class ObjectVO {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key id;
