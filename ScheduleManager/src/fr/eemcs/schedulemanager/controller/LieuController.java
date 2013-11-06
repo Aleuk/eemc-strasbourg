@@ -19,7 +19,7 @@ import fr.eemcs.schedulemanager.entity.LieuVO;
 
 public class LieuController extends LoggerController{
 	
-	public String list(HttpServletRequest request) {
+	/*public String list(HttpServletRequest request) {
 		boolean logged = super.isLogged();
 		if(logged) {
 			List<LieuVO> lieux = baseDAO.getLieux();
@@ -128,6 +128,6 @@ public class LieuController extends LoggerController{
 			setUrl(userService.createLoginURL(request.getRequestURI()));
 			return IResponse.LOGIN;
 		}
-	}
+	}*/
 	
 }

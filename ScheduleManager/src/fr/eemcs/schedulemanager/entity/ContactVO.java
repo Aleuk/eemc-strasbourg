@@ -213,11 +213,9 @@ public class ContactVO extends ObjectVO {
 		this.membre = membre;
 	}
 
-
 	public Boolean getTraducteur() {
 		return traducteur;
 	}
-
 
 	public void setTraducteur(Boolean traducteur) {
 		this.traducteur = traducteur;
