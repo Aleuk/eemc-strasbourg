@@ -1,7 +1,12 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
-
+		<ul class="nav nav-tabs">
+			<li><a href="/controller/parametrage/lieu/list"><img src="/images/lieu.png" height="15px"/> <t:get name="table.title.lieux" /></a></li>
+			<li class="active"><a href="/controller/parametrage/article/list"><img src="/images/fichier.png" height="15px"/> <t:get name="table.title.articles" /></a></li>
+			<li><a href="#">Message</a></li>
+			<li><a href="#">Programme</a></li>
+		</ul>
 		
 			<display:table id="dataTable" name="listeArticles"
 				pagesize="15" requestURI="/controller/parametrage/article/list" 
