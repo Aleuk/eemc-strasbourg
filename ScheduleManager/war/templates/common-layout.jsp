@@ -29,6 +29,10 @@
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     
+    <!-- ckeditor -->
+    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+    
+    <!-- no cache -->
     <script type="text/javascript" src="/schedulemanager/schedulemanager.nocache.js"></script>
   </head>
   <body>

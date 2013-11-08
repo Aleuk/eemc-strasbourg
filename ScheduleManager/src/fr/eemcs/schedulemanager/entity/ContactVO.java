@@ -63,6 +63,9 @@ public class ContactVO extends ObjectVO {
 	@Persistent
 	private Boolean membre;
 	
+	@Persistent
+	private Boolean offrande;
+	
 	public ContactVO() {
 	}
 	
@@ -219,5 +222,13 @@ public class ContactVO extends ObjectVO {
 
 	public void setTraducteur(Boolean traducteur) {
 		this.traducteur = traducteur;
+	}
+
+	public Boolean getOffrande() {
+		return offrande;
+	}
+
+	public void setOffrande(Boolean offrande) {
+		this.offrande = offrande;
 	}
 }
