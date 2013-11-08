@@ -68,8 +68,7 @@ public class ContactController extends LoggerController{
 	}
 	
 	@RequestMapping("/contact/modif")
-	public ModelAndView modif(ModelMap model, @RequestParam(value="idContact", required=true) String idContact, HttpServletRequest request,  
-            HttpServletResponse response) {
+	public ModelAndView modif(ModelMap model, @RequestParam(value="idContact", required=true) String idContact, HttpServletRequest request, HttpServletResponse response) {
 		if(super.isLogged()) {
 			loadForm(model);
 			
@@ -77,8 +76,7 @@ public class ContactController extends LoggerController{
 			ContactVO contact = null;
 			try {
 				if(!"".equals(idContact)) {
-					Key cle = KeyFactory.createKey(ContactVO.class.getSimpleName(), Long.parseLong(idContact));
-					contact = pm.getObjectById(ContactVO.class, cle);
+					contact = pm.getObjectById(ContactVO.class, Long.parseLong(idContact));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -88,9 +86,7 @@ public class ContactController extends LoggerController{
 			if(contact == null) {
 				return new ModelAndView(IResponse.ERROR);
 			} else {
-				String dateNaissance = FormatHelper.formatDate(contact.getDateNaissance(), "yyyy-MM-dd");
 				model.addAttribute("contactForm", contact);
-				model.addAttribute("dateNaissance", dateNaissance);
 			}
 			return new ModelAndView(IResponse.CONTACT_FORM, "contact", contact);
 		} else {

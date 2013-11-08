@@ -8,14 +8,18 @@ import java.util.Map;
 
 import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
@@ -26,6 +30,7 @@ import fr.eemcs.schedulemanager.entity.ArticleVO;
 import fr.eemcs.schedulemanager.entity.ContactVO;
 import fr.eemcs.schedulemanager.entity.LieuVO;
 import fr.eemcs.schedulemanager.entity.ProgrammeVO;
+import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 @Controller
 public class ParametrageController extends LoggerController{
@@ -109,6 +114,36 @@ public class ParametrageController extends LoggerController{
 			
 			loadArticleForm(model);
 			return new ModelAndView(IResponse.ARTICLE_FORM, "article", new ArticleVO(user.getEmail()));
+		} else {
+			UserService userService = UserServiceFactory.getUserService();
+			setUrl(userService.createLoginURL(request.getRequestURI()));
+			return new ModelAndView("redirect:" + getUrl());
+		}
+	}
+	
+	@RequestMapping("/parametrage/article/modif")
+	public ModelAndView modif(ModelMap model, @RequestParam(value="idArticle", required=true) String idArticle, HttpServletRequest request,  
+            HttpServletResponse response) {
+		if(super.isLogged()) {
+			loadArticleForm(model);
+			
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			ArticleVO article = null;
+			try {
+				if(!"".equals(idArticle)) {
+					article = pm.getObjectById(ArticleVO.class, Long.parseLong(idArticle));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pm.close();
+			}
+			if(article == null) {
+				return new ModelAndView(IResponse.ERROR);
+			} else {
+				model.addAttribute("articleForm", article);
+			}
+			return new ModelAndView(IResponse.CONTACT_FORM, "contact", article);
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));
