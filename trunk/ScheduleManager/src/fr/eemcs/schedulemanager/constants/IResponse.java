@@ -16,4 +16,6 @@ public interface IResponse {
 	public final static String LIEU_LIST = "listeLieux.def";
 	public final static String LIEU_FORM = "lieuForm.def";
 	
+	public final static String ARTICLE_LIST = "listeArticles.def";
+	public final static String ARTICLE_FORM = "articleForm.def";
 }

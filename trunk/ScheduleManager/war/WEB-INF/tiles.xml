@@ -77,6 +77,7 @@
 		<put-attribute name="body" value="/forms/temoignageForm.jsp" />
 	</definition>
 	
+	<!-- *************** PARAMETRAGE *************** -->
 	<definition name="listeParametrage.def" extends="maindef">
 		<put-attribute name="title" value="title.listeParametrage" />
 		<put-attribute name="body" value="/pages/listeParametrage.jsp" />
@@ -90,6 +91,17 @@
 	<definition name="lieuForm.def" extends="maindef">
 		<put-attribute name="title" value="title.lieuForm" />
 		<put-attribute name="body" value="/forms/lieuForm.jsp" />
+	</definition>
+	
+	<definition name="listeArticles.def" extends="maindef">
+		<put-attribute name="title" value="title.listeArticles" />
+		<put-attribute name="path" value="/paths/pathArticles.jsp" />
+		<put-attribute name="body" value="/pages/listeArticles.jsp" />
+	</definition>
+	
+	<definition name="articleForm.def" extends="maindef">
+		<put-attribute name="title" value="title.articleForm" />
+		<put-attribute name="body" value="/forms/articleForm.jsp" />
 	</definition>
 	
 </tiles-definitions>

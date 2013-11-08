@@ -5,7 +5,7 @@
 		<div class="well">
 			<s:form modelAttribute="contactForm" action="/controller/contact/save" validate="true" theme="xhtml" class="form-horizontal">
 			<fieldset>
-				<legend>Création d'un nouveau contact</legend>
+				<legend><t:get name="form.title.nouveau.contact" /></legend>
 					<s:hidden path="id" id="idContact" />
 					<div class="form-group">
 						<label for="selectCivilite" class="col-lg-4 control-label"><t:get name="form.label.civilite" /></label>
@@ -179,6 +179,16 @@
 							<div class="checkbox">
 								<label>
 									<s:checkbox name="traducteur" path="traducteur" label="Traducteur"/>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-4 control-label">&nbsp;</label>
+						<div class="col-lg-8">
+							<div class="checkbox">
+								<label>
+									<s:checkbox name="offrande" path="offrande" label="Offrande"/>
 								</label>
 							</div>
 						</div>

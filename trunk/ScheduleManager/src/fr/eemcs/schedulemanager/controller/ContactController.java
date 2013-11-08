@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
@@ -75,8 +77,11 @@ public class ContactController extends LoggerController{
 			ContactVO contact = null;
 			try {
 				if(!"".equals(idContact)) {
-					contact = pm.getObjectById(ContactVO.class, Integer.parseInt(idContact));
+					Key cle = KeyFactory.createKey(ContactVO.class.getSimpleName(), Long.parseLong(idContact));
+					contact = pm.getObjectById(ContactVO.class, cle);
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			} finally {
 				pm.close();
 			}
@@ -101,14 +106,14 @@ public class ContactController extends LoggerController{
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			ContactVO contact = null;
 			try {
-				contact = pm.getObjectById(ContactVO.class, Integer.parseInt(idContact));
+				contact = pm.getObjectById(ContactVO.class, Long.parseLong(idContact));
 				pm.deletePersistent(contact);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				pm.close();
 			}
-			return new ModelAndView("redirect:/controller/contact/list");
+			return new ModelAndView(IResponse.CONTACT_LIST);
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));
@@ -126,7 +131,7 @@ public class ContactController extends LoggerController{
 					try {
 						pm.currentTransaction().begin();
 						
-						ContactVO modifContact = pm.getObjectById(ContactVO.class, Integer.parseInt(FormatHelper.getId(request.getParameter("id"))));
+						ContactVO modifContact = pm.getObjectById(ContactVO.class, Long.parseLong(request.getParameter("id")));
 						modifContact.setCivilite(contact.getCivilite());
 						modifContact.setNom(contact.getNom());
 						modifContact.setPrenom(contact.getPrenom());
