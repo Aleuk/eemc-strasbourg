@@ -18,4 +18,6 @@ public interface IResponse {
 	
 	public final static String ARTICLE_LIST = "listeArticles.def";
 	public final static String ARTICLE_FORM = "articleForm.def";
+	
+	public final static String BLOG_HISTORIQUE = "blogHistorique.def";
 }

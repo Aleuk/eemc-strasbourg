@@ -7,6 +7,8 @@ import javax.jdo.annotations.Persistent;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.google.appengine.api.datastore.Text;
+
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 @PersistenceCapable
@@ -18,7 +20,7 @@ public class ArticleVO extends ObjectVO {
 	private String description;
 	
 	@Persistent
-	private String contenu;
+	private Text contenu;
 	
 	@Persistent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -53,12 +55,24 @@ public class ArticleVO extends ObjectVO {
 		this.description = description;
 	}
 
-	public String getContenu() {
+	public String getContenuString() {
+		if(contenu != null) {
+			return contenu.getValue();
+		} else {
+			return null;
+		}
+	}
+	
+	public Text getContenu() {
 		return contenu;
 	}
 
-	public void setContenu(String contenu) {
+	public void setContenu(Text contenu) {
 		this.contenu = contenu;
+	}
+	
+	public void setContenu(String contenu) {
+		this.contenu = new Text(contenu);
 	}
 
 	public Date getDateCreationArticle() {
