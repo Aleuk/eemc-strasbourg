@@ -26,6 +26,13 @@
 		<put-attribute name="body" value="/pages/error.jsp" />
 	</definition>
 	
+	<!-- **************** HISTORIQUE **************** -->
+	<definition name="blogHistorique.def" extends="maindef">
+		<put-attribute name="title" value="title.blogHistorique" />
+		<put-attribute name="body" value="/pages/blogHistorique.jsp" />
+	</definition>
+	
+	<!-- **************** CONTACTS **************** -->
 	<definition name="listeContacts.def" extends="maindef">
 		<put-attribute name="title" value="title.listeContacts" />
 		<put-attribute name="path" value="/paths/pathContacts.jsp" />
@@ -37,6 +44,7 @@
 		<put-attribute name="body" value="/forms/contactForm.jsp" />
 	</definition>
 	
+	<!-- **************** PROGRAMMMES **************** -->
 	<definition name="listeProgrammes.def" extends="maindef">
 		<put-attribute name="title" value="title.listeProgrammes" />
 		<put-attribute name="body" value="/pages/listeProgrammes.jsp" />
@@ -47,6 +55,7 @@
 		<put-attribute name="body" value="/forms/programmeForm.jsp" />
 	</definition>
 	
+	<!-- **************** NOUS CONTACTER **************** -->
 	<definition name="listePrieres.def" extends="maindef">
 		<put-attribute name="title" value="title.listePrieres" />
 		<put-attribute name="body" value="/pages/listePrieres.jsp" />
@@ -57,25 +66,12 @@
 		<put-attribute name="body" value="/forms/priereForm.jsp" />
 	</definition>
 	
-	<definition name="listeLectures.def" extends="maindef">
-		<put-attribute name="title" value="title.listeLectures" />
-		<put-attribute name="body" value="/pages/listeLectures.jsp" />
+	<!-- **************** VERSETS **************** -->
+	<definition name="blogVersets.def" extends="maindef">
+		<put-attribute name="title" value="title.blogVersets" />
+		<put-attribute name="body" value="/pages/blogVersets.jsp" />
 	</definition>
 	
-	<definition name="lectureForm.def" extends="maindef">
-		<put-attribute name="title" value="title.lectureForm" />
-		<put-attribute name="body" value="/forms/lectureForm.jsp" />
-	</definition>
-	
-	<definition name="listeTemoignages.def" extends="maindef">
-		<put-attribute name="title" value="title.listeTemoignages" />
-		<put-attribute name="body" value="/pages/listeTemoignages.jsp" />
-	</definition>
-	
-	<definition name="temoignageForm.def" extends="maindef">
-		<put-attribute name="title" value="title.temoignageForm" />
-		<put-attribute name="body" value="/forms/temoignageForm.jsp" />
-	</definition>
 	
 	<!-- *************** PARAMETRAGE *************** -->
 	<definition name="listeParametrage.def" extends="maindef">

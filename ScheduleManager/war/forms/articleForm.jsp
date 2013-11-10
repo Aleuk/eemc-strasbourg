@@ -34,7 +34,7 @@
 				<div class="form-group">
 					<label for="inputContenu" class="col-lg-2 control-label"><t:get name="form.label.contenu" /></label>
 					<div class="col-lg-10">
-						<textarea id="contenu" name="contenu">&lt;p&gt;${article.contenu}&lt;/p&gt;</textarea>
+						<textarea class="ckeditor" id="contenu" name="contenu">&lt;p&gt;${article.contenuString}&lt;/p&gt;</textarea>
 					</div>
 				</div>
 				<div class="form-group">
@@ -49,6 +49,7 @@
 	
 	<script>
 		CKEDITOR.replace( 'contenu' );
+		
 		function annuler() {
 			window.location.href = "/controller/parametrage/article/list";
 		}

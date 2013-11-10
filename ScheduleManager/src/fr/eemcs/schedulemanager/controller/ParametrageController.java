@@ -143,11 +143,32 @@ public class ParametrageController extends LoggerController{
 			} else {
 				model.addAttribute("articleForm", article);
 			}
-			return new ModelAndView(IResponse.CONTACT_FORM, "contact", article);
+			return new ModelAndView(IResponse.ARTICLE_FORM, "article", article);
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));
 			return new ModelAndView("redirect:" + getUrl());
+		}
+	}
+	
+	@RequestMapping("/parametrage/article/delete")
+	public ModelAndView delete(ModelMap model, @RequestParam(value="idArticle", required=true) String idArticle, HttpServletRequest request) {
+		if(super.isLogged()) {
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			ArticleVO contact = null;
+			try {
+				contact = pm.getObjectById(ArticleVO.class, Long.parseLong(idArticle));
+				pm.deletePersistent(contact);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pm.close();
+			}
+			return new ModelAndView(IResponse.ARTICLE_LIST);
+		} else {
+			UserService userService = UserServiceFactory.getUserService();
+			setUrl(userService.createLoginURL(request.getRequestURI()));
+			return new ModelAndView(IResponse.LOGIN);
 		}
 	}
 	
@@ -164,6 +185,7 @@ public class ParametrageController extends LoggerController{
 						ArticleVO modifArticle = pm.getObjectById(ArticleVO.class, Long.parseLong(request.getParameter("id")));
 						modifArticle.setDateCreationArticle(article.getDateCreationArticle());
 						modifArticle.setDescription(article.getDescription());
+						modifArticle.setContenu(article.getContenuString());
 						modifArticle.setDateModificationArticle(new Date());
 						modifArticle.setModification(new Date(), user);
 						
@@ -177,6 +199,7 @@ public class ParametrageController extends LoggerController{
 				} else {
 					try {
 						article.setDateCreationArticle(new Date());
+						article.setAuteur(user.getEmail());
 						article.setCreation(new Date(), user);
 						pm.makePersistent(article);
 					} catch (Exception e) {

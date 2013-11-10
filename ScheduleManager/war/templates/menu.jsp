@@ -22,22 +22,22 @@
                       <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="/controller/eglise/list">Eglise <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          	<li><a href="/controller/historique/list">Historique</a></li>
-			    			<li><a href="/controller/activite/list">Activités</a></li>
-			    			<li><a href="/controller/planAcces/list">Plan d'accès</a></li>
+                          	<li><a href="/controller/historique/blog">Historique</a></li>
+			    			<li><a href="/controller/activite/blog">Activités</a></li>
+			    			<li><a href="/controller/planAcces/blog">Plan d'accès</a></li>
                         </ul>
                       </li>
                       <li class="dropdown">
                       		<a href="/controller/media/list" class="dropdown-toggle" data-toggle="dropdown">Médias <b class="caret"></b></a>
 				    		<ul class="dropdown-menu">
-				    			<li><a href="/controller/message/list">Messages</a></li>
-				    			<li><a href="/controller/video/list">Vidéos</a></li>
-				    			<li><a href="/controller/musique/list">Musique</a></li>
-				    			<li><a href="/controller/photo/list">Photos</a></li>
+				    			<li><a href="/controller/message/blog">Messages</a></li>
+				    			<li><a href="/controller/video/blog">Vidéos</a></li>
+				    			<li><a href="/controller/musique/blog">Musique</a></li>
+				    			<li><a href="/controller/photo/blog">Photos</a></li>
 				    		</ul>
 				    	</li>
-				    	<li><a href="/controller/projet/list">Projets</a></li>
-				    	<li><a href="/controller/lecture/list">&nbsp;Versets du jour&nbsp;</a></li>
+				    	<li><a href="/controller/projet/blog">Projets</a></li>
+				    	<li><a href="/controller/lecture/blog">&nbsp;Versets du jour&nbsp;</a></li>
 				    	<li><a href="/controller/parametrage/list">&nbsp;Nous contacter&nbsp;</a></li><!-- sujets de prières ici -->
 				    	<li><a href="/controller/contact/list">Contacts</a></li>
 				    	<li><a href="/controller/parametrage/list">Paramétrage</a></li>
