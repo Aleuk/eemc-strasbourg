@@ -26,10 +26,58 @@
 		<put-attribute name="body" value="/pages/error.jsp" />
 	</definition>
 	
+	<!-- **************** PLAN D'ACCES **************** -->
+	<definition name="planAcces.def" extends="maindef">
+		<put-attribute name="title" value="title.planAcces" />
+		<put-attribute name="body" value="/pages/planAcces.jsp" />
+	</definition>
+	
 	<!-- **************** HISTORIQUE **************** -->
 	<definition name="blogHistorique.def" extends="maindef">
 		<put-attribute name="title" value="title.blogHistorique" />
 		<put-attribute name="body" value="/pages/blogHistorique.jsp" />
+	</definition>
+	
+	<!-- **************** ACTIVITES **************** -->
+	<definition name="blogActivites.def" extends="maindef">
+		<put-attribute name="title" value="title.blogActivites" />
+		<put-attribute name="body" value="/pages/blogActivites.jsp" />
+	</definition>
+	
+	<!-- **************** MESSAGES **************** -->
+	<definition name="blogMessages.def" extends="maindef">
+		<put-attribute name="title" value="title.blogMessages" />
+		<put-attribute name="body" value="/pages/blogMessages.jsp" />
+	</definition>
+	
+	<!-- **************** PHOTOS **************** -->
+	<definition name="blogPhotos.def" extends="maindef">
+		<put-attribute name="title" value="title.blogPhotos" />
+		<put-attribute name="body" value="/pages/blogPhotos.jsp" />
+	</definition>
+	
+	<!-- **************** VIDEOS **************** -->
+	<definition name="blogVideos.def" extends="maindef">
+		<put-attribute name="title" value="title.blogVideos" />
+		<put-attribute name="body" value="/pages/blogVideos.jsp" />
+	</definition>
+	
+	<!-- **************** MUSIQUE **************** -->
+	<definition name="blogMusiques.def" extends="maindef">
+		<put-attribute name="title" value="title.blogMusiques" />
+		<put-attribute name="body" value="/pages/blogMusiques.jsp" />
+	</definition>
+	
+	<!-- **************** PROJETS **************** -->
+	<definition name="blogProjets.def" extends="maindef">
+		<put-attribute name="title" value="title.blogProjets" />
+		<put-attribute name="body" value="/pages/blogProjets.jsp" />
+	</definition>
+	
+	<!-- **************** VERSETS **************** -->
+	<definition name="blogVersets.def" extends="maindef">
+		<put-attribute name="title" value="title.blogVersets" />
+		<put-attribute name="body" value="/pages/blogVersets.jsp" />
 	</definition>
 	
 	<!-- **************** CONTACTS **************** -->
@@ -64,14 +112,7 @@
 	<definition name="priereForm.def" extends="maindef">
 		<put-attribute name="title" value="title.priereForm" />
 		<put-attribute name="body" value="/forms/priereForm.jsp" />
-	</definition>
-	
-	<!-- **************** VERSETS **************** -->
-	<definition name="blogVersets.def" extends="maindef">
-		<put-attribute name="title" value="title.blogVersets" />
-		<put-attribute name="body" value="/pages/blogVersets.jsp" />
-	</definition>
-	
+	</definition>	
 	
 	<!-- *************** PARAMETRAGE *************** -->
 	<definition name="listeParametrage.def" extends="maindef">
