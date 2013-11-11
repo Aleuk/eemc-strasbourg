@@ -18,6 +18,13 @@ public interface IResponse {
 	
 	public final static String ARTICLE_LIST = "listeArticles.def";
 	public final static String ARTICLE_FORM = "articleForm.def";
-	
+
 	public final static String BLOG_HISTORIQUE = "blogHistorique.def";
+	public final static String BLOG_ACTIVITES = "blogActivites.def";
+	public final static String BLOG_MESSAGES = "blogMessages.def";
+	public final static String BLOG_PHOTOS = "blogPhotos.def";
+	public final static String BLOG_VIDEOS = "blogVideos.def";
+	public final static String BLOG_MUSIQUE = "blogMusique.def";
+	public final static String BLOG_PROJETS = "blogProjets.def";
+	public final static String BLOG_VERSETS = "blogVersets.def";
 }

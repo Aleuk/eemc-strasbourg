@@ -24,7 +24,7 @@
                         <ul class="dropdown-menu">
                           	<li><a href="/controller/historique/blog">Historique</a></li>
 			    			<li><a href="/controller/activite/blog">Activités</a></li>
-			    			<li><a href="/controller/planAcces/blog">Plan d'accès</a></li>
+			    			<li><a href="/controller/planAcces/list">Plan d'accès</a></li>
                         </ul>
                       </li>
                       <li class="dropdown">
@@ -38,12 +38,12 @@
 				    	</li>
 				    	<li><a href="/controller/projet/blog">Projets</a></li>
 				    	<li><a href="/controller/lecture/blog">&nbsp;Versets du jour&nbsp;</a></li>
-				    	<li><a href="/controller/parametrage/list">&nbsp;Nous contacter&nbsp;</a></li><!-- sujets de prières ici -->
+				    	<li><a href="/controller/nouscontacter">&nbsp;Nous contacter&nbsp;</a></li><!-- sujets de prières ici -->
 				    	<li><a href="/controller/contact/list">Contacts</a></li>
 				    	<li><a href="/controller/parametrage/list">Paramétrage</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    	<li><a href="/controller/message/list">Mon compte</a></li>
+                    	<li><a href="/controller/moncompte">Mon compte</a></li>
 			    		<li><a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" /></a></li>
 			    	</ul>
                   </div><!-- /.nav-collapse -->
