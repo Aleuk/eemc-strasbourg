@@ -53,7 +53,6 @@
 			<tiles:insertAttribute name="path"/>
 			<div class="row">
 				<div class="col-lg-10">
-					<tiles:insertAttribute name="pub"/>
 					<tiles:insertAttribute name="body"/>
 				</div>
 				<div class="col-lg-2" style="border:1px solid">

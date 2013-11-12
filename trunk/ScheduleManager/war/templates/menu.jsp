@@ -2,7 +2,7 @@
 	<%@page import="com.google.appengine.api.users.UserService"%>
 
     <% UserService userService = UserServiceFactory.getUserService();
-        		System.out.println(request.getRequestURI());
+        		System.out.println(request.getAttribute("javax.servlet.forward.request_uri"));
     %>
     
     		<div class="navbar navbar-inverse" style="margin-bottom:0;">
@@ -24,7 +24,7 @@
                         <ul class="dropdown-menu">
                           	<li><a href="/controller/historique/blog">Historique</a></li>
 			    			<li><a href="/controller/activite/blog">Activités</a></li>
-			    			<li><a href="/controller/planAcces/list">Plan d'accès</a></li>
+			    			<li><a href="/controller/planAcces">Plan d'accès</a></li>
                         </ul>
                       </li>
                       <li class="dropdown">

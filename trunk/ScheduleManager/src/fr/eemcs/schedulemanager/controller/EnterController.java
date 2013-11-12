@@ -4,8 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.eemcs.schedulemanager.constants.IResponse;
-
 @Controller
 public class EnterController {
 	
@@ -24,6 +22,11 @@ public class EnterController {
 		//TODO récupération des infos User
 		//return IResponse.SUCCESS;
 		return new ModelAndView("home.def");
+	}
+	
+	@RequestMapping("/planAcces")
+	public ModelAndView planAcces() {
+		return new ModelAndView("planAcces.def");
 	}
 	
 }
