@@ -9,4 +9,9 @@ public interface IConstants {
 	public final static String CATEGORIE_PHOTOS = "Photos";
 	public final static String CATEGORIE_PROJETS = "Projets";
 	public final static String CATEGORIE_VERSETS = "Versets";
+	
+	public final static String CATEGORIE_SUGGESTION = "Suggestion";
+	public final static String CATEGORIE_BUG = "Bug du site internet";
+	public final static String CATEGORIE_PRIERE = "Demande de prière";
+	public final static String CATEGORIE_DIVERS = "Divers";
 }

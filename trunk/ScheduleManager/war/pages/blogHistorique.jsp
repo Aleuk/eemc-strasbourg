@@ -4,7 +4,7 @@
 
 		
 			<display:table id="dataTable" name="listeArticles"
-				pagesize="3" requestURI="/controller/historique/blog" class="table table-striped table-bordered table-hover">
+				pagesize="3" requestURI="/controller/historique/blog" class="table table-bordered">
 				<display:setProperty name="basic.msg.empty_list" value="" />
 				<display:setProperty name="basic.show.header" value="false" />
 				<display:setProperty name="paging.banner.onepage" value="" />

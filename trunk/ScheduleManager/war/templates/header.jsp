@@ -4,3 +4,4 @@
 		    	<img src="/images/bandeau_eemc.png" class="img"/>
 		    </div>
 		</div>
+		<hr>
