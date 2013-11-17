@@ -3,10 +3,22 @@
 
 	
 		<div class="well">
-			<s:form modelAttribute="articleForm" action="/controller/parametrage/article/save" validate="true" theme="xhtml" class="form-horizontal">
+			<s:form modelAttribute="nousContacterForm" action="/controller/nousContacter" validate="true" theme="xhtml" class="form-horizontal">
 			<fieldset>
-				<legend><t:get name="form.title.nouvel.article" /></legend>
+				<legend><t:get name="form.title.nousContacter" /></legend>
 				<s:hidden path="id" id="idArticle" />
+				<div class="form-group">
+					<label for="inputEmail" class="col-lg-2 control-label"><t:get name="form.label.email" /></label>
+					<div class="col-lg-10">
+						<s:input 	id="email" 
+											name="email" 
+											path="email"
+											maxlength="50" 
+											tabindex="9"
+											label="Email"
+											class="form-control"/>
+					</div>
+				</div>
 				<div class="form-group">
 					<label for="selectCategorie" class="col-lg-2 control-label"><t:get name="form.label.categorie" /></label>
 					<div class="col-lg-10">
@@ -49,25 +61,25 @@
 	
 	<script>
 		CKEDITOR.replace( 'contenu' ,
-			{
-				toolbar :
-				[
-					{ name: 'document', items : [ 'Source' ] },
-					{ name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
-					'/',
-					{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
-					{ name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar' ] },
-					{ name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
-					'-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
-					{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
-					'/',
-					{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
-					{ name: 'colors', items : [ 'TextColor','BGColor' ] }
-				]
-			});
+				{
+					toolbar :
+					[
+						{ name: 'document', items : [ 'Source' ] },
+						{ name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+						'/',
+						{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+						{ name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar' ] },
+						{ name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
+						'-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
+						{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+						'/',
+						{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+						{ name: 'colors', items : [ 'TextColor','BGColor' ] }
+					]
+				});
 		
 		function annuler() {
-			window.location.href = "/controller/parametrage/article/list";
+			window.location.href = "/controller/nousContacter";
 		}
 		function save() {
 			document.forms[0].submit();

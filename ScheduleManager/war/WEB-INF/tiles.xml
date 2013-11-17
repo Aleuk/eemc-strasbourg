@@ -103,14 +103,9 @@
 	</definition>
 	
 	<!-- **************** NOUS CONTACTER **************** -->
-	<definition name="listePrieres.def" extends="maindef">
-		<put-attribute name="title" value="title.listePrieres" />
-		<put-attribute name="body" value="/pages/listePrieres.jsp" />
-	</definition>
-	
-	<definition name="priereForm.def" extends="maindef">
-		<put-attribute name="title" value="title.priereForm" />
-		<put-attribute name="body" value="/forms/priereForm.jsp" />
+	<definition name="nousContacter.def" extends="maindef">
+		<put-attribute name="title" value="title.nousContacter" />
+		<put-attribute name="body" value="/forms/nousContacter.jsp" />
 	</definition>	
 	
 	<!-- *************** PARAMETRAGE *************** -->
@@ -138,6 +133,11 @@
 	<definition name="articleForm.def" extends="maindef">
 		<put-attribute name="title" value="title.articleForm" />
 		<put-attribute name="body" value="/forms/articleForm.jsp" />
+	</definition>
+	
+	<definition name="listePrieres.def" extends="maindef">
+		<put-attribute name="title" value="title.listePrieres" />
+		<put-attribute name="body" value="/pages/listePrieres.jsp" />
 	</definition>
 	
 </tiles-definitions>

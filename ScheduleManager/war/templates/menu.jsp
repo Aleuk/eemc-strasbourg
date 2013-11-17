@@ -1,7 +1,11 @@
-   	<%@page import="com.google.appengine.api.users.UserServiceFactory"%>
+   	<%@page import="com.google.appengine.api.users.User"%>
+<%@page import="com.google.appengine.api.users.UserServiceFactory"%>
 	<%@page import="com.google.appengine.api.users.UserService"%>
 
     <% UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+		String urlConnexion = userService.createLoginURL("/controller/enter");
+		
         		System.out.println(request.getAttribute("javax.servlet.forward.request_uri"));
     %>
     
@@ -38,13 +42,17 @@
 				    	</li>
 				    	<li><a href="/controller/projet/blog">Projets</a></li>
 				    	<li><a href="/controller/lecture/blog">&nbsp;Versets du jour&nbsp;</a></li>
-				    	<li><a href="/controller/nouscontacter">&nbsp;Nous contacter&nbsp;</a></li><!-- sujets de prières ici -->
-				    	<li><a href="/controller/contact/list">Contacts</a></li>
-				    	<li><a href="/controller/parametrage/list">Paramétrage</a></li>
+				    	<li><a href="/controller/nousContacter">&nbsp;Nous contacter&nbsp;</a></li><!-- sujets de prières ici -->
+				    	<% if(user != null) {%>
+					    	<li><a href="/controller/contact/list">Contacts</a></li>
+					    	<li><a href="/controller/parametrage/list">Paramétrage</a></li>
+					    <% }%>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    	<li><a href="/controller/moncompte">Mon compte</a></li>
-			    		<li><a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" /></a></li>
+                    	<li><a href="<%= urlConnexion %>">Mon compte</a></li>
+                    	<% if(user != null) {%>
+			    			<li><a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" /></a></li>
+			    		<% }%>
 			    	</ul>
                   </div><!-- /.nav-collapse -->
                 </div><!-- /.container -->
