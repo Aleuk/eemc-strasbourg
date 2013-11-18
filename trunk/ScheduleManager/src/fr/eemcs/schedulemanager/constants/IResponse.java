@@ -8,6 +8,7 @@ public interface IResponse {
 	public final static String HOME = "home.def";
 	public final static String PLAN_ACCES = "planAcces.def";
 	public final static String NOUS_CONTACTER = "nousContacter.def";
+	public final static String NOUS_CONTACTER_SUCCES = "nousContacterSucces.def";
 	public final static String CONTACT_LIST = "listeContacts.def";
 	public final static String CONTACT_FORM = "contactForm.def";
 	

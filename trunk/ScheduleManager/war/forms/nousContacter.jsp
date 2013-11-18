@@ -52,7 +52,7 @@
 				<div class="form-group">
 					<div class="col-lg-10 col-lg-offset-2">
 						<a class="btn btn-default" onclick="javascript:annuler();"><t:get name="button.annuler" /></a>
-						<button class="btn btn-primary"><t:get name="button.sauvegarder"/></button>
+						<button class="btn btn-primary"><t:get name="button.envoyer"/></button>
 					</div>
 				</div>
 			</fieldset>
