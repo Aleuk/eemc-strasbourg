@@ -49,4 +49,35 @@ public class FormatHelper {
 		}
 		return s;
 	}
+	
+	public static String getMois(int _mois) {
+		String retour = "";
+		if(_mois == 0) {
+			retour = "Janvier";
+		} else if(_mois == 1) {
+			retour = "Février";
+		} else if(_mois == 2) {
+			retour = "Mars";
+		} else if(_mois == 3) {
+			retour = "Avril";
+		} else if(_mois == 4) {
+			retour = "Mai";
+		} else if(_mois == 5) {
+			retour = "Juin";
+		} else if(_mois == 6) {
+			retour = "Juillet";
+		} else if(_mois == 7) {
+			retour = "Août";
+		} else if(_mois == 8) {
+			retour = "Septembre";
+		} else if(_mois == 9) {
+			retour = "Octobre";
+		} else if(_mois == 10) {
+			retour = "Novembre";
+		} else if(_mois == 11) {
+			retour = "Décembre";
+		}
+		
+		return retour;
+	}
 }

@@ -143,7 +143,7 @@ public class ParametrageController extends LoggerController{
 			} finally {
 				pm.close();
 			}
-			return new ModelAndView(IResponse.LIEU_LIST);
+			return new ModelAndView("redirect:/controller/parametrage/lieu/list");
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));
@@ -161,7 +161,8 @@ public class ParametrageController extends LoggerController{
 					try {
 						pm.currentTransaction().begin();
 						
-						LieuVO modifLieu = pm.getObjectById(LieuVO.class, Long.parseLong(request.getParameter("id")));
+						Key k = KeyFactory.createKey("LieuVO", Long.parseLong(FormatHelper.getId(idLieu)));
+						LieuVO modifLieu = pm.getObjectById(LieuVO.class, k);
 						modifLieu.setNom(lieu.getNom());
 						modifLieu.setNomKH(lieu.getNomKH());
 						modifLieu.setAdresse(lieu.getAdresse());
@@ -274,7 +275,7 @@ public class ParametrageController extends LoggerController{
 			} finally {
 				pm.close();
 			}
-			return new ModelAndView(IResponse.ARTICLE_LIST);
+			return new ModelAndView("redirect:/controller/parametrage/article/list");
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));
@@ -292,7 +293,8 @@ public class ParametrageController extends LoggerController{
 					try {
 						pm.currentTransaction().begin();
 						
-						ArticleVO modifArticle = pm.getObjectById(ArticleVO.class, Long.parseLong(request.getParameter("id")));
+						Key k = KeyFactory.createKey("ArticleVO", Long.parseLong(FormatHelper.getId(idArticle)));
+						ArticleVO modifArticle = pm.getObjectById(ArticleVO.class, k);
 						modifArticle.setDateCreationArticle(article.getDateCreationArticle());
 						modifArticle.setDescription(article.getDescription());
 						modifArticle.setContenu(article.getContenuString());
@@ -320,27 +322,6 @@ public class ParametrageController extends LoggerController{
 				}
 			}
 			return new ModelAndView("redirect:/controller/parametrage/article/list");
-		} else {
-			UserService userService = UserServiceFactory.getUserService();
-			setUrl(userService.createLoginURL(request.getRequestURI()));
-			return new ModelAndView("redirect:" + getUrl());
-		}
-	}
-	
-	@RequestMapping("/parametrage/message/list")
-	public ModelAndView messageList(ModelMap model, HttpServletRequest request) {
-		if(super.isLogged()) {
-			//List<ContactVO> contacts = baseDAO.getContacts();
-			List<LieuVO> lieux = new ArrayList<LieuVO>();
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			try {
-				String query = "select from " + LieuVO.class.getName();
-				lieux = (List<LieuVO>)pm.newQuery(query).execute();
-				model.addAttribute("listeLieux", lieux);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return new ModelAndView(IResponse.LIEU_LIST);
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));

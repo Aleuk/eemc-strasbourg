@@ -52,10 +52,10 @@
 			<tiles:insertAttribute name="header" />
 			<tiles:insertAttribute name="path"/>
 			<div class="row">
-				<div class="col-lg-10">
+				<div class="col-lg-9">
 					<tiles:insertAttribute name="body"/>
 				</div>
-				<div class="col-lg-2" style="border:1px solid">
+				<div class="col-lg-3" style="border:1px solid">
 					<tiles:insertAttribute name="planning"/>
 				</div>
 			</div>

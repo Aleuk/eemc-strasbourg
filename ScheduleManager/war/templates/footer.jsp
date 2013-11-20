@@ -1,6 +1,6 @@
     	<div class="row">
     		<div class="span12 text-center">
-    			Plan du Site - Nous contacter
+    			Accueil - Plan du Site - Nous contacter
     		</div>
     	</div>
     	<div class="row">
