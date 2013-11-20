@@ -24,8 +24,8 @@ public class LieuDecorator extends TableDecorator {
 	public String getActions() {
 		LieuVO lieu = (LieuVO)getCurrentRowObject();
 		String actions = "";
-		actions += "<a href=\"javascript:modifierLieu(" + lieu.getKey() + ");\"><img height=\"25px\" src=\"../images/modifierLieu.png\" /></a>";
-		actions += "<a href=\"javascript:supprimerLieu(" + lieu.getKey() + ", '" + lieu.getNom() + "');\"><img height=\"25px\" src=\"../images/supprimerLieu.png\" /></a>";
+		actions += "<a href=\"javascript:modifierLieu(" + lieu.getKey() + ");\"><img height=\"25px\" src=\"/images/modifierLieu.png\" /></a>";
+		actions += "<a href=\"javascript:supprimerLieu(" + lieu.getKey() + ", '" + lieu.getNom() + "');\"><img height=\"25px\" src=\"/images/supprimerLieu.png\" /></a>";
 		return FormatHelper.addPaddingToTD(actions);
 	}
 }

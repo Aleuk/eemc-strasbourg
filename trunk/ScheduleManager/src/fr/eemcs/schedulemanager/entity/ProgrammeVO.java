@@ -8,6 +8,7 @@ import javax.jdo.annotations.Persistent;
 @PersistenceCapable
 public class ProgrammeVO extends ObjectVO{
 	@Persistent
+	//0:Janvier, 1:Fevrier, etc.
 	private int mois;
 	
 	@Persistent
@@ -25,7 +26,6 @@ public class ProgrammeVO extends ObjectVO{
 	public int getMois() {
 		return mois;
 	}
-
 
 
 	public void setMois(int mois) {

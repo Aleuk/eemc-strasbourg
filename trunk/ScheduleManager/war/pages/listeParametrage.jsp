@@ -1,7 +1,6 @@
 <%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
 	<% String url = (String) request.getAttribute("javax.servlet.forward.request_uri"); %>
-	<%= url %>
 		<ul class="nav nav-tabs">
 			<% if(url.contains("article")) {%>
 				<li class="active">
@@ -26,6 +25,6 @@
 			<% } else { %>
 				<li>
 			<% }%>
-					<a href="/controller/parametrage/programme/list">Programme</a>
+					<a href="/controller/parametrage/programme/list"> <t:get name="table.title.programmes" /></a>
 				</li>
 		</ul>

@@ -20,7 +20,7 @@ import fr.eemcs.schedulemanager.helper.FormatHelper;
 public class ObjectVO {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Long id;
+	private Key id;
 	
 	@Persistent
 	private User creationUser;
@@ -39,7 +39,7 @@ public class ObjectVO {
 		this.modificationDate = new Date();
 	}
 	
-	public Long getId() {
+	public Key getId() {
 		return id;
 	}
 	

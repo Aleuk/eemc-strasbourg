@@ -76,7 +76,7 @@ public class ContactController extends LoggerController{
 			ContactVO contact = null;
 			try {
 				if(!"".equals(idContact)) {
-					contact = pm.getObjectById(ContactVO.class, Long.parseLong(idContact));
+					contact = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(idContact)));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -102,14 +102,14 @@ public class ContactController extends LoggerController{
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			ContactVO contact = null;
 			try {
-				contact = pm.getObjectById(ContactVO.class, Long.parseLong(idContact));
+				contact = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(idContact)));
 				pm.deletePersistent(contact);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				pm.close();
 			}
-			return new ModelAndView(IResponse.CONTACT_LIST);
+			return new ModelAndView("redirect:/controller/contact/list");
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));
@@ -127,7 +127,8 @@ public class ContactController extends LoggerController{
 					try {
 						pm.currentTransaction().begin();
 						
-						ContactVO modifContact = pm.getObjectById(ContactVO.class, Long.parseLong(request.getParameter("id")));
+						Key k = KeyFactory.createKey("ContactVO", Long.parseLong(FormatHelper.getId(idContact)));
+						ContactVO modifContact = pm.getObjectById(ContactVO.class, k);
 						modifContact.setCivilite(contact.getCivilite());
 						modifContact.setNom(contact.getNom());
 						modifContact.setPrenom(contact.getPrenom());

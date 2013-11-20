@@ -94,6 +94,7 @@
 	<!-- **************** PROGRAMMMES **************** -->
 	<definition name="listeProgrammes.def" extends="maindef">
 		<put-attribute name="title" value="title.listeProgrammes" />
+		<put-attribute name="path" value="/paths/pathProgrammes.jsp" />
 		<put-attribute name="body" value="/pages/listeProgrammes.jsp" />
 	</definition>
 	
@@ -116,6 +117,7 @@
 	
 	<definition name="listeLieux.def" extends="maindef">
 		<put-attribute name="title" value="title.listeLieux" />
+		<put-attribute name="path" value="/paths/pathLieux.jsp" />
 		<put-attribute name="body" value="/pages/listeLieux.jsp" />
 	</definition>
 	
