@@ -6,7 +6,6 @@
 			<display:table id="dataTable" name="listeContacts"
 				pagesize="15" requestURI="/controller/contact/list" class="table table-striped table-bordered table-hover" decorator="fr.eemcs.schedulemanager.decorator.ContactDecorator">
 				<display:column property="nom" keyTitle="table.title.nom" />
-				<display:column property="nomKH" class="inputKH"  keyTitle="table.title.nomKH" />
 				<display:column property="dateNaissance" keyTitle="table.title.dateNaissance" />
 				<display:column property="email" keyTitle="table.title.email" />
 				<display:column property="telephone" keyTitle="table.title.telephone" />

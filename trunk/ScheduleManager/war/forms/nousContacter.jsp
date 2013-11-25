@@ -64,13 +64,9 @@
 				{
 					toolbar :
 					[
-						{ name: 'document', items : [ 'Source' ] },
 						{ name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
 						'/',
 						{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
-						{ name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar' ] },
-						{ name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
-						'-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
 						{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
 						'/',
 						{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
