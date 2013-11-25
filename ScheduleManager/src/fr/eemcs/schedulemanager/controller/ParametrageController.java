@@ -1,7 +1,9 @@
 package fr.eemcs.schedulemanager.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,7 @@ import fr.eemcs.schedulemanager.constants.IResponse;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.ArticleVO;
 import fr.eemcs.schedulemanager.entity.ContactVO;
+import fr.eemcs.schedulemanager.entity.EvenementVO;
 import fr.eemcs.schedulemanager.entity.LieuVO;
 import fr.eemcs.schedulemanager.entity.ProgrammeVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
@@ -58,6 +61,41 @@ public class ParametrageController extends LoggerController{
 				e.printStackTrace();
 			}
 			return new ModelAndView(IResponse.PROGRAMME_LIST);
+		} else {
+			UserService userService = UserServiceFactory.getUserService();
+			setUrl(userService.createLoginURL(request.getRequestURI()));
+			return new ModelAndView("redirect:" + getUrl());
+		}
+	}
+	
+	@RequestMapping("/parametrage/programme/add")
+	public ModelAndView addProgramme(ModelMap model, HttpServletRequest request) {
+		if(super.isLogged()) {
+			//Date du début de mois
+			GregorianCalendar calDebut = new GregorianCalendar();
+			calDebut.setTime(new Date());
+			calDebut.set(Calendar.DAY_OF_MONTH, 1);
+			calDebut.add(Calendar.MONTH, 1);
+			ProgrammeVO pg = new ProgrammeVO(calDebut.get(Calendar.MONTH), calDebut.get(Calendar.YEAR));
+			model.addAttribute("programmeForm", pg);
+			
+			//Date de fin de mois
+			GregorianCalendar calFin = new GregorianCalendar();
+			calFin.setTime(calDebut.getTime());
+			calFin.add(Calendar.MONTH, 1);
+
+			List<EvenementVO> listeEvenements = new ArrayList<EvenementVO>();
+			pg.setEvenements(listeEvenements);
+			while (calDebut.before(calFin)) {
+				EvenementVO event = new EvenementVO();
+				event.setDate(calDebut.getTime());
+				pg.getEvenements().add(event);
+				calDebut.add(Calendar.DAY_OF_MONTH, 1);
+			}
+			model.addAttribute("listeEvenements", pg.getEvenements());
+			
+			loadProgrammeForm(model, calDebut);
+			return new ModelAndView(IResponse.PROGRAMME_FORM, "programme", pg);
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));
@@ -329,6 +367,14 @@ public class ParametrageController extends LoggerController{
 		}
 	}
 
+	public void loadProgrammeForm(ModelMap model, GregorianCalendar cal) {
+		Map<String,String> mapMois = new LinkedHashMap<String, String>();
+		mapMois.put(String.valueOf(cal.get(Calendar.MONTH) - 1), IConstants.CATEGORIE_HISTORIQUE);
+		mapMois.put(String.valueOf(cal.get(Calendar.MONTH)), IConstants.CATEGORIE_ACTIVITES);
+		mapMois.put(String.valueOf(cal.get(Calendar.MONTH) + 1), IConstants.CATEGORIE_MESSAGES);
+		model.addAttribute("mapMois", mapMois);
+	}
+	
 	public void loadArticleForm(ModelMap model) {
 		Map<String,String> mapCategories = new LinkedHashMap<String, String>();
 		mapCategories.put(IConstants.CATEGORIE_HISTORIQUE, IConstants.CATEGORIE_HISTORIQUE);

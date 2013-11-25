@@ -8,7 +8,7 @@
 </div>
 
 <script>
-	function ajouterLieu() {
+	function ajouterProgramme() {
 		window.location.href = "/controller/parametrage/programme/add";
 	}
 </script>

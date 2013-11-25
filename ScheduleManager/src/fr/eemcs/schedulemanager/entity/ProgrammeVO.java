@@ -16,6 +16,8 @@ public class ProgrammeVO extends ObjectVO{
 	
 	@Persistent(mappedBy = "programme")
 	private List<EvenementVO> evenements;
+	
+	//TODO ajouter les champs statiques
 
 	public ProgrammeVO(int _mois, int _annee) {
 		this.mois = _mois;
