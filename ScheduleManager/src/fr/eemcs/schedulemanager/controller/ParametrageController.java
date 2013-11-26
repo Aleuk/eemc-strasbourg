@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.jdo.PersistenceManager;
@@ -94,7 +95,7 @@ public class ParametrageController extends LoggerController{
 			}
 			model.addAttribute("listeEvenements", pg.getEvenements());
 			
-			loadProgrammeForm(model, calDebut);
+			loadProgrammeForm(model, calDebut.get(Calendar.MONTH), calDebut.get(Calendar.YEAR));
 			return new ModelAndView(IResponse.PROGRAMME_FORM, "programme", pg);
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
@@ -367,11 +368,18 @@ public class ParametrageController extends LoggerController{
 		}
 	}
 
-	public void loadProgrammeForm(ModelMap model, GregorianCalendar cal) {
+	public void loadProgrammeForm(ModelMap model, int mois, int annee) {
 		Map<String,String> mapMois = new LinkedHashMap<String, String>();
-		mapMois.put(String.valueOf(cal.get(Calendar.MONTH) - 1), IConstants.CATEGORIE_HISTORIQUE);
-		mapMois.put(String.valueOf(cal.get(Calendar.MONTH)), IConstants.CATEGORIE_ACTIVITES);
-		mapMois.put(String.valueOf(cal.get(Calendar.MONTH) + 1), IConstants.CATEGORIE_MESSAGES);
+		
+		GregorianCalendar cal = new GregorianCalendar(Locale.FRENCH);
+		cal.set(Calendar.MONTH, mois);
+		cal.set(Calendar.YEAR, annee);
+		cal.add(Calendar.MONTH, -2);
+		mapMois.put(String.valueOf(cal.get(Calendar.MONTH)), FormatHelper.formatDate(cal.getTime(), "MMMM").toUpperCase(Locale.FRENCH));
+		cal.add(Calendar.MONTH, 1);
+		mapMois.put(String.valueOf(cal.get(Calendar.MONTH)), FormatHelper.formatDate(cal.getTime(), "MMMM").toUpperCase(Locale.FRENCH));
+		cal.add(Calendar.MONTH, 1);
+		mapMois.put(String.valueOf(cal.get(Calendar.MONTH)), FormatHelper.formatDate(cal.getTime(), "MMMM").toUpperCase(Locale.FRENCH));
 		model.addAttribute("mapMois", mapMois);
 	}
 	
