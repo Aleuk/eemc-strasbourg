@@ -3,6 +3,7 @@ package fr.eemcs.schedulemanager.helper;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class FormatHelper {
 	/**
@@ -14,7 +15,7 @@ public class FormatHelper {
 	public static Date getDate(String date, String pattern) {
 		Date parsed = null;
 	
-		SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+		SimpleDateFormat dateFormat = new SimpleDateFormat(pattern, Locale.FRENCH);
 		try {
 			parsed = dateFormat.parse(date);
 		} catch (ParseException e) {
@@ -32,7 +33,7 @@ public class FormatHelper {
 	 */
 	public static String formatDate(Date date, String pattern) {
 		if(date != null) {
-			SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+			SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.FRENCH);
 			return sdf.format(date);
 		} else {
 			return null;

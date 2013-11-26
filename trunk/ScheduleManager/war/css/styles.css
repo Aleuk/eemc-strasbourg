@@ -9,3 +9,11 @@
 	font-size:22px;
 	font-family:"khmerUnicode";
 }
+
+.sunday {
+	background-color : #F9767A;
+}
+
+.saturday {
+	background-color : #F6DB9C;
+}
