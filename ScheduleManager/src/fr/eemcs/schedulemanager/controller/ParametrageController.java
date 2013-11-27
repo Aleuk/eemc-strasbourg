@@ -369,8 +369,8 @@ public class ParametrageController extends LoggerController{
 	}
 
 	public void loadProgrammeForm(ModelMap model, int mois, int annee) {
+		//Liste des mois
 		Map<String,String> mapMois = new LinkedHashMap<String, String>();
-		
 		GregorianCalendar cal = new GregorianCalendar(Locale.FRENCH);
 		cal.set(Calendar.MONTH, mois);
 		cal.set(Calendar.YEAR, annee);
@@ -381,6 +381,41 @@ public class ParametrageController extends LoggerController{
 		cal.add(Calendar.MONTH, 1);
 		mapMois.put(String.valueOf(cal.get(Calendar.MONTH)), FormatHelper.formatDate(cal.getTime(), "MMMM").toUpperCase(Locale.FRENCH));
 		model.addAttribute("mapMois", mapMois);
+		
+		//Liste des lieux
+		Map<String,String> mapLieux = new LinkedHashMap<String, String>();
+		List<LieuVO> lieux = new ArrayList<LieuVO>();
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			String query = "select from " + LieuVO.class.getName();
+			lieux = (List<LieuVO>)pm.newQuery(query).execute();
+			for(LieuVO lieu : lieux) {
+				mapLieux.put(lieu.getKey(), lieu.getNom());
+			}
+			model.addAttribute("mapLieux", mapLieux);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//Liste pour la présidence
+		Map<String,String> mapPresidence = new LinkedHashMap<String, String>();
+		for(ContactVO contact : getPresidence()) {
+			mapPresidence.put(contact.getKey(), contact.getPrenom());
+		}
+		model.addAttribute("mapPresidence", mapPresidence);
+	}
+	
+	public List<ContactVO> getPresidence() {
+		//List<ContactVO> contacts = baseDAO.getContacts();
+		List<ContactVO> contacts = new ArrayList<ContactVO>();
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			String query = "select from " + ContactVO.class.getName() + " where presidence is not null";
+			contacts = (List<ContactVO>)pm.newQuery(query).execute();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return contacts;
 	}
 	
 	public void loadArticleForm(ModelMap model) {

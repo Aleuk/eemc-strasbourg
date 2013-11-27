@@ -19,6 +19,22 @@ public class EvenementDecorator extends TableDecorator {
 		return FormatHelper.addPaddingToTD(FormatHelper.formatDate(cal.getTime(), "E dd"));
 	}
 	
+	public String getHeure() {
+		EvenementVO event = (EvenementVO)getCurrentRowObject();
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(event.getDate());
+		String inputHeure = "<input type='time' id='" + cal.get(Calendar.DAY_OF_MONTH) + "_time'/>";
+		return inputHeure;
+	}
+	
+	public String getLieu() {
+		EvenementVO event = (EvenementVO)getCurrentRowObject();
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(event.getDate());
+		String selectLieu = "<select id='" + cal.get(Calendar.DAY_OF_MONTH) + "_lieu' class='form-control'/>";
+		return selectLieu;
+	}
+	
 	public String getActions() {
 		ProgrammeVO pg = (ProgrammeVO)getCurrentRowObject();
 		GregorianCalendar cal = new GregorianCalendar(pg.getAnnee(), pg.getMois(), 1);
