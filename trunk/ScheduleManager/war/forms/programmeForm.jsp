@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
@@ -21,6 +22,45 @@
 				</div>
 				<div class="form-group">
 					<div class="col-lg-12">
+						<table id="dataTable" class="table table-bordered">
+						<thead>
+							<tr>
+								<th><t:get name="table.title.date" /></th>
+								<th><t:get name="table.title.heure" /></th>
+								<th><t:get name="table.title.lieu" /></th>
+								<th><t:get name="table.title.presidence" /></th>
+								<th><t:get name="table.title.predicateur" /></th>
+								<th><t:get name="table.title.traducteur" /></th>
+								<th><t:get name="table.title.offrande" /></th>
+								<th><t:get name="table.title.ecoleDimanche" /></th>
+								<th><t:get name="table.title.divers" /></th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach var="event" items="${listeEvenements}">
+							<tr class="${event.classRow}">
+								<td>${event.dateEvent}</td>
+								<td><input type="time" name="${event.jourEvent}_heure" value="${event.heureEvent}" /></td>
+								<td>
+									<s:select
+											headerKey="-1" headerValue="Lieu" 
+											name="${event.jourEvent}_lieu"
+											path=""
+											items="${mapLieux}" 
+											class="form-control"/>
+								</td>
+								<td>
+									<s:select
+											headerKey="-1" headerValue="Lieu" 
+											name="${event.presidence}_lieu"
+											path=""
+											items="${mapPresidence}" 
+											class="form-control"/>
+								</td>
+							</tr>
+						</c:forEach>
+						</tbody>
+						</table>
 						<display:table id="dataTable" name="listeEvenements"
 							pagesize="31" requestURI="/controller/parametrage/programme" class="table table-bordered" decorator="fr.eemcs.schedulemanager.decorator.EvenementDecorator">
 							<display:setProperty name="basic.msg.empty_list" value="" />
@@ -28,6 +68,8 @@
 							<display:setProperty name="paging.banner.one_item_found" value="" />
 							<display:setProperty name="paging.banner.all_items_found" value="" />
 							<display:column property="date" keyTitle="table.title.date" />
+							<display:column property="heure" keyTitle="table.title.heure" />
+							<display:column property="lieu" keyTitle="table.title.lieu" />
 						</display:table>
 					</div>
 				</div>

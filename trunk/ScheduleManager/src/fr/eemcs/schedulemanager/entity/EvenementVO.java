@@ -1,12 +1,16 @@
 package fr.eemcs.schedulemanager.entity;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 @PersistenceCapable
 public class EvenementVO extends ObjectVO{
@@ -52,8 +56,31 @@ public class EvenementVO extends ObjectVO{
 		return date;
 	}
 
+	public String getDateEvent() {
+		return FormatHelper.formatDate(date, "E dd");
+	}
+	
+	public String getHeureEvent() {
+		return FormatHelper.formatDate(date, "HH:mm");
+	}
+	
+	public String getJourEvent() {
+		return FormatHelper.formatDate(date, "d");
+	}
+	
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public String getClassRow() {
+		Calendar cal = new GregorianCalendar();
+		cal.setTime(this.date);
+		if(cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+			return "sunday";
+		} else if(cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY){
+			return "saturday";
+		}
+		return null;
 	}
 
 	public LieuVO getLieu() {

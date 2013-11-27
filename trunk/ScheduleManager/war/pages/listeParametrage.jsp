@@ -25,6 +25,6 @@
 			<% } else { %>
 				<li>
 			<% }%>
-					<a href="/controller/parametrage/programme/list"> <t:get name="table.title.programmes" /></a>
+					<a href="/controller/parametrage/programme/list"><img src="/images/getProgramme.png" height="15px"/> <t:get name="table.title.programmes" /></a>
 				</li>
 		</ul>
