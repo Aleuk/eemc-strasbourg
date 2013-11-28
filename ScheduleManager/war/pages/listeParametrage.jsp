@@ -2,6 +2,14 @@
 
 	<% String url = (String) request.getAttribute("javax.servlet.forward.request_uri"); %>
 		<ul class="nav nav-tabs">
+			<% if(url.contains("programme")) {%>
+				<li class="active">
+			<% } else { %>
+				<li>
+			<% }%>
+					<a href="/controller/parametrage/programme/list"><img src="/images/getProgramme.png" height="15px"/> <t:get name="table.title.programmes" /></a>
+				</li>
+				
 			<% if(url.contains("article")) {%>
 				<li class="active">
 			<% } else { %>
@@ -17,14 +25,5 @@
 				<li>
 			<% }%>
 					<a href="/controller/parametrage/lieu/list"><img src="/images/lieu.png" height="15px"/> <t:get name="table.title.lieux" /></a>
-				</li>
-				
-				
-			<% if(url.contains("programme")) {%>
-				<li class="active">
-			<% } else { %>
-				<li>
-			<% }%>
-					<a href="/controller/parametrage/programme/list"><img src="/images/getProgramme.png" height="15px"/> <t:get name="table.title.programmes" /></a>
 				</li>
 		</ul>

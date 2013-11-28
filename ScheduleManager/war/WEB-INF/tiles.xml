@@ -98,9 +98,9 @@
 		<put-attribute name="body" value="/pages/listeProgrammes.jsp" />
 	</definition>
 	
-	<definition name="programmeForm.def" extends="maindef">
-		<put-attribute name="title" value="title.programmeForm" />
-		<put-attribute name="body" value="/forms/programmeForm.jsp" />
+	<definition name="evenementForm.def" extends="maindef">
+		<put-attribute name="title" value="title.evenementForm" />
+		<put-attribute name="body" value="/forms/evenementForm.jsp" />
 	</definition>
 	
 	<!-- **************** NOUS CONTACTER **************** -->

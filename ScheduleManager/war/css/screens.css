@@ -20,3 +20,8 @@ img {
 	height:560px;
 	min-width:50px
 }
+
+/* MODAL */
+.modal-body {
+	height: 450px;
+}
