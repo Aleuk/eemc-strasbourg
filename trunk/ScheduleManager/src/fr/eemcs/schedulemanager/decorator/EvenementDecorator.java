@@ -23,25 +23,41 @@ public class EvenementDecorator extends TableDecorator {
 		EvenementVO event = (EvenementVO)getCurrentRowObject();
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(event.getDate());
-		String inputHeure = "<input type='time' id='" + cal.get(Calendar.DAY_OF_MONTH) + "_time'/>";
-		return inputHeure;
+		
+		String heure = "--:--";
+		if(event.exists()) {
+			heure = FormatHelper.addPaddingToTD(FormatHelper.formatDate(cal.getTime(), "HH:mm"));
+		}
+		return heure;
 	}
 	
 	public String getLieu() {
 		EvenementVO event = (EvenementVO)getCurrentRowObject();
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(event.getDate());
-		String selectLieu = "<select id='" + cal.get(Calendar.DAY_OF_MONTH) + "_lieu' class='form-control'/>";
-		return selectLieu;
+		String lieu = "";
+		if(event.getLieu() != null) {
+			lieu = event.getLieu().getNom();
+		}
+		return lieu;
 	}
 	
 	public String getActions() {
-		ProgrammeVO pg = (ProgrammeVO)getCurrentRowObject();
-		GregorianCalendar cal = new GregorianCalendar(pg.getAnnee(), pg.getMois(), 1);
+		EvenementVO event = (EvenementVO)getCurrentRowObject();
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(event.getDate());
 		
 		String actions = "";
-		actions += "<a href=\"javascript:getProgramme(" + pg.getKey() + ");\"><img height=\"25px\" src=\"/images/getProgramme.png\" /></a>";
-		actions += "<a href=\"javascript:modifierProgramme(" + pg.getKey() + ", '" + FormatHelper.formatDate(cal.getTime(), "MM/yyyy") + "');\"><img height=\"25px\" src=\"/images/modifierProgramme.png\" /></a>";
+		if(event.exists()) {
+			//L'événement existe, il s'agit d'une modification-Suppresion
+			actions += "<a href=\"javascript:editEvent(" + event.getKey() + ");\"><img height=\"25px\" src=\"/images/getProgramme.png\" /></a>";
+			actions += "<a href=\"javascript:deleteEvent(" + event.getKey() + ", '" + FormatHelper.formatDate(cal.getTime(), "E dd") + "');\"><img height=\"25px\" src=\"/images/modifierProgramme.png\" /></a>";
+		} else {
+			//L'événement n'existe pas, il s'agit d'un ajout
+			String hDate = FormatHelper.formatDate(cal.getTime(), "dd MMMM");
+			String addButton = "<button class='openNewEvent btn btn-primary btn-xs' data-hidden='" + hDate + "' data-id='" + cal.get(Calendar.DAY_OF_MONTH) + "' data-toggle='modal' data-target='#eventModal'>+</button>";
+			//actions += "<a href=\"javascript:addEvent(" + cal.get(Calendar.DAY_OF_MONTH) + ", " + cal.get(Calendar.MONTH) + ", " + cal.get(Calendar.YEAR) + ");\"><img height=\"25px\" src=\"/images/getProgramme.png\" /></a>";
+			actions = addButton;
+		}
+		
 		return FormatHelper.addPaddingToTD(actions);
 	}
 	

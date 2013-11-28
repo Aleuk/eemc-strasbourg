@@ -8,7 +8,7 @@
 					<s:hidden path="id" id="idLieu" />
 					
 					<div class="form-group">
-						<label for="inputNom" class="col-lg-4 control-label"><t:get name="form.label.nom" /></label>
+						<label for="inputNomLieu" class="col-lg-4 control-label"><t:get name="form.label.nom" /></label>
 						<div class="col-lg-8">
 							<s:input	id="nom" 
 												name="nom" 
@@ -21,7 +21,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputNomKH" class="col-lg-4 control-label"><t:get name="form.label.nom.cambodgien" /></label>
+						<label for="inputNomLieuKH" class="col-lg-4 control-label"><t:get name="form.label.nom.cambodgien" /></label>
 						<div class="col-lg-8">
 							<input type="text" 	id="nomKH" 
 												name="nomKH" 
@@ -33,7 +33,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputAdresse" class="col-lg-4 control-label"><t:get name="form.label.adresse" /></label>
+						<label for="inputAdresseLieu" class="col-lg-4 control-label"><t:get name="form.label.adresse" /></label>
 						<div class="col-lg-8">
 							<s:input 	id="adresse" 
 												name="adresse" 
@@ -45,7 +45,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputCodePostal" class="col-lg-4 control-label"><t:get name="form.label.codePostal" /></label>
+						<label for="inputCodePostalLieu" class="col-lg-4 control-label"><t:get name="form.label.codePostal" /></label>
 						<div class="col-lg-8">
 							<s:input 	id="codePostal" 
 												name="codePostal" 
@@ -57,7 +57,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputVille" class="col-lg-4 control-label"><t:get name="form.label.ville" /></label>
+						<label for="inputVilleLieu" class="col-lg-4 control-label"><t:get name="form.label.ville" /></label>
 						<div class="col-lg-8">
 							<s:input 	id="ville" 
 												name="ville" 

@@ -34,6 +34,9 @@ public class EvenementVO extends ObjectVO{
 	private ContactVO traducteur;
 	
 	@Persistent
+	private ContactVO offrande;
+	
+	@Persistent
 	private List<ContactVO> ecoleDimancheGarderie;
 	
 	@Persistent
@@ -129,6 +132,18 @@ public class EvenementVO extends ObjectVO{
 
 	public void setDivers(String divers) {
 		this.divers = divers;
+	}
+	
+	public boolean exists() {
+		return (this.lieu != null);
+	}
+
+	public ContactVO getOffrande() {
+		return offrande;
+	}
+
+	public void setOffrande(ContactVO offrande) {
+		this.offrande = offrande;
 	}
 	
 }
