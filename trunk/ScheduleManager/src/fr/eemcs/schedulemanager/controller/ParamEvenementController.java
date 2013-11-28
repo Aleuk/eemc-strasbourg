@@ -53,7 +53,7 @@ public class ParamEvenementController extends LoggerController {
 			List<ProgrammeVO> programmes = new ArrayList<ProgrammeVO>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
-				String query = "select from " + ProgrammeVO.class.getName();
+				String query = "select from " + EvenementVO.class.getName() + " order by date desc";
 				programmes = (List<ProgrammeVO>)pm.newQuery(query).execute();
 				model.addAttribute("listeProgrammes", programmes);
 			} catch (Exception e) {
@@ -68,7 +68,7 @@ public class ParamEvenementController extends LoggerController {
 	}
 	
 	@RequestMapping("/parametrage/evenement/add")
-	public ModelAndView addProgramme(ModelMap model, HttpServletRequest request) {
+	public ModelAndView addEvenement(ModelMap model, HttpServletRequest request) {
 		if(super.isLogged()) {
 			EvenementVO evenement = new EvenementVO();
 			model.addAttribute("eventForm", evenement);

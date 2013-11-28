@@ -5,16 +5,13 @@ import java.util.List;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 
-@PersistenceCapable
 public class ProgrammeVO extends ObjectVO{
-	@Persistent
+	
 	//0:Janvier, 1:Fevrier, etc.
 	private int mois;
 	
-	@Persistent
 	private int annee;
 	
-	@Persistent(mappedBy = "programme")
 	private List<EvenementVO> evenements;
 	
 	//TODO ajouter les champs statiques
