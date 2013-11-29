@@ -27,7 +27,11 @@ public class BlogController extends LoggerController{
 		try {
 			String uri = request.getRequestURI();
 			if(uri != null) {
-				if(uri.contains("historique")) {
+				if(uri.contains("accueil")) {
+					String query = getBlogSqlRequest(IConstants.CATEGORIE_ACCUEIL);
+					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+					response = IResponse.HOME;
+				} else if(uri.contains("historique")) {
 					String query = getBlogSqlRequest(IConstants.CATEGORIE_HISTORIQUE);
 					articles = (List<ArticleVO>)pm.newQuery(query).execute();
 					response = IResponse.BLOG_HISTORIQUE;
