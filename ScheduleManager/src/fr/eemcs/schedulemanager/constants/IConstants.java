@@ -1,6 +1,7 @@
 package fr.eemcs.schedulemanager.constants;
 
 public interface IConstants {
+	public final static String CATEGORIE_ACCUEIL = "Accueil";
 	public final static String CATEGORIE_HISTORIQUE = "Historique";
 	public final static String CATEGORIE_ACTIVITES = "Activités";
 	public final static String CATEGORIE_MESSAGES = "Messages";
