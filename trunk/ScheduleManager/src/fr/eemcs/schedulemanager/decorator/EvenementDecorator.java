@@ -7,8 +7,6 @@ import org.displaytag.decorator.TableDecorator;
 import com.ibm.icu.util.GregorianCalendar;
 
 import fr.eemcs.schedulemanager.entity.EvenementVO;
-import fr.eemcs.schedulemanager.entity.LieuVO;
-import fr.eemcs.schedulemanager.entity.ProgrammeVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 public class EvenementDecorator extends TableDecorator {

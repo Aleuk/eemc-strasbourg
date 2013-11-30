@@ -2,10 +2,14 @@ package fr.eemcs.schedulemanager.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
@@ -19,6 +23,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,7 +46,6 @@ import fr.eemcs.schedulemanager.entity.ContactVO;
 import fr.eemcs.schedulemanager.entity.EmailVO;
 import fr.eemcs.schedulemanager.entity.EvenementVO;
 import fr.eemcs.schedulemanager.entity.LieuVO;
-import fr.eemcs.schedulemanager.entity.ProgrammeVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 @Controller
@@ -50,12 +54,22 @@ public class ParamEvenementController extends LoggerController {
 	@RequestMapping("/parametrage/programme/list")
 	public ModelAndView programmeList(ModelMap model, HttpServletRequest request) {
 		if(super.isLogged()) {
-			List<ProgrammeVO> programmes = new ArrayList<ProgrammeVO>();
+			List<Date> dates = new ArrayList<Date>();
+			HashMap<String, Integer> mois = new HashMap<String, Integer>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
-				String query = "select from " + EvenementVO.class.getName() + " order by date desc";
-				programmes = (List<ProgrammeVO>)pm.newQuery(query).execute();
-				model.addAttribute("listeProgrammes", programmes);
+				String query = "select date from " + EvenementVO.class.getName() + " order by date desc";
+				dates = (List<Date>)pm.newQuery(query).execute();
+				
+				for(Date d : dates) {
+					String cle = FormatHelper.formatDate(d, "MMMM yyyy");
+					if(mois.containsKey(cle)) {
+						mois.put(cle, mois.get(cle) + 1);
+					} else {
+						mois.put(cle, 1);
+					}
+				}
+				model.addAttribute("listeProgrammes", mois);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -71,7 +85,10 @@ public class ParamEvenementController extends LoggerController {
 	public ModelAndView addEvenement(ModelMap model, HttpServletRequest request) {
 		if(super.isLogged()) {
 			EvenementVO evenement = new EvenementVO();
+			evenement.setResponsables(new ArrayList<Key>());
 			model.addAttribute("eventForm", evenement);
+			model.addAttribute("heure", "15:00");
+			model.addAttribute("presidence", new ContactVO());
 			
 			loadProgrammeForm(model);
 			return new ModelAndView(IResponse.EVENEMENT_FORM, "event", evenement);
@@ -83,44 +100,78 @@ public class ParamEvenementController extends LoggerController {
 	}
 	
 	@RequestMapping("/parametrage/evenement/save")
-	public ModelAndView save(HttpServletRequest request, @ModelAttribute("eventForm") EvenementVO event, BindingResult result) {
+	public ModelAndView save(HttpServletRequest request, @Valid @ModelAttribute("eventForm") EvenementVO event, BindingResult result) {
 		if(super.isLogged()) {
-			if(event != null) {
-				PersistenceManager pm = PMF.get().getPersistenceManager();
-				String idEvent = (String) request.getParameter("id");
-				if(idEvent != null && !"".equals(idEvent)) {
-					try {
+			String presidence = (String) request.getParameter("presidence");
+			String predicateur = (String) request.getParameter("predicateur");
+			String traducteur = (String) request.getParameter("traducteur");
+			String offrande = (String) request.getParameter("offrande");
+			
+
+			String test = (String) request.getParameter("_responsables");
+			
+			ContactVO contactPresidence = null;
+			ContactVO contactPredicateur = null;
+			ContactVO contactTraducteur = null;
+			ContactVO contactOffrande = null;
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			try {
+				if(presidence != null && !"".equals(presidence)) {
+					contactPresidence = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
+				}
+				if(predicateur != null && !"".equals(predicateur)) {
+					contactPredicateur = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
+				}
+				if(traducteur != null && !"".equals(traducteur)) {
+					contactTraducteur = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
+				}
+				if(offrande != null && !"".equals(offrande)) {
+					contactOffrande = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
+				}
+				
+				if(event != null) {
+					//Modification
+					String idEvent = (String) request.getParameter("id");
+					if(idEvent != null && !"".equals(idEvent)) {
 						pm.currentTransaction().begin();
 						
 						Key k = KeyFactory.createKey("EvenementVO", Long.parseLong(FormatHelper.getId(idEvent)));
 						EvenementVO modifEvent = pm.getObjectById(EvenementVO.class, k);
 						modifEvent.setLieu(event.getLieu());
-						modifEvent.setPresidence(event.getPresidence());
-						modifEvent.setPredicateur(event.getPredicateur());
-						modifEvent.setTraducteur(event.getTraducteur());
-						modifEvent.setOffrande(event.getOffrande());
+						
+						modifEvent.setResponsables(event.getResponsables());
+						modifEvent.getResponsables().add(0, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
+						modifEvent.getResponsables().add(1, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
+						modifEvent.getResponsables().add(2, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
+						modifEvent.getResponsables().add(3, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
+						
 						modifEvent.setDivers(event.getDivers());
 						
 						modifEvent.setModification(new Date(), user);
 						
 						pm.currentTransaction().commit();
-					} catch (Exception e) {
-						e.printStackTrace();
-						pm.currentTransaction().rollback();
-					} finally {
-						pm.close();
-					}
-				} else {
-					try {
+					} else {
+						//Création
+						GregorianCalendar cal = new GregorianCalendar();
+						cal.setTime(event.getDate());
+						cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(event.getHeure().substring(0, event.getHeure().indexOf(":"))));
+						cal.set(Calendar.MINUTE, Integer.parseInt(event.getHeure().substring(event.getHeure().indexOf(":") + 1)));
+						event.setDate(cal.getTime());
+						event.getResponsables().add(0, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
+						event.getResponsables().add(1, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
+						event.getResponsables().add(2, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
+						event.getResponsables().add(3, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
 						event.setCreation(new Date(), user);
 						pm.makePersistent(event);
-					} catch (Exception e) {
-						e.printStackTrace();
-					} finally {
-						pm.close();
 					}
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				pm.currentTransaction().rollback();
+			} finally {
+				pm.close();
 			}
+			
 			return new ModelAndView("redirect:/controller/parametrage/programme/list");
 		} else {
 			UserService userService = UserServiceFactory.getUserService();

@@ -11,13 +11,13 @@
 				<div class="form-group">
 					<label for="inputDate" class="col-lg-2 control-label"><t:get name="form.label.date" /></label>
 					<div class="col-lg-10">
-						<input type="date" id="date_" class="date_"/>
+						<s:input path="date" type="date" tabindex="5" value="${date}"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputHeure" class="col-lg-2 control-label"><t:get name="form.label.heure" /></label>
 					<div class="col-lg-10">
-						<input type="time" id="heure_" class="heure_"/>
+						<s:input path="heure" type="time" tabindex="5" value="${heure}"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -31,7 +31,7 @@
 				<div class="form-group">
 					<label for="selectPresidence" class="col-lg-2 control-label"><t:get name="form.label.presidence" /></label>
 					<div class="col-lg-10">
-						<s:select id="presidence_" class="presidence_ form-control" name="presidence" path="presidence">
+						<s:select id="presidence_" class="presidence_ form-control" name="presidence" path="">
 							<s:options items="${mapPresidence}"/>
 						</s:select>
 					</div>
@@ -39,7 +39,7 @@
 				<div class="form-group">
 					<label for="selectPredicateurs" class="col-lg-2 control-label"><t:get name="form.label.predicateur" /></label>
 					<div class="col-lg-10">
-						<s:select id="predicateur_" class="predicateur_ form-control" name="predicateur" path="predicateur">
+						<s:select id="predicateur_" class="predicateur_ form-control" name="predicateur" path="">
 							<s:options items="${mapPredicateurs}"/>
 						</s:select>
 					</div>
@@ -47,7 +47,7 @@
 				<div class="form-group">
 					<label for="selectTraducteurs" class="col-lg-2 control-label"><t:get name="form.label.traducteur" /></label>
 					<div class="col-lg-10">
-						<s:select id="traducteur_" class="traducteur_ form-control" name="presidence" path="traducteur">
+						<s:select id="traducteur_" class="traducteur_ form-control" name="traducteur" path="">
 							<s:options items="${mapTraducteurs}"/>
 						</s:select>
 					</div>
@@ -55,8 +55,16 @@
 				<div class="form-group">
 					<label for="selectOffrande" class="col-lg-2 control-label"><t:get name="form.label.offrande" /></label>
 					<div class="col-lg-10">
-						<s:select id="offrande_" class="offrande_ form-control" name="presidence" path="offrande">
+						<s:select id="offrande_" class="offrande_ form-control" name="offrande" path="">
 							<s:options items="${mapOffrande}"/>
+						</s:select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="selectResponsables" class="col-lg-2 control-label"><t:get name="form.label.responsables" /></label>
+					<div class="col-lg-10">
+						<s:select multiple="true" id="responsables_" class="responsables_ form-control" name="responsables" path="responsables">
+							<s:options items="${mapResponsables}"/>
 						</s:select>
 					</div>
 				</div>
