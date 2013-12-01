@@ -29,13 +29,7 @@
   <!--                                           -->
   <body>
     <% 
-    	String url = "/controller/enter";
-    	/*UserService userService = UserServiceFactory.getUserService();
-    	User user = userService.getCurrentUser();
-    	if(user == null) {
-			url = userService.createLoginURL(url);
-			System.out.println(url);
-		}*/
+    	String url = "/controller/accueil/blog";
     %>
   </body>
   <script>

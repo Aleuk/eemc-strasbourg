@@ -17,7 +17,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/controller/enter">
+                    <a class="navbar-brand" href="/controller/accueil/blog">
 				        Accueil
 				    </a>
                   </div>

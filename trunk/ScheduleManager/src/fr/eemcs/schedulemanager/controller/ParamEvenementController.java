@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.jdo.PersistenceManager;
 import javax.mail.Message;
@@ -55,18 +57,15 @@ public class ParamEvenementController extends LoggerController {
 	public ModelAndView programmeList(ModelMap model, HttpServletRequest request) {
 		if(super.isLogged()) {
 			List<Date> dates = new ArrayList<Date>();
-			HashMap<String, Integer> mois = new HashMap<String, Integer>();
+			Set<String> mois = new HashSet<String>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
 				String query = "select date from " + EvenementVO.class.getName() + " order by date desc";
 				dates = (List<Date>)pm.newQuery(query).execute();
 				
 				for(Date d : dates) {
-					String cle = FormatHelper.formatDate(d, "MMMM yyyy");
-					if(mois.containsKey(cle)) {
-						mois.put(cle, mois.get(cle) + 1);
-					} else {
-						mois.put(cle, 1);
+					if(!mois.contains(FormatHelper.formatDate(d, "MM/yyyy"))) {
+						mois.add(FormatHelper.formatDate(d, "MM/yyyy"));
 					}
 				}
 				model.addAttribute("listeProgrammes", mois);

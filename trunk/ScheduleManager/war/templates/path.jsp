@@ -1,6 +1,6 @@
 
 	<div class="row">
 		<div class="span10">
-			Chemin
+			&nbsp;
 		</div>
 	</div>
