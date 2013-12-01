@@ -2,5 +2,5 @@
 	&nbsp;chemin
 </div>
 <div class="fond_corps" id="corps">
-Une erreur s'est produite. Veuillez contacter Gabriel.
+Une erreur s'est produite. Veuillez contacter l'administrateur.
 </div>

@@ -166,6 +166,7 @@ public class ParamArticleController extends LoggerController {
 	
 	public void loadArticleForm(ModelMap model) {
 		Map<String,String> mapCategories = new LinkedHashMap<String, String>();
+		mapCategories.put(IConstants.CATEGORIE_ACCUEIL, IConstants.CATEGORIE_ACCUEIL);
 		mapCategories.put(IConstants.CATEGORIE_HISTORIQUE, IConstants.CATEGORIE_HISTORIQUE);
 		mapCategories.put(IConstants.CATEGORIE_ACTIVITES, IConstants.CATEGORIE_ACTIVITES);
 		mapCategories.put(IConstants.CATEGORIE_MESSAGES, IConstants.CATEGORIE_MESSAGES);
