@@ -11,13 +11,13 @@
 				<div class="form-group">
 					<label for="inputDate" class="col-lg-2 control-label"><t:get name="form.label.date" /></label>
 					<div class="col-lg-10">
-						<s:input path="date" type="date" tabindex="5" value="${date}"/>
+						<s:input path="date" type="date" tabindex="5" required="true" value="${date}"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputHeure" class="col-lg-2 control-label"><t:get name="form.label.heure" /></label>
 					<div class="col-lg-10">
-						<s:input path="heure" type="time" tabindex="5" value="${heure}"/>
+						<s:input path="heure" type="time" tabindex="5" required="true" value="${heure}"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -32,6 +32,7 @@
 					<label for="selectPresidence" class="col-lg-2 control-label"><t:get name="form.label.presidence" /></label>
 					<div class="col-lg-10">
 						<s:select id="presidence_" class="presidence_ form-control" name="presidence" path="">
+							<s:option value="-1" label="-------"/>
 							<s:options items="${mapPresidence}"/>
 						</s:select>
 					</div>
@@ -40,6 +41,7 @@
 					<label for="selectPredicateurs" class="col-lg-2 control-label"><t:get name="form.label.predicateur" /></label>
 					<div class="col-lg-10">
 						<s:select id="predicateur_" class="predicateur_ form-control" name="predicateur" path="">
+							<s:option value="-1" label="-------"/>
 							<s:options items="${mapPredicateurs}"/>
 						</s:select>
 					</div>
@@ -48,6 +50,7 @@
 					<label for="selectTraducteurs" class="col-lg-2 control-label"><t:get name="form.label.traducteur" /></label>
 					<div class="col-lg-10">
 						<s:select id="traducteur_" class="traducteur_ form-control" name="traducteur" path="">
+							<s:option value="-1" label="-------"/>
 							<s:options items="${mapTraducteurs}"/>
 						</s:select>
 					</div>
@@ -56,6 +59,7 @@
 					<label for="selectOffrande" class="col-lg-2 control-label"><t:get name="form.label.offrande" /></label>
 					<div class="col-lg-10">
 						<s:select id="offrande_" class="offrande_ form-control" name="offrande" path="">
+							<s:option value="-1" label="-------"/>
 							<s:options items="${mapOffrande}"/>
 						</s:select>
 					</div>

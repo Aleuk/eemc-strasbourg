@@ -115,16 +115,16 @@ public class ParamEvenementController extends LoggerController {
 			ContactVO contactOffrande = null;
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
-				if(presidence != null && !"".equals(presidence)) {
+				if(presidence != null && !"".equals(presidence) && !"-1".equals(presidence)) {
 					contactPresidence = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
 				}
-				if(predicateur != null && !"".equals(predicateur)) {
+				if(predicateur != null && !"".equals(predicateur) && !"-1".equals(predicateur)) {
 					contactPredicateur = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
 				}
-				if(traducteur != null && !"".equals(traducteur)) {
+				if(traducteur != null && !"".equals(traducteur) && !"-1".equals(traducteur)) {
 					contactTraducteur = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
 				}
-				if(offrande != null && !"".equals(offrande)) {
+				if(offrande != null && !"".equals(offrande) && !"-1".equals(offrande)) {
 					contactOffrande = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
 				}
 				
