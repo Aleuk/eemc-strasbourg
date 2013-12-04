@@ -42,6 +42,7 @@
 				    	</li>
 				    	<li><a href="/controller/projet/blog">Projets</a></li>
 				    	<li><a href="/controller/lecture/blog">&nbsp;Versets du jour&nbsp;</a></li>
+				    	<li><a href="/controller/lien/blog">&nbsp;Liens&nbsp;</a></li>
 				    	<li><a href="/controller/nousContacter">&nbsp;Nous contacter&nbsp;</a></li><!-- sujets de prières ici -->
 				    	<% if(user != null) {%>
 					    	<li><a href="/controller/contact/list">Contacts</a></li>

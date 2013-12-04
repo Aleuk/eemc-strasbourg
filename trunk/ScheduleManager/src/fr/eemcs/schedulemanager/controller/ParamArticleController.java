@@ -131,6 +131,7 @@ public class ParamArticleController extends LoggerController {
 						Key k = KeyFactory.createKey("ArticleVO", Long.parseLong(FormatHelper.getId(idArticle)));
 						ArticleVO modifArticle = pm.getObjectById(ArticleVO.class, k);
 						modifArticle.setDateCreationArticle(article.getDateCreationArticle());
+						modifArticle.setCategorie(article.getCategorie());
 						modifArticle.setDescription(article.getDescription());
 						modifArticle.setContenu(article.getContenuString());
 						modifArticle.setDateModificationArticle(new Date());
@@ -175,6 +176,7 @@ public class ParamArticleController extends LoggerController {
 		mapCategories.put(IConstants.CATEGORIE_PHOTOS, IConstants.CATEGORIE_PHOTOS);
 		mapCategories.put(IConstants.CATEGORIE_PROJETS, IConstants.CATEGORIE_PROJETS);
 		mapCategories.put(IConstants.CATEGORIE_VERSETS, IConstants.CATEGORIE_VERSETS);
+		mapCategories.put(IConstants.CATEGORIE_LIENS, IConstants.CATEGORIE_LIENS);
 		model.addAttribute("mapCategories", mapCategories);
 	}
 }

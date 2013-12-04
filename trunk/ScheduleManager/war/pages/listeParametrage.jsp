@@ -7,7 +7,7 @@
 			<% } else { %>
 				<li>
 			<% }%>
-					<a href="/controller/parametrage/programme/list"><img src="/images/getProgramme.png" height="15px"/> <t:get name="table.title.programmes" /></a>
+					<a href="/controller/parametrage/programme/list"><img src="/images/getProgramme.png" height="15px"/> <t:get name="param.title.programmes" /></a>
 				</li>
 				
 			<% if(url.contains("article")) {%>
@@ -15,15 +15,30 @@
 			<% } else { %>
 				<li>
 			<% }%>
-					<a href="/controller/parametrage/article/list"><img src="/images/fichier.png" height="15px"/> <t:get name="table.title.articles" /></a>
+					<a href="/controller/parametrage/article/list"><img src="/images/fichier.png" height="15px"/> <t:get name="param.title.articles" /></a>
 				</li>
-				
 			
 			<% if(url.contains("lieu")) {%>
 				<li class="active">
 			<% } else { %>
 				<li>
 			<% }%>
-					<a href="/controller/parametrage/lieu/list"><img src="/images/lieu.png" height="15px"/> <t:get name="table.title.lieux" /></a>
+					<a href="/controller/parametrage/lieu/list"><img src="/images/lieu.png" height="15px"/> <t:get name="param.title.lieux" /></a>
+				</li>
+				
+			<% if(url.contains("photo")) {%>
+				<li class="active">
+			<% } else { %>
+				<li>
+			<% }%>
+					<a href="/controller/parametrage/photo/list"><img src="/images/image.png" height="15px"/> <t:get name="param.title.photos" /></a>
+				</li>
+				
+			<% if(url.contains("video")) {%>
+				<li class="active">
+			<% } else { %>
+				<li>
+			<% }%>
+					<a href="/controller/parametrage/video/list"><img src="/images/video.png" height="15px"/> <t:get name="param.title.videos" /></a>
 				</li>
 		</ul>

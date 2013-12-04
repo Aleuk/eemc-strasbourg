@@ -10,6 +10,7 @@ public interface IConstants {
 	public final static String CATEGORIE_PHOTOS = "Photos";
 	public final static String CATEGORIE_PROJETS = "Projets";
 	public final static String CATEGORIE_VERSETS = "Versets";
+	public final static String CATEGORIE_LIENS = "Liens";
 	
 	public final static String CATEGORIE_SUGGESTION = "Suggestion";
 	public final static String CATEGORIE_BUG = "Bug du site internet";
