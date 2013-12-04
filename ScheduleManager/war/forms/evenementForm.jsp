@@ -23,9 +23,12 @@
 				<div class="form-group">
 					<label for="selectLieux" class="col-lg-2 control-label"><t:get name="form.label.lieu" /></label>
 					<div class="col-lg-10">
-						<s:select id="lieu_" class="lieu_ form-control" name="lieu" path="lieu">
-							<s:options items="${mapLieux}"/>
-						</s:select>
+						<s:select label="Lieu" id="lieu_"
+										headerKey="-1" headerValue="Lieu" 
+										name="lieu"
+										path="lieu"
+										items="${mapLieux}" 
+										class="lieu_ form-control"/>
 					</div>
 				</div>
 				<div class="form-group">

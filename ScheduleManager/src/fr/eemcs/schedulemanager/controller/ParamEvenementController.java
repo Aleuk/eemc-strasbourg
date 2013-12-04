@@ -103,14 +103,13 @@ public class ParamEvenementController extends LoggerController {
 	@RequestMapping("/parametrage/evenement/save")
 	public ModelAndView save(HttpServletRequest request, @Valid @ModelAttribute("eventForm") EvenementVO event, BindingResult result) {
 		if(super.isLogged()) {
+			String idLieu = (String) request.getParameter("lieu");
 			String presidence = (String) request.getParameter("presidence");
 			String predicateur = (String) request.getParameter("predicateur");
 			String traducteur = (String) request.getParameter("traducteur");
 			String offrande = (String) request.getParameter("offrande");
 			
-
-			String test = (String) request.getParameter("_responsables");
-			
+			LieuVO lieu = null;
 			ContactVO contactPresidence = null;
 			ContactVO contactPredicateur = null;
 			ContactVO contactTraducteur = null;
@@ -118,6 +117,9 @@ public class ParamEvenementController extends LoggerController {
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
 				pm.currentTransaction().begin();
+				if(idLieu != null && !"".equals(idLieu)) {
+					lieu = pm.getObjectById(LieuVO.class, KeyFactory.createKey("LieuVO", Long.parseLong(idLieu)));
+				}
 				if(presidence != null && !"".equals(presidence) && !"-1".equals(presidence)) {
 					contactPresidence = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
 				}
@@ -138,7 +140,7 @@ public class ParamEvenementController extends LoggerController {
 						
 						Key k = KeyFactory.createKey("EvenementVO", Long.parseLong(FormatHelper.getId(idEvent)));
 						EvenementVO modifEvent = pm.getObjectById(EvenementVO.class, k);
-						modifEvent.setLieu(event.getLieu());
+						modifEvent.setLieu(KeyFactory.createKey("LieuVO", Long.parseLong(idLieu)));
 						
 						modifEvent.setResponsables(event.getResponsables());
 						modifEvent.getResponsables().add(0, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
@@ -158,6 +160,7 @@ public class ParamEvenementController extends LoggerController {
 						cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(event.getHeure().substring(0, event.getHeure().indexOf(":"))));
 						cal.set(Calendar.MINUTE, Integer.parseInt(event.getHeure().substring(event.getHeure().indexOf(":") + 1)));
 						event.setDate(cal.getTime());
+						event.setLieu(KeyFactory.createKey("LieuVO", Long.parseLong(idLieu)));
 						if(event.getResponsables() == null) {
 							event.setResponsables(new ArrayList<Key>());
 						}
