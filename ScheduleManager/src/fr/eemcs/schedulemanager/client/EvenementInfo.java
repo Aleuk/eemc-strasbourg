@@ -1,11 +1,10 @@
 package fr.eemcs.schedulemanager.client;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class EvenementInfo {
+public class EvenementInfo implements Serializable {
 	
-	private Date date;
-	private String heure;
+	private String date;
 	private LieuInfo lieu;
 	private String divers;
 
@@ -15,11 +14,11 @@ public class EvenementInfo {
 	
 	// GETTERS & SETTERS
 	
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 	
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -41,14 +40,6 @@ public class EvenementInfo {
 	
 	public boolean exists() {
 		return (this.lieu != null);
-	}
-
-	public String getHeure() {
-		return heure;
-	}
-
-	public void setHeure(String heure) {
-		this.heure = heure;
 	}
 	
 }

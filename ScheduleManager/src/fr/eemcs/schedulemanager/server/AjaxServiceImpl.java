@@ -12,6 +12,7 @@ import fr.eemcs.schedulemanager.client.IAjaxService;
 import fr.eemcs.schedulemanager.client.LieuInfo;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.EvenementVO;
+import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 @SuppressWarnings("serial")
 public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxService {
@@ -36,8 +37,7 @@ public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxServic
 					l.setNom(event.getLieu().getNom());
 				}
 				EvenementInfo e = new EvenementInfo();
-				e.setDate(event.getDate());
-				e.setHeure(event.getHeure());
+				e.setDate(FormatHelper.formatDate(event.getDate(), "dd/MM/yy HH:mm"));
 				e.setLieu(l);
 				e.setDivers(event.getDivers());
 				list.add(e);

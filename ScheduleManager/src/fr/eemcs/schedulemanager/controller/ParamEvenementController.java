@@ -71,6 +71,8 @@ public class ParamEvenementController extends LoggerController {
 				model.addAttribute("listeProgrammes", mois);
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				pm.close();
 			}
 			return new ModelAndView(IResponse.PROGRAMME_LIST);
 		} else {
@@ -115,6 +117,7 @@ public class ParamEvenementController extends LoggerController {
 			ContactVO contactOffrande = null;
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
+				pm.currentTransaction().begin();
 				if(presidence != null && !"".equals(presidence) && !"-1".equals(presidence)) {
 					contactPresidence = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
 				}
@@ -132,7 +135,6 @@ public class ParamEvenementController extends LoggerController {
 					//Modification
 					String idEvent = (String) request.getParameter("id");
 					if(idEvent != null && !"".equals(idEvent)) {
-						pm.currentTransaction().begin();
 						
 						Key k = KeyFactory.createKey("EvenementVO", Long.parseLong(FormatHelper.getId(idEvent)));
 						EvenementVO modifEvent = pm.getObjectById(EvenementVO.class, k);
@@ -156,12 +158,16 @@ public class ParamEvenementController extends LoggerController {
 						cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(event.getHeure().substring(0, event.getHeure().indexOf(":"))));
 						cal.set(Calendar.MINUTE, Integer.parseInt(event.getHeure().substring(event.getHeure().indexOf(":") + 1)));
 						event.setDate(cal.getTime());
+						if(event.getResponsables() == null) {
+							event.setResponsables(new ArrayList<Key>());
+						}
 						event.getResponsables().add(0, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
 						event.getResponsables().add(1, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
 						event.getResponsables().add(2, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
 						event.getResponsables().add(3, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
 						event.setCreation(new Date(), user);
 						pm.makePersistent(event);
+						pm.currentTransaction().commit();
 					}
 				}
 			} catch (Exception e) {

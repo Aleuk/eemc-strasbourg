@@ -1,6 +1,8 @@
 package fr.eemcs.schedulemanager.client;
 
-public class LieuInfo {
+import java.io.Serializable;
+
+public class LieuInfo implements Serializable {
 	private String nom;
 
 	private String nomKH;

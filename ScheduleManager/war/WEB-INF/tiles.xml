@@ -62,9 +62,9 @@
 	</definition>
 	
 	<!-- **************** MUSIQUE **************** -->
-	<definition name="blogMusiques.def" extends="maindef">
-		<put-attribute name="title" value="title.blogMusiques" />
-		<put-attribute name="body" value="/pages/blogMusiques.jsp" />
+	<definition name="blogMusique.def" extends="maindef">
+		<put-attribute name="title" value="title.blogMusique" />
+		<put-attribute name="body" value="/pages/blogMusique.jsp" />
 	</definition>
 	
 	<!-- **************** PROJETS **************** -->
