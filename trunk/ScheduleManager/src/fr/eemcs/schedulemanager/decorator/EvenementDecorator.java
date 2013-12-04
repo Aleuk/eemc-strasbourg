@@ -29,15 +29,6 @@ public class EvenementDecorator extends TableDecorator {
 		return heure;
 	}
 	
-	public String getLieu() {
-		EvenementVO event = (EvenementVO)getCurrentRowObject();
-		String lieu = "";
-		if(event.getLieu() != null) {
-			lieu = event.getLieu().getNom();
-		}
-		return lieu;
-	}
-	
 	public String getActions() {
 		EvenementVO event = (EvenementVO)getCurrentRowObject();
 		GregorianCalendar cal = new GregorianCalendar();

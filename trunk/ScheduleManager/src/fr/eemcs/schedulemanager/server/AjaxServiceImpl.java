@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import fr.eemcs.schedulemanager.client.EvenementInfo;
@@ -12,6 +14,7 @@ import fr.eemcs.schedulemanager.client.IAjaxService;
 import fr.eemcs.schedulemanager.client.LieuInfo;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.EvenementVO;
+import fr.eemcs.schedulemanager.entity.LieuVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 @SuppressWarnings("serial")
@@ -32,9 +35,14 @@ public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxServic
 			
 			for(EvenementVO event : events) {
 				LieuInfo l = null;
-				if(event.getLieu() != null) {
-					l = new LieuInfo();
-					l.setNom(event.getLieu().getNom());
+				
+				Key k = event.getLieu();
+				if(k != null) {
+					LieuVO lieu = pm.getObjectById(LieuVO.class, k);
+					if(lieu != null) {
+						l = new LieuInfo();
+						l.setNom(lieu.getNom());
+					}
 				}
 				EvenementInfo e = new EvenementInfo();
 				e.setDate(FormatHelper.formatDate(event.getDate(), "dd/MM/yy HH:mm"));

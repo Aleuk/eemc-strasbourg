@@ -24,7 +24,7 @@ public class EvenementVO extends ObjectVO{
 	private String heure;
 	
 	@Persistent
-	private LieuVO lieu;
+	private Key lieu;
 	
 	@Persistent
 	private List<Key> responsables; //Dans l'ordre : Présidence, Prédicateur, Traducteur, Offrande, Ecole du dimanche
@@ -71,11 +71,11 @@ public class EvenementVO extends ObjectVO{
 		return null;
 	}
 
-	public LieuVO getLieu() {
+	public Key getLieu() {
 		return lieu;
 	}
 
-	public void setLieu(LieuVO lieu) {
+	public void setLieu(Key lieu) {
 		this.lieu = lieu;
 	}
 
