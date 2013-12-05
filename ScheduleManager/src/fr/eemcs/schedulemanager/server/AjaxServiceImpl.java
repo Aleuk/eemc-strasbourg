@@ -1,9 +1,13 @@
 package fr.eemcs.schedulemanager.server;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -30,8 +34,17 @@ public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxServic
 		List<EvenementVO> events = new ArrayList<EvenementVO>();
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			String query = "select from " + EvenementVO.class.getName() + " order by date desc";
-			events = (List<EvenementVO>)pm.newQuery(query).execute();
+			Query query = pm.newQuery(EvenementVO.class);
+			query.setFilter("date > today");
+			query.declareParameters("java.util.Date today");
+			query.setOrdering("date");
+			query.setRange(0, 7);
+			
+			Date today = new Date();
+			GregorianCalendar cal = new GregorianCalendar();
+			cal.setTime(today);
+			cal.add(Calendar.HOUR_OF_DAY, -3);
+			events = (List<EvenementVO>)pm.newQuery(query).execute(cal.getTime());
 			
 			for(EvenementVO event : events) {
 				LieuInfo l = null;
@@ -42,6 +55,9 @@ public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxServic
 					if(lieu != null) {
 						l = new LieuInfo();
 						l.setNom(lieu.getNom());
+						l.setAdresse(lieu.getAdresse());
+						l.setCodePostal(lieu.getCodePostal());
+						l.setVille(lieu.getVille());
 					}
 				}
 				EvenementInfo e = new EvenementInfo();

@@ -55,7 +55,7 @@
 				<div class="col-lg-9">
 					<tiles:insertAttribute name="body"/>
 				</div>
-				<div class="col-lg-3" style="border:1px solid">
+				<div class="col-lg-3 planning" style="border:1px solid #EEEEEE">
 					<tiles:insertAttribute name="planning"/>
 				</div>
 			</div>

@@ -109,29 +109,9 @@ public class ParamEvenementController extends LoggerController {
 			String traducteur = (String) request.getParameter("traducteur");
 			String offrande = (String) request.getParameter("offrande");
 			
-			LieuVO lieu = null;
-			ContactVO contactPresidence = null;
-			ContactVO contactPredicateur = null;
-			ContactVO contactTraducteur = null;
-			ContactVO contactOffrande = null;
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
 				pm.currentTransaction().begin();
-				if(idLieu != null && !"".equals(idLieu)) {
-					lieu = pm.getObjectById(LieuVO.class, KeyFactory.createKey("LieuVO", Long.parseLong(idLieu)));
-				}
-				if(presidence != null && !"".equals(presidence) && !"-1".equals(presidence)) {
-					contactPresidence = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
-				}
-				if(predicateur != null && !"".equals(predicateur) && !"-1".equals(predicateur)) {
-					contactPredicateur = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
-				}
-				if(traducteur != null && !"".equals(traducteur) && !"-1".equals(traducteur)) {
-					contactTraducteur = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
-				}
-				if(offrande != null && !"".equals(offrande) && !"-1".equals(offrande)) {
-					contactOffrande = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
-				}
 				
 				if(event != null) {
 					//Modification
@@ -164,10 +144,26 @@ public class ParamEvenementController extends LoggerController {
 						if(event.getResponsables() == null) {
 							event.setResponsables(new ArrayList<Key>());
 						}
-						event.getResponsables().add(0, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
-						event.getResponsables().add(1, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
-						event.getResponsables().add(2, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
-						event.getResponsables().add(3, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
+						if(!"-1".equals(presidence)) {
+							event.getResponsables().add(0, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
+						} else {
+							event.getResponsables().add(0, null);
+						}
+						if(!"-1".equals(predicateur)) {
+							event.getResponsables().add(1, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
+						} else {
+							event.getResponsables().add(0, null);
+						}
+						if(!"-1".equals(traducteur)) {
+							event.getResponsables().add(2, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
+						} else {
+							event.getResponsables().add(0, null);
+						}
+						if(!"-1".equals(offrande)) {
+							event.getResponsables().add(3, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
+						} else {
+							event.getResponsables().add(0, null);
+						}
 						event.setCreation(new Date(), user);
 						pm.makePersistent(event);
 						pm.currentTransaction().commit();
