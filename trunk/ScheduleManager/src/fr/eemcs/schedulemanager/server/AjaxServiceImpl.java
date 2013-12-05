@@ -26,10 +26,6 @@ public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxServic
 
 	@Override
     public List<EvenementInfo> getEventsServer(String sDate) {
-        /*String serverInfo = getServletContext().getServerInfo();
-        String userAgent = getThreadLocalRequest().getHeader("User-Agent");
-        return "Hello, " + input + "!<br><br>I am running " + serverInfo
-                + ".<br><br>It looks like you are using:<br>" + userAgent;*/
 		List<EvenementInfo> list = new ArrayList<EvenementInfo>();
 		List<EvenementVO> events = new ArrayList<EvenementVO>();
 		PersistenceManager pm = PMF.get().getPersistenceManager();
