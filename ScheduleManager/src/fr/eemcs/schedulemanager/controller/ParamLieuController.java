@@ -16,16 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import fr.eemcs.schedulemanager.DAO.interfaces.IBaseDAO;
 import fr.eemcs.schedulemanager.constants.IResponse;
+import fr.eemcs.schedulemanager.dao.MainDAO;
 import fr.eemcs.schedulemanager.database.PMF;
-import fr.eemcs.schedulemanager.entity.ContactVO;
 import fr.eemcs.schedulemanager.entity.LieuVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
@@ -38,8 +34,7 @@ public class ParamLieuController extends LoggerController{
 			List<LieuVO> lieux = new ArrayList<LieuVO>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
-				String query = "select from " + LieuVO.class.getName();
-				lieux = (List<LieuVO>)pm.newQuery(query).execute();
+				lieux = MainDAO.getLieux(pm);
 				model.addAttribute("listeLieux", lieux);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -73,9 +68,7 @@ public class ParamLieuController extends LoggerController{
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			LieuVO lieu = null;
 			try {
-				if(!"".equals(idLieu)) {
-					lieu = pm.getObjectById(LieuVO.class, Long.parseLong(idLieu));
-				}
+				lieu = MainDAO.getLieu(pm, idLieu);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -100,7 +93,7 @@ public class ParamLieuController extends LoggerController{
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			LieuVO lieu = null;
 			try {
-				lieu = pm.getObjectById(LieuVO.class, Long.parseLong(idLieu));
+				lieu = MainDAO.getLieu(pm, idLieu);
 				pm.deletePersistent(lieu);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -125,8 +118,7 @@ public class ParamLieuController extends LoggerController{
 					try {
 						pm.currentTransaction().begin();
 						
-						Key k = KeyFactory.createKey("LieuVO", Long.parseLong(FormatHelper.getId(idLieu)));
-						LieuVO modifLieu = pm.getObjectById(LieuVO.class, k);
+						LieuVO modifLieu = MainDAO.getLieu(pm, FormatHelper.getId(idLieu));
 						modifLieu.setNom(lieu.getNom());
 						modifLieu.setNomKH(lieu.getNomKH());
 						modifLieu.setAdresse(lieu.getAdresse());

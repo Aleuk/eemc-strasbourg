@@ -2,28 +2,15 @@ package fr.eemcs.schedulemanager.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Set;
 
 import javax.jdo.PersistenceManager;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -32,20 +19,17 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import fr.eemcs.schedulemanager.constants.IConstants;
 import fr.eemcs.schedulemanager.constants.IResponse;
+import fr.eemcs.schedulemanager.dao.MainDAO;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.ContactVO;
-import fr.eemcs.schedulemanager.entity.EmailVO;
 import fr.eemcs.schedulemanager.entity.EvenementVO;
 import fr.eemcs.schedulemanager.entity.LieuVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
@@ -60,8 +44,7 @@ public class ParamEvenementController extends LoggerController {
 			Set<String> mois = new HashSet<String>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
-				String query = "select date from " + EvenementVO.class.getName() + " order by date desc";
-				dates = (List<Date>)pm.newQuery(query).execute();
+				dates = MainDAO.getDatesEvenements(pm);
 				
 				for(Date d : dates) {
 					if(!mois.contains(FormatHelper.formatDate(d, "MM/yyyy"))) {
@@ -89,7 +72,6 @@ public class ParamEvenementController extends LoggerController {
 			evenement.setResponsables(new ArrayList<Key>());
 			model.addAttribute("eventForm", evenement);
 			model.addAttribute("heure", "15:00");
-			model.addAttribute("presidence", new ContactVO());
 			
 			loadProgrammeForm(model);
 			return new ModelAndView(IResponse.EVENEMENT_FORM, "event", evenement);
@@ -117,9 +99,7 @@ public class ParamEvenementController extends LoggerController {
 					//Modification
 					String idEvent = (String) request.getParameter("id");
 					if(idEvent != null && !"".equals(idEvent)) {
-						
-						Key k = KeyFactory.createKey("EvenementVO", Long.parseLong(FormatHelper.getId(idEvent)));
-						EvenementVO modifEvent = pm.getObjectById(EvenementVO.class, k);
+						EvenementVO modifEvent = MainDAO.getEvenement(pm, FormatHelper.getId(idEvent));
 						modifEvent.setLieu(KeyFactory.createKey("LieuVO", Long.parseLong(idLieu)));
 						
 						modifEvent.setResponsables(event.getResponsables());
@@ -190,8 +170,7 @@ public class ParamEvenementController extends LoggerController {
 		List<LieuVO> lieux = new ArrayList<LieuVO>();
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			String query = "select from " + LieuVO.class.getName();
-			lieux = (List<LieuVO>)pm.newQuery(query).execute();
+			lieux = MainDAO.getLieux(pm);
 			for(LieuVO lieu : lieux) {
 				mapLieux.put(lieu.getKey(), lieu.getNom());
 			}
@@ -202,98 +181,34 @@ public class ParamEvenementController extends LoggerController {
 		
 		//Liste pour la présidence, prédicateur, traducteur, offrande
 		Map<String,String> mapPresidence = new LinkedHashMap<String, String>();
-		for(ContactVO contact : getPresidence()) {
+		for(ContactVO contact : MainDAO.getPresidence(pm)) {
 			mapPresidence.put(contact.getKey(), contact.getPrenom());
 		}
 		model.addAttribute("mapPresidence", mapPresidence);
 		
 		Map<String,String> mapPredicateurs = new LinkedHashMap<String, String>();
-		for(ContactVO contact : getPredicateurs()) {
+		for(ContactVO contact : MainDAO.getPredicateurs(pm)) {
 			mapPredicateurs.put(contact.getKey(), contact.getPrenom());
 		}
 		model.addAttribute("mapPredicateurs", mapPredicateurs);
 		
 		Map<String,String> mapTraducteurs = new LinkedHashMap<String, String>();
-		for(ContactVO contact : getTraducteurs()) {
+		for(ContactVO contact : MainDAO.getTraducteurs(pm)) {
 			mapTraducteurs.put(contact.getKey(), contact.getPrenom());
 		}
 		model.addAttribute("mapTraducteurs", mapTraducteurs);
 		
 		Map<String,String> mapOffrande = new LinkedHashMap<String, String>();
-		for(ContactVO contact : getOffrande()) {
+		for(ContactVO contact : MainDAO.getOffrande(pm)) {
 			mapOffrande.put(contact.getKey(), contact.getPrenom());
 		}
 		model.addAttribute("mapOffrande", mapOffrande);
 		
 		Map<String,String> mapResponsables = new LinkedHashMap<String, String>();
-		for(ContactVO contact : getResponsables()) {
+		for(ContactVO contact : MainDAO.getResponsables(pm)) {
 			mapResponsables.put(contact.getKey(), contact.getPrenom());
 		}
 		model.addAttribute("mapResponsables", mapResponsables);
 	}
 	
-	public List<ContactVO> getPresidence() {
-		//List<ContactVO> contacts = baseDAO.getContacts();
-		List<ContactVO> contacts = new ArrayList<ContactVO>();
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			String query = "select from " + ContactVO.class.getName() + " where conducteurLouange != null";
-			contacts = (List<ContactVO>)pm.newQuery(query).execute();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return contacts;
-	}
-	
-	public List<ContactVO> getPredicateurs() {
-		//List<ContactVO> contacts = baseDAO.getContacts();
-		List<ContactVO> contacts = new ArrayList<ContactVO>();
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			String query = "select from " + ContactVO.class.getName() + " where predicateur != null";
-			contacts = (List<ContactVO>)pm.newQuery(query).execute();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return contacts;
-	}
-	
-	public List<ContactVO> getTraducteurs() {
-		//List<ContactVO> contacts = baseDAO.getContacts();
-		List<ContactVO> contacts = new ArrayList<ContactVO>();
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			String query = "select from " + ContactVO.class.getName() + " where traducteur != null";
-			contacts = (List<ContactVO>)pm.newQuery(query).execute();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return contacts;
-	}
-	
-	public List<ContactVO> getOffrande() {
-		//List<ContactVO> contacts = baseDAO.getContacts();
-		List<ContactVO> contacts = new ArrayList<ContactVO>();
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			String query = "select from " + ContactVO.class.getName() + " where offrande != null";
-			contacts = (List<ContactVO>)pm.newQuery(query).execute();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return contacts;
-	}
-	
-	public List<ContactVO> getResponsables() {
-		//List<ContactVO> contacts = baseDAO.getContacts();
-		List<ContactVO> contacts = new ArrayList<ContactVO>();
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			String query = "select from " + ContactVO.class.getName() + " where responsable != null";
-			contacts = (List<ContactVO>)pm.newQuery(query).execute();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return contacts;
-	}
 }

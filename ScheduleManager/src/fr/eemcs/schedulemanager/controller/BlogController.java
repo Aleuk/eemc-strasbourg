@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.eemcs.schedulemanager.constants.IConstants;
 import fr.eemcs.schedulemanager.constants.IResponse;
+import fr.eemcs.schedulemanager.dao.MainDAO;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.ArticleVO;
 
@@ -28,41 +29,35 @@ public class BlogController extends LoggerController{
 			String uri = request.getRequestURI();
 			if(uri != null) {
 				if(uri.contains("accueil")) {
-					String query = getBlogSqlRequest(IConstants.CATEGORIE_ACCUEIL);
-					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_ACCUEIL);
 					response = IResponse.HOME;
 				} else if(uri.contains("historique")) {
-					String query = getBlogSqlRequest(IConstants.CATEGORIE_HISTORIQUE);
-					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_HISTORIQUE);
 					response = IResponse.BLOG_HISTORIQUE;
 				} else if(uri.contains("activite")) {
-					String query = getBlogSqlRequest(IConstants.CATEGORIE_ACTIVITES);
-					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_ACTIVITES);
 					response = IResponse.BLOG_ACTIVITES;
-				} else if(uri.contains("massage")) {
-					String query = getBlogSqlRequest(IConstants.CATEGORIE_MESSAGES);
-					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+				} else if(uri.contains("message")) {
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_MESSAGES);
 					response = IResponse.BLOG_MESSAGES;
 				} else if(uri.contains("photo")) {
-					String query = getBlogSqlRequest(IConstants.CATEGORIE_PHOTOS);
-					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_PHOTOS);
 					response = IResponse.BLOG_PHOTOS;
 				} else if(uri.contains("video")) {
-					String query = getBlogSqlRequest(IConstants.CATEGORIE_VIDEOS);
-					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_VIDEOS);
 					response = IResponse.BLOG_VIDEOS;
 				} else if(uri.contains("musique")) {
-					String query = getBlogSqlRequest(IConstants.CATEGORIE_MUSIQUE);
-					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_MUSIQUE);
 					response = IResponse.BLOG_MUSIQUE;
 				} else if(uri.contains("projet")) {
-					String query = getBlogSqlRequest(IConstants.CATEGORIE_PROJETS);
-					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_PROJETS);
 					response = IResponse.BLOG_PROJETS;
 				} else if(uri.contains("verset")) {
-					String query = getBlogSqlRequest(IConstants.CATEGORIE_VERSETS);
-					articles = (List<ArticleVO>)pm.newQuery(query).execute();
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_VERSETS);
 					response = IResponse.BLOG_VERSETS;
+				}  else if(uri.contains("lien")) {
+					articles = MainDAO.getBlog(pm, IConstants.CATEGORIE_LIENS);
+					response = IResponse.BLOG_LIENS;
 				}
 
 				model.addAttribute("listeArticles", articles);

@@ -31,4 +31,5 @@ public interface IResponse {
 	public final static String BLOG_MUSIQUE = "blogMusique.def";
 	public final static String BLOG_PROJETS = "blogProjets.def";
 	public final static String BLOG_VERSETS = "blogVersets.def";
+	public final static String BLOG_LIENS = "blogLiens.def";
 }
