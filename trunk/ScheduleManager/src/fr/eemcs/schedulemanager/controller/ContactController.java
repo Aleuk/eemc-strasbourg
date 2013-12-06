@@ -18,12 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import fr.eemcs.schedulemanager.constants.IResponse;
+import fr.eemcs.schedulemanager.dao.MainDAO;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.ContactVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
@@ -34,15 +33,13 @@ public class ContactController extends LoggerController{
 	@RequestMapping("/contact/list")
 	public ModelAndView list(ModelMap model, HttpServletRequest request) {
 		if(super.isLogged()) {
-			//List<ContactVO> contacts = baseDAO.getContacts();
 			List<ContactVO> contacts = new ArrayList<ContactVO>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
-				String query = "select from " + ContactVO.class.getName();
-				contacts = (List<ContactVO>)pm.newQuery(query).execute();
+				contacts = MainDAO.getContacts(pm);
 				model.addAttribute("listeContacts", contacts);
 			} catch (Exception e) {
-				System.out.println(e.getMessage());
+				e.printStackTrace();
 			}
 			return new ModelAndView(IResponse.CONTACT_LIST);
 		} else {
@@ -75,9 +72,7 @@ public class ContactController extends LoggerController{
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			ContactVO contact = null;
 			try {
-				if(!"".equals(idContact)) {
-					contact = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(idContact)));
-				}
+				contact = MainDAO.getContact(pm, idContact);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -102,7 +97,7 @@ public class ContactController extends LoggerController{
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			ContactVO contact = null;
 			try {
-				contact = pm.getObjectById(ContactVO.class, KeyFactory.createKey("ContactVO", Long.parseLong(idContact)));
+				contact = MainDAO.getContact(pm, idContact);
 				pm.deletePersistent(contact);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -127,8 +122,7 @@ public class ContactController extends LoggerController{
 					try {
 						pm.currentTransaction().begin();
 						
-						Key k = KeyFactory.createKey("ContactVO", Long.parseLong(FormatHelper.getId(idContact)));
-						ContactVO modifContact = pm.getObjectById(ContactVO.class, k);
+						ContactVO modifContact = MainDAO.getContact(pm, FormatHelper.getId(idContact));
 						modifContact.setCivilite(contact.getCivilite());
 						modifContact.setNom(contact.getNom());
 						modifContact.setPrenom(contact.getPrenom());

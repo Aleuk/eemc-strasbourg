@@ -18,13 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import fr.eemcs.schedulemanager.constants.IConstants;
 import fr.eemcs.schedulemanager.constants.IResponse;
+import fr.eemcs.schedulemanager.dao.MainDAO;
 import fr.eemcs.schedulemanager.database.PMF;
 import fr.eemcs.schedulemanager.entity.ArticleVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
@@ -38,8 +37,7 @@ public class ParamArticleController extends LoggerController {
 			List<ArticleVO> articles = new ArrayList<ArticleVO>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
-				String query = "select from " + ArticleVO.class.getName();
-				articles = (List<ArticleVO>)pm.newQuery(query).execute();
+				articles = MainDAO.getArticles(pm);
 				model.addAttribute("listeArticles", articles);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -76,9 +74,7 @@ public class ParamArticleController extends LoggerController {
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			ArticleVO article = null;
 			try {
-				if(!"".equals(idArticle)) {
-					article = pm.getObjectById(ArticleVO.class, Long.parseLong(idArticle));
-				}
+				article = MainDAO.getArticle(pm, idArticle);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -103,7 +99,7 @@ public class ParamArticleController extends LoggerController {
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			ArticleVO article = null;
 			try {
-				article = pm.getObjectById(ArticleVO.class, Long.parseLong(idArticle));
+				article = MainDAO.getArticle(pm, idArticle);
 				pm.deletePersistent(article);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -128,8 +124,7 @@ public class ParamArticleController extends LoggerController {
 					try {
 						pm.currentTransaction().begin();
 						
-						Key k = KeyFactory.createKey("ArticleVO", Long.parseLong(FormatHelper.getId(idArticle)));
-						ArticleVO modifArticle = pm.getObjectById(ArticleVO.class, k);
+						ArticleVO modifArticle = MainDAO.getArticle(pm, FormatHelper.getId(idArticle));
 						modifArticle.setDateCreationArticle(article.getDateCreationArticle());
 						modifArticle.setCategorie(article.getCategorie());
 						modifArticle.setDescription(article.getDescription());
