@@ -2,6 +2,7 @@ package fr.eemcs.schedulemanager.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
@@ -9,9 +10,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.appengine.api.datastore.Key;
@@ -41,16 +45,18 @@ public class ParamEvenementController extends LoggerController {
 	public ModelAndView programmeList(ModelMap model, HttpServletRequest request) {
 		if(super.isLogged()) {
 			List<Date> dates = new ArrayList<Date>();
-			Set<String> mois = new HashSet<String>();
+			List<String> mois = new ArrayList<String>();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try {
 				dates = MainDAO.getDatesEvenements(pm);
 				
 				for(Date d : dates) {
-					if(!mois.contains(FormatHelper.formatDate(d, "MM/yyyy"))) {
-						mois.add(FormatHelper.formatDate(d, "MM/yyyy"));
+					if(!mois.contains(FormatHelper.formatDate(d, "yyyy/MM"))) {
+						mois.add(FormatHelper.formatDate(d, "yyyy/MM"));
 					}
 				}
+				Collections.sort(mois);
+				Collections.reverse(mois);
 				model.addAttribute("listeProgrammes", mois);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -64,6 +70,28 @@ public class ParamEvenementController extends LoggerController {
 			return new ModelAndView("redirect:" + getUrl());
 		}
 	}
+	
+	@RequestMapping("/parametrage/programme/get")
+	public ModelAndView getProgramme(ModelMap model, @RequestParam(value="moisProgramme", required=true) String moisProgramme, HttpServletRequest request, HttpServletResponse response) {
+		if(super.isLogged()) {
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			List<EvenementVO> list = new ArrayList<EvenementVO>();
+			try {
+				list = MainDAO.getEvenementsByMonthYear(pm, moisProgramme);
+				model.addAttribute("listeEvenements", list);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pm.close();
+			}
+			return new ModelAndView(IResponse.PROGRAMME_DETAILS);
+		} else {
+			UserService userService = UserServiceFactory.getUserService();
+			setUrl(userService.createLoginURL(request.getRequestURI()));
+			return new ModelAndView("redirect:" + getUrl());
+		}
+	}
+	
 	
 	@RequestMapping("/parametrage/evenement/add")
 	public ModelAndView addEvenement(ModelMap model, HttpServletRequest request) {

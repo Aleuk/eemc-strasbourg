@@ -1,10 +1,13 @@
 package fr.eemcs.schedulemanager.dao;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 
 import com.google.appengine.api.datastore.KeyFactory;
 
@@ -102,8 +105,38 @@ public final class MainDAO {
 	public static List<Date> getDatesEvenements(PersistenceManager pm) {
 		List<Date> result = new ArrayList<Date>();
 		try {
-			String query = "select date from " + EvenementVO.class.getName() + " order by date desc";
+			String query = "select date from " + EvenementVO.class.getName();
 			result = (List<Date>)pm.newQuery(query).execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<EvenementVO> getEvenementsByMonthYear(PersistenceManager pm, String sDate) {
+		List<EvenementVO> result = new ArrayList<EvenementVO>();
+		try {
+			Query query = pm.newQuery(EvenementVO.class);
+			query.setFilter("date > beginMonth && date < endMonth");
+			query.declareParameters("java.util.Date beginMonth, java.util.Date endMonth");
+			query.setOrdering("date");
+			
+			int mois = Integer.parseInt(sDate.substring(sDate.indexOf("/")+1)) - 1; //Janvier=0, Février=1, etc.
+			int annee = Integer.parseInt(sDate.substring(0, sDate.indexOf("/")));
+			GregorianCalendar calDebut = new GregorianCalendar();
+			calDebut.set(Calendar.YEAR, annee);
+			calDebut.set(Calendar.MONTH, mois);
+			calDebut.add(Calendar.MONTH, -1);
+			calDebut.set(Calendar.DAY_OF_MONTH, calDebut.getActualMaximum(Calendar.DAY_OF_MONTH));
+			
+			GregorianCalendar calFin = new GregorianCalendar();
+			calFin.set(Calendar.YEAR, annee);
+			calFin.set(Calendar.MONTH, mois);
+			calFin.add(Calendar.MONTH, 1);
+			calFin.set(Calendar.DAY_OF_MONTH, 1);
+			
+			result = (List<EvenementVO>)pm.newQuery(query).execute(calDebut.getTime(), calFin.getTime());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

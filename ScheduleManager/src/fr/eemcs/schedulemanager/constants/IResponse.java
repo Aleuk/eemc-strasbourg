@@ -15,6 +15,7 @@ public interface IResponse {
 	public final static String PARAMETRAGE_LIST = "listeParametrage.def";
 	
 	public final static String PROGRAMME_LIST = "listeProgrammes.def";
+	public final static String PROGRAMME_DETAILS = "detailsProgramme.def";
 	public final static String EVENEMENT_FORM = "evenementForm.def";
 	
 	public final static String LIEU_LIST = "listeLieux.def";

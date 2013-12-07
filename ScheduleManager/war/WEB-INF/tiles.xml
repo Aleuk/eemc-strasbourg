@@ -98,6 +98,11 @@
 		<put-attribute name="body" value="/pages/listeProgrammes.jsp" />
 	</definition>
 	
+	<definition name="detailsProgramme.def" extends="maindef">
+		<put-attribute name="title" value="title.detailsProgramme" />
+		<put-attribute name="body" value="/pages/detailsProgramme.jsp" />
+	</definition>
+	
 	<definition name="evenementForm.def" extends="maindef">
 		<put-attribute name="title" value="title.evenementForm" />
 		<put-attribute name="body" value="/forms/evenementForm.jsp" />
