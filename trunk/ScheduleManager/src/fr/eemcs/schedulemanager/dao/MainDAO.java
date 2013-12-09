@@ -129,12 +129,16 @@ public final class MainDAO {
 			calDebut.set(Calendar.MONTH, mois);
 			calDebut.add(Calendar.MONTH, -1);
 			calDebut.set(Calendar.DAY_OF_MONTH, calDebut.getActualMaximum(Calendar.DAY_OF_MONTH));
+			calDebut.set(Calendar.HOUR_OF_DAY, 23);
+			calDebut.set(Calendar.MINUTE, 59);
 			
 			GregorianCalendar calFin = new GregorianCalendar();
 			calFin.set(Calendar.YEAR, annee);
 			calFin.set(Calendar.MONTH, mois);
 			calFin.add(Calendar.MONTH, 1);
 			calFin.set(Calendar.DAY_OF_MONTH, 1);
+			calFin.set(Calendar.HOUR_OF_DAY, 0);
+			calFin.set(Calendar.MINUTE, 0);
 			
 			result = (List<EvenementVO>)pm.newQuery(query).execute(calDebut.getTime(), calFin.getTime());
 		} catch (Exception e) {

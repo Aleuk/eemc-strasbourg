@@ -78,7 +78,9 @@ public class ParamEvenementController extends LoggerController {
 			List<EvenementVO> list = new ArrayList<EvenementVO>();
 			try {
 				list = MainDAO.getEvenementsByMonthYear(pm, moisProgramme);
+				list.size(); // pour corriger "Object Manager has been closed"
 				model.addAttribute("listeEvenements", list);
+				model.addAttribute("titleProgramme", FormatHelper.getMois(Integer.parseInt(moisProgramme.substring(moisProgramme.indexOf("/") + 1)) - 1) + " " + moisProgramme.substring(0, 4));
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
