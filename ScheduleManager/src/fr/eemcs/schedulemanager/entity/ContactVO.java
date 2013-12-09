@@ -83,6 +83,10 @@ public class ContactVO extends ObjectVO {
 		return nom + " " + prenom;
 	}
 	
+	public String getPrenomNom() {
+		return prenom + " " + nom;
+	}
+	
 	// GETTERS & SETTERS
 	public String getNom() {
 		return nom;
