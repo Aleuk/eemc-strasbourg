@@ -95,6 +95,7 @@ public class ParamLieuController extends LoggerController{
 			try {
 				lieu = MainDAO.getLieu(pm, idLieu);
 				pm.deletePersistent(lieu);
+				pm.refreshAll();
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -127,6 +128,7 @@ public class ParamLieuController extends LoggerController{
 						modifLieu.setModification(new Date(), user);
 						
 						pm.currentTransaction().commit();
+						pm.refreshAll();
 					} catch (Exception e) {
 						e.printStackTrace();
 						pm.currentTransaction().rollback();
@@ -137,6 +139,7 @@ public class ParamLieuController extends LoggerController{
 					try {
 						lieu.setCreation(new Date(), user);
 						pm.makePersistent(lieu);
+						pm.refreshAll();
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {

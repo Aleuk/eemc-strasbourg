@@ -21,7 +21,8 @@ public final class MainDAO {
 	public static List<ContactVO> getContacts(PersistenceManager pm) {
 		List<ContactVO> result = new ArrayList<ContactVO>();
 		try {
-			String query = "select from " + ContactVO.class.getName();
+			Query query = pm.newQuery(ContactVO.class);
+			//String query = "select from " + ContactVO.class.getName();
 			result = (List<ContactVO>)pm.newQuery(query).execute();
 		} catch (Exception e) {
 			e.printStackTrace();

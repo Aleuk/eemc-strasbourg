@@ -143,6 +143,7 @@ public class ParamEvenementController extends LoggerController {
 						modifEvent.setModification(new Date(), user);
 						
 						pm.currentTransaction().commit();
+						pm.refreshAll();
 					} else {
 						//Création
 						GregorianCalendar cal = new GregorianCalendar();
@@ -177,6 +178,7 @@ public class ParamEvenementController extends LoggerController {
 						event.setCreation(new Date(), user);
 						pm.makePersistent(event);
 						pm.currentTransaction().commit();
+						pm.refreshAll();
 					}
 				}
 			} catch (Exception e) {
