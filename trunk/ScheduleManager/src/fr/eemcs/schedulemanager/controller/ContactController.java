@@ -99,6 +99,7 @@ public class ContactController extends LoggerController{
 			try {
 				contact = MainDAO.getContact(pm, idContact);
 				pm.deletePersistent(contact);
+				pm.refreshAll();
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -142,6 +143,7 @@ public class ContactController extends LoggerController{
 						modifContact.setModification(new Date(), user);
 						
 						pm.currentTransaction().commit();
+						pm.refreshAll();
 					} catch (Exception e) {
 						e.printStackTrace();
 						pm.currentTransaction().rollback();
@@ -152,6 +154,7 @@ public class ContactController extends LoggerController{
 					try {
 						contact.setCreation(new Date(), user);
 						pm.makePersistent(contact);
+						pm.refreshAll();
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {

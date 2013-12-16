@@ -19,8 +19,6 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import fr.eemcs.schedulemanager.database.PMF;
-import fr.eemcs.schedulemanager.entity.ContactVO;
-import fr.eemcs.schedulemanager.entity.EvenementVO;
 
 public class LoggerController {
 	User user = null;

@@ -101,6 +101,7 @@ public class ParamArticleController extends LoggerController {
 			try {
 				article = MainDAO.getArticle(pm, idArticle);
 				pm.deletePersistent(article);
+				pm.refreshAll();
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -133,6 +134,7 @@ public class ParamArticleController extends LoggerController {
 						modifArticle.setModification(new Date(), user);
 						
 						pm.currentTransaction().commit();
+						pm.refreshAll();
 					} catch (Exception e) {
 						e.printStackTrace();
 						pm.currentTransaction().rollback();
@@ -145,6 +147,7 @@ public class ParamArticleController extends LoggerController {
 						article.setAuteur(user.getEmail());
 						article.setCreation(new Date(), user);
 						pm.makePersistent(article);
+						pm.refreshAll();
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
