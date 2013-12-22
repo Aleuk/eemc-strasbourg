@@ -5,12 +5,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 
 import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServletRequest;
@@ -94,6 +91,29 @@ public class ParamEvenementController extends LoggerController {
 		}
 	}
 	
+	@RequestMapping("/parametrage/programme/edit")
+	public ModelAndView editProgramme(ModelMap model, @RequestParam(value="moisProgramme", required=true) String moisProgramme, HttpServletRequest request, HttpServletResponse response) {
+		if(super.isLogged()) {
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			List<EvenementVO> list = new ArrayList<EvenementVO>();
+			try {
+				list = MainDAO.getEvenementsByMonthYear(pm, moisProgramme);
+				list.size(); // pour corriger "Object Manager has been closed"
+				model.addAttribute("listeEvenements", list);
+				model.addAttribute("titleProgramme", FormatHelper.getMois(Integer.parseInt(moisProgramme.substring(moisProgramme.indexOf("/") + 1)) - 1) + " " + moisProgramme.substring(0, 4));
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pm.close();
+			}
+			return new ModelAndView(IResponse.PROGRAMME_FORM);
+		} else {
+			UserService userService = UserServiceFactory.getUserService();
+			setUrl(userService.createLoginURL(request.getRequestURI()));
+			return new ModelAndView("redirect:" + getUrl());
+		}
+	}
+	
 	
 	@RequestMapping("/parametrage/evenement/add")
 	public ModelAndView addEvenement(ModelMap model, HttpServletRequest request) {
@@ -103,12 +123,70 @@ public class ParamEvenementController extends LoggerController {
 			model.addAttribute("eventForm", evenement);
 			model.addAttribute("heure", "15:00");
 			
-			loadProgrammeForm(model);
+			loadEvenementForm(model);
 			return new ModelAndView(IResponse.EVENEMENT_FORM, "event", evenement);
 		} else {
 			UserService userService = UserServiceFactory.getUserService();
 			setUrl(userService.createLoginURL(request.getRequestURI()));
 			return new ModelAndView("redirect:" + getUrl());
+		}
+	}
+	
+	@RequestMapping("/parametrage/evenement/edit")
+	public ModelAndView modif(ModelMap model, @RequestParam(value="idEvent", required=true) String idEvent, HttpServletRequest request, HttpServletResponse response) {
+		if(super.isLogged()) {
+			loadEvenementForm(model);
+			
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			EvenementVO event = null;
+			try {
+				event = MainDAO.getEvenement(pm, idEvent);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pm.close();
+			}
+			if(event == null) {
+				return new ModelAndView(IResponse.ERROR);
+			} else {
+				model.addAttribute("eventForm", event);
+			}
+			return new ModelAndView(IResponse.EVENEMENT_FORM, "event", event);
+		} else {
+			UserService userService = UserServiceFactory.getUserService();
+			setUrl(userService.createLoginURL(request.getRequestURI()));
+			return new ModelAndView("redirect:" + getUrl());
+		}
+	}
+	
+	@RequestMapping("/parametrage/evenement/delete")
+	public ModelAndView delete(ModelMap model, @RequestParam(value="idEvent", required=true) String idEvent, HttpServletRequest request) {
+		if(super.isLogged()) {
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			EvenementVO event = null;
+			String dateProgramme = null;
+			int nbEvents = 0;
+			try {
+				event = MainDAO.getEvenement(pm, idEvent);
+				dateProgramme = FormatHelper.formatDate(event.getDate(), "yyyy/MM");
+				pm.deletePersistent(event);
+				pm.refreshAll();
+				
+				nbEvents = MainDAO.getEvenementsByMonthYear(pm, dateProgramme).size();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pm.close();
+			}
+			if(nbEvents > 0) {
+				return new ModelAndView("redirect:/controller/parametrage/programme/edit?moisProgramme=" + dateProgramme);
+			} else {
+				return new ModelAndView("redirect:/controller/parametrage/programme/list");
+			}
+		} else {
+			UserService userService = UserServiceFactory.getUserService();
+			setUrl(userService.createLoginURL(request.getRequestURI()));
+			return new ModelAndView(IResponse.LOGIN);
 		}
 	}
 	
@@ -132,11 +210,47 @@ public class ParamEvenementController extends LoggerController {
 						EvenementVO modifEvent = MainDAO.getEvenement(pm, FormatHelper.getId(idEvent));
 						modifEvent.setLieu(KeyFactory.createKey("LieuVO", Long.parseLong(idLieu)));
 						
-						modifEvent.setResponsables(event.getResponsables());
-						modifEvent.getResponsables().add(0, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
-						modifEvent.getResponsables().add(1, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
-						modifEvent.getResponsables().add(2, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
-						modifEvent.getResponsables().add(3, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
+						if(event.getResponsables() != null) {
+							modifEvent.setResponsables(event.getResponsables());
+						} else {
+							modifEvent.setResponsables(new ArrayList<Key>());
+						}
+						if(!"-1".equals(presidence)) {
+							modifEvent.getResponsables().add(0, KeyFactory.createKey("ContactVO", Long.parseLong(presidence)));
+						} else {
+							if(modifEvent.getResponsables().size() > 0) {
+								modifEvent.getResponsables().set(0, null);
+							} else {
+								modifEvent.getResponsables().add(0, null);
+							}
+						}
+						if(!"-1".equals(predicateur)) {
+							modifEvent.getResponsables().add(1, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
+						} else {
+							if(modifEvent.getResponsables().size() > 1) {
+								modifEvent.getResponsables().set(1, null);
+							} else {
+								modifEvent.getResponsables().add(1, null);
+							}
+						}
+						if(!"-1".equals(traducteur)) {
+							modifEvent.getResponsables().add(2, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
+						} else {
+							if(modifEvent.getResponsables().size() > 2) {
+								modifEvent.getResponsables().set(2, null);
+							} else {
+								modifEvent.getResponsables().add(2, null);
+							}
+						}
+						if(!"-1".equals(offrande)) {
+							modifEvent.getResponsables().add(3, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
+						} else {
+							if(modifEvent.getResponsables().size() > 3) {
+								modifEvent.getResponsables().set(3, null);
+							} else {
+								modifEvent.getResponsables().add(3, null);
+							}
+						}
 						
 						modifEvent.setDivers(event.getDivers());
 						
@@ -196,7 +310,7 @@ public class ParamEvenementController extends LoggerController {
 		}
 	}
 	
-	public void loadProgrammeForm(ModelMap model) {
+	public void loadEvenementForm(ModelMap model) {
 		//Liste des lieux
 		Map<String,String> mapLieux = new LinkedHashMap<String, String>();
 		List<LieuVO> lieux = new ArrayList<LieuVO>();

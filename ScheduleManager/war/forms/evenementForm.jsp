@@ -8,6 +8,7 @@
 			<s:form modelAttribute="eventForm" action="/controller/parametrage/evenement/save" validate="true" theme="xhtml" class="form-horizontal">
 			<fieldset>
 				<legend><t:get name="form.title.nouvel.evenement" /></legend>
+				<s:hidden path="id" id="idEvent" />
 				<div class="form-group">
 					<label for="inputDate" class="col-lg-2 control-label"><t:get name="form.label.date" /></label>
 					<div class="col-lg-10">
