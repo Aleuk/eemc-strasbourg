@@ -16,7 +16,7 @@
 			window.location.href = "/controller/parametrage/programme/get?moisProgramme=" + id;
 		}
 		function editProgramme(id) {
-			window.location.href = "/controller/parametrage/programme/modif?moisProgramme=" + id;
+			window.location.href = "/controller/parametrage/programme/edit?moisProgramme=" + id;
 		}
 		function deleteProgramme(id) {
 			window.location.href = "/controller/parametrage/programme/delete?moisProgramme=" + id;

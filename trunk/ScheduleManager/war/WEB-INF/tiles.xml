@@ -79,6 +79,12 @@
 		<put-attribute name="body" value="/pages/blogVersets.jsp" />
 	</definition>
 	
+	<!-- **************** VERSETS **************** -->
+	<definition name="blogLiens.def" extends="maindef">
+		<put-attribute name="title" value="title.blogLiens" />
+		<put-attribute name="body" value="/pages/blogLiens.jsp" />
+	</definition>
+	
 	<!-- **************** CONTACTS **************** -->
 	<definition name="listeContacts.def" extends="maindef">
 		<put-attribute name="title" value="title.listeContacts" />
@@ -101,6 +107,11 @@
 	<definition name="detailsProgramme.def" extends="maindef">
 		<put-attribute name="title" value="title.detailsProgramme" />
 		<put-attribute name="body" value="/pages/detailsProgramme.jsp" />
+	</definition>
+	
+	<definition name="programmeForm.def" extends="maindef">
+		<put-attribute name="title" value="title.programmeForm" />
+		<put-attribute name="body" value="/forms/programmeForm.jsp" />
 	</definition>
 	
 	<definition name="evenementForm.def" extends="maindef">

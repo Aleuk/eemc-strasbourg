@@ -15,7 +15,7 @@ import fr.eemcs.schedulemanager.entity.LieuVO;
 import fr.eemcs.schedulemanager.helper.FormatHelper;
 
 public class ProgrammeDecorator extends TableDecorator {
-	/************* DETAILS_PROGRAMME ************/
+	/************* DETAILS_PROGRAMME et PROGRAMME_FORM ************/
 	public String getDate() {
 		EvenementVO e = (EvenementVO)getCurrentRowObject();
 		
@@ -140,6 +140,17 @@ public class ProgrammeDecorator extends TableDecorator {
 			ex.printStackTrace();
 		}
 		return retour;
+	}
+
+	
+	public String getActionsProgrammeForm() {
+		EvenementVO e = (EvenementVO)getCurrentRowObject();
+		
+		String actions = "";
+		//actions += "<a href=\"javascript:editEvent('" + e.getKey() + "');\"><img height=\"25px\" src=\"/images/modifierProgramme.png\" /></a>&nbsp;&nbsp;";
+		actions += "<a href=\"javascript:deleteEvent('" + e.getKey() + "', '" + FormatHelper.formatDate(e.getDate(), "dd/MM/yyyy").toUpperCase() + "');\"><img height=\"25px\" src=\"/images/supprimerProgramme.png\" /></a>";
+		
+		return FormatHelper.addPaddingToTD(actions);
 	}
 	
 	/************* PROGRAMME_LIST ************/
