@@ -1,6 +1,5 @@
 <%@page import="fr.eemcs.schedulemanager.entity.ImageVO"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.Map"%>
 <%@page import="com.google.appengine.api.images.ServingUrlOptions"%>
 <%@page import="com.google.appengine.api.images.ImagesServiceFactory"%>
 <%@page import="com.google.appengine.api.images.ImagesService"%>
@@ -15,22 +14,21 @@
 	    ImagesService imagesService = ImagesServiceFactory.getImagesService(); // Récupération du service d'images
 
 		// Récupération de l'URL de l'image
-		Map<String, List<ImageVO>> listePhotos = (Map<String, List<ImageVO>>)request.getAttribute("listePhotos");
+		List<ImageVO> listePhotos = (List<ImageVO>)request.getAttribute("listePhotos");
 	%>
 		
 		<table class="table table-striped table-bordered table-hover">
 		<tbody>
 			<tr>
 				<% int i = 0;
-				for(String key : listePhotos.keySet()) {
-					ImageVO img = listePhotos.get(key).get(0);
+				for(ImageVO img : listePhotos) {
 					String url = imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(img.getImage())) + "=s120";
 					if(url.contains("0.0.0.0")) {
 						url = url.substring(19);
 					}
 					%>
 					
-						<td><a href="javascript:ouvrirDossier('<%= img.getKey()%>')"><img src="<%= url%>" /><br /><%= img.getDossier()%></a></td>
+						<td><img src="<%= url%>" /></td>
 				<%
 					i++;
 					if(i > 3) {
@@ -43,7 +41,5 @@
 		</tbody>
 		</table>
 	<script>
-		function ouvrirDossier(id) {
-			window.location.href = "/controller/photo/openFolder?idImage=" + id;
-		}
+		
 	</script>

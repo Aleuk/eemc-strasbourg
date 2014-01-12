@@ -21,9 +21,13 @@ public interface IResponse {
 	
 	public final static String LIEU_LIST = "listeLieux.def";
 	public final static String LIEU_FORM = "lieuForm.def";
-	
+
 	public final static String ARTICLE_LIST = "listeArticles.def";
 	public final static String ARTICLE_FORM = "articleForm.def";
+
+	public final static String PHOTO_LIST = "listePhotos.def";
+	public final static String PHOTO_FORM = "photoForm.def";
+	public final static String DETAILS_DOSSIER_PHOTOS = "detailsDossierPhotos.def";
 
 	public final static String BLOG_HISTORIQUE = "blogHistorique.def";
 	public final static String BLOG_ACTIVITES = "blogActivites.def";

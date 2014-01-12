@@ -54,6 +54,10 @@
 		<put-attribute name="title" value="title.blogPhotos" />
 		<put-attribute name="body" value="/pages/blogPhotos.jsp" />
 	</definition>
+	<definition name="detailsDossierPhotos.def" extends="maindef">
+		<put-attribute name="title" value="title.blogPhotos" />
+		<put-attribute name="body" value="/pages/detailsDossierPhotos.jsp" />
+	</definition>
 	
 	<!-- **************** VIDEOS **************** -->
 	<definition name="blogVideos.def" extends="maindef">
@@ -156,6 +160,17 @@
 	<definition name="listePrieres.def" extends="maindef">
 		<put-attribute name="title" value="title.listePrieres" />
 		<put-attribute name="body" value="/pages/listePrieres.jsp" />
+	</definition>
+	
+	<definition name="listePhotos.def" extends="maindef">
+		<put-attribute name="title" value="title.listePhotos" />
+		<put-attribute name="path" value="/paths/pathPhotos.jsp" />
+		<put-attribute name="body" value="/pages/listePhotos.jsp" />
+	</definition>
+	
+	<definition name="photoForm.def" extends="maindef">
+		<put-attribute name="title" value="title.photoForm" />
+		<put-attribute name="body" value="/forms/photoForm.jsp" />
 	</definition>
 	
 </tiles-definitions>

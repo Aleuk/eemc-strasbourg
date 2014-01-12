@@ -17,33 +17,39 @@
 		// Récupération de l'URL de l'image
 		Map<String, List<ImageVO>> listePhotos = (Map<String, List<ImageVO>>)request.getAttribute("listePhotos");
 	%>
+		<jsp:include page="/pages/listeParametrage.jsp" /> 
 		
 		<table class="table table-striped table-bordered table-hover">
-		<tbody>
+		<thead>
 			<tr>
-				<% int i = 0;
-				for(String key : listePhotos.keySet()) {
-					ImageVO img = listePhotos.get(key).get(0);
-					String url = imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(img.getImage())) + "=s120";
+				<th>Dossier</th>
+				<th>Image</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for(String key : listePhotos.keySet()) {
+				for(ImageVO img : listePhotos.get(key)) {
+					String url = imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(img.getImage())) + "=s80";
 					if(url.contains("0.0.0.0")) {
 						url = url.substring(19);
 					}
 					%>
-					
-						<td><a href="javascript:ouvrirDossier('<%= img.getKey()%>')"><img src="<%= url%>" /><br /><%= img.getDossier()%></a></td>
+					<tr>
+						<td><%= img.getDossier()%></td>
+						<td><img src="<%= url%>" /></td>
+						<td><a href="javascript:supprimerPhoto('<%= img.getKey()%>');"><img src="/images/supprimerImage.png" height="25px"/></a></td>
+					</tr>
 				<%
-					i++;
-					if(i > 3) {
-						i = 0;
-						%></tr><tr><%
-					}
 				}
-				%>
-			</tr>
+			}
+			%>
 		</tbody>
 		</table>
 	<script>
-		function ouvrirDossier(id) {
-			window.location.href = "/controller/photo/openFolder?idImage=" + id;
+		function supprimerPhoto(id) {
+			if(confirm('Êtes-vous sûr de vouloir supprimer la photo ?')) {
+				window.location.href = "/controller/parametrage/photo/delete?idPhoto=" + id;
+			}
 		}
 	</script>
