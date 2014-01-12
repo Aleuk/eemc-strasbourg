@@ -14,6 +14,7 @@ import com.google.appengine.api.datastore.KeyFactory;
 import fr.eemcs.schedulemanager.entity.ArticleVO;
 import fr.eemcs.schedulemanager.entity.ContactVO;
 import fr.eemcs.schedulemanager.entity.EvenementVO;
+import fr.eemcs.schedulemanager.entity.ImageVO;
 import fr.eemcs.schedulemanager.entity.LieuVO;
 
 public final class MainDAO {
@@ -218,5 +219,44 @@ public final class MainDAO {
 			e.printStackTrace();
 		}
 		return contacts;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<ImageVO> getImages(PersistenceManager pm) {
+		List<ImageVO> result = new ArrayList<ImageVO>();
+		try {
+			String query = "select from " + ImageVO.class.getName();
+			result = (List<ImageVO>)pm.newQuery(query).execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public static ImageVO getImage(PersistenceManager pm, String id) {
+		ImageVO image = null;
+		try {
+			if(!"".equals(id)) {
+				image = pm.getObjectById(ImageVO.class, KeyFactory.createKey("ImageVO", Long.parseLong(id)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return image;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<ImageVO> getFolder(PersistenceManager pm, String id) {
+		ImageVO img = getImage(pm, id);
+		List<ImageVO> result = new ArrayList<ImageVO>();
+		try {
+			Query query = pm.newQuery(ImageVO.class);
+			query.setFilter("dossier == folder");
+			query.declareParameters("java.lang.String folder");
+			result = (List<ImageVO>)pm.newQuery(query).execute(img.getDossier());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

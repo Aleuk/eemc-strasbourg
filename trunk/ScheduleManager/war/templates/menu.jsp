@@ -37,7 +37,7 @@
 				    			<li><a href="/controller/message/blog">Messages</a></li>
 				    			<li><a href="/controller/video/blog">Vidéos</a></li>
 				    			<li><a href="/controller/musique/blog">Musique</a></li>
-				    			<li><a href="/controller/photo/blog">Photos</a></li>
+				    			<li><a href="/controller/photo/list">Photos</a></li>
 				    		</ul>
 				    	</li>
 				    	<li><a href="/controller/projet/blog">Projets</a></li>
