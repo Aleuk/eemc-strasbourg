@@ -10,14 +10,26 @@
 	font-family:"khmerUnicode";
 }
 
-.sunday {
-	background-color : #F9767A;
-}
-
-.saturday {
-	background-color : #F6DB9C;
-}
-
 .planning {
-	background-image: linear-gradient(white, #406892);
+	background-image: linear-gradient(white, #3F8DCE);
+}
+
+h1.title{
+	text-indent:-9000px;
+	background:transparent url(/images/title.png) no-repeat top left;
+	width:633px;
+	height:69px;
+}
+
+table{
+	margin-bottom:0px !important;
+}
+#blogTable {
+	border-collapse: separate;
+}
+#blogTable td{
+	/*background:#f7f7c3;*/
+	background-image:linear-gradient(white, #9ed9f7);
+	border:none;
+	border-radius: 10px;
 }

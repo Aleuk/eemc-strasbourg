@@ -131,7 +131,7 @@ public class ProgrammeDecorator extends TableDecorator {
 					Key kContact = e.getResponsables().get(i);
 					if(kContact != null) {
 						ContactVO c = pm.getObjectById(ContactVO.class, kContact);
-						retour = c.getPrenom() + " / ";
+						retour += c.getPrenom() + " / ";
 					}
 				}
 				retour = retour.substring(0, retour.lastIndexOf(" / "));

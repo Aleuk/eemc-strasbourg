@@ -17,7 +17,46 @@
 		List<ImageVO> listePhotos = (List<ImageVO>)request.getAttribute("listePhotos");
 	%>
 		
-		<table class="table table-striped table-bordered table-hover">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+		<% int active=0; 
+			for(ImageVO img : listePhotos) {
+				String url = imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(img.getImage())) + "=s1024";
+				if(url.contains("0.0.0.0")) {
+					url = url.substring(19);
+				} %>
+				<!-- Wrapper for slides -->
+				<%if(active==0) { %>
+			    	<div class="item active">
+			    		<img src="<%= url %>" />
+						<div class="carousel-caption">
+					        <!-- <%= img.getName() %>-->
+						</div>
+					</div>
+			    <%} else {%>
+			    	<div class="item">
+			    		<img src="<%= url %>" />
+						<div class="carousel-caption">
+						<!-- <%= img.getName() %>-->
+						</div>
+					</div>
+			    <%} %>
+				      
+			<%
+			active++;
+			}
+			%>
+			</div>
+			  <!-- Controls -->
+			  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+			    &lt;
+			  </a>
+			  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+			    &gt;
+			  </a>
+		</div>
+
+		<!--<table class="table table-striped table-bordered table-hover">
 		<tbody>
 			<tr>
 				<% int i = 0;
@@ -39,7 +78,7 @@
 				%>
 			</tr>
 		</tbody>
-		</table>
+		</table>-->
 	<script>
-		
+		$('.carousel').carousel();
 	</script>

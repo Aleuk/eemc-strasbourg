@@ -9,5 +9,7 @@
 				<display:setProperty name="basic.show.header" value="false" />
 				<display:setProperty name="paging.banner.onepage" value="" />
 				<display:setProperty name="paging.banner.one_item_found" value="" />
+				<display:setProperty name="paging.banner.some_items_found" value="" />
+				<display:setProperty name="paging.banner.all_items_found" value="" />
 				<display:column property="contenuString" />
 			</display:table>
