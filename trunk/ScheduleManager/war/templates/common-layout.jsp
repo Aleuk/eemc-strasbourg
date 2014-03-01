@@ -28,12 +28,27 @@
 	<link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="all" />
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.cluetip.js" type="text/javascript"></script>
     
     <!-- ckeditor -->
     <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
     
     <!-- no cache -->
     <script type="text/javascript" src="/schedulemanager/schedulemanager.nocache.js"></script>
+
+    <style>
+		span.reference a:hover{
+			color:#ddd;
+		}
+		ul.sdt_menu{
+			margin-top:90px;
+		}
+		
+		.workspace{
+			margin-top:20px;
+		}
+	</style>
+		
   </head>
   <body>
   
@@ -47,11 +62,14 @@
       </div>
     </noscript>
     
-		<tiles:insertAttribute name="menu"/>
+		
 		<div class="container">
-			<tiles:insertAttribute name="header" />
-			<tiles:insertAttribute name="path"/>
 			<div class="row">
+				<tiles:insertAttribute name="menu"/>
+			</div>
+			<!--<tiles:insertAttribute name="header" />-->
+			<tiles:insertAttribute name="path"/>
+			<div class="row workspace">
 				<div class="col-lg-9">
 					<tiles:insertAttribute name="body"/>
 				</div>

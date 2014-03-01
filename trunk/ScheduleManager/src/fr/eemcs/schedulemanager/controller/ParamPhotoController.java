@@ -101,38 +101,32 @@ public class ParamPhotoController extends LoggerController{
 	
 	@RequestMapping("/parametrage/photo/upload")
 	public ModelAndView uploadPhoto(HttpServletRequest request, @ModelAttribute("photoForm") ImageVO photo, BindingResult result) {
-		if(super.isLogged()) {
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-			Map<String, List<BlobKey>> uploads = blobstoreService.getUploads(request);
-			
-			List<BlobKey> blobKeys = uploads.get("myFile");
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+		Map<String, List<BlobKey>> uploads = blobstoreService.getUploads(request);
+		
+		List<BlobKey> blobKeys = uploads.get("myFile");
 
-	        if (blobKeys == null) {
-	        	return new ModelAndView(IResponse.ERROR);
-	        } else {
-	        	try {
-		        	for(BlobKey bk : blobKeys) {
-		        		ImageVO img = new ImageVO();
-		        		img.setDossier(photo.getDossier());
-		        		img.setImage(bk);
-		        		img.setCreation(new Date(), user);
-						pm.makePersistent(img);
-		        	}
-	        		pm.refreshAll();
-	        	} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					pm.close();
-				}
-	        }
+        if (blobKeys == null) {
+        	return new ModelAndView(IResponse.ERROR);
+        } else {
+        	try {
+	        	for(BlobKey bk : blobKeys) {
+	        		ImageVO img = new ImageVO();
+	        		img.setDossier(photo.getDossier());
+	        		img.setImage(bk);
+	        		img.setCreation(new Date(), user);
+					pm.makePersistent(img);
+	        	}
+        		pm.refreshAll();
+        	} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pm.close();
+			}
+        }
 
-			return new ModelAndView("redirect:/controller/parametrage/photo/list");
-		} else {
-			UserService userService = UserServiceFactory.getUserService();
-			setUrl(userService.createLoginURL(request.getRequestURI()));
-			return new ModelAndView("redirect:" + getUrl());
-		}
+		return new ModelAndView("redirect:/controller/parametrage/photo/list");
 	}
 	
 }

@@ -57,7 +57,7 @@ public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxServic
 					}
 				}
 				EvenementInfo e = new EvenementInfo();
-				e.setDate(FormatHelper.formatDate(event.getDate(), "dd/MM/yy HH:mm"));
+				e.setDate(FormatHelper.formatDate(event.getDate(), "dd/MM/yy - HH:mm"));
 				e.setLieu(l);
 				e.setDivers(event.getDivers());
 				list.add(e);

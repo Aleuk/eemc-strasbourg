@@ -91,6 +91,34 @@ public class ParamEvenementController extends LoggerController {
 		}
 	}
 	
+	@RequestMapping("/parametrage/programme/delete")
+	public ModelAndView deleteProgramme(ModelMap model, @RequestParam(value="moisProgramme", required=true) String moisProgramme, HttpServletRequest request, HttpServletResponse response) {
+		if(super.isLogged()) {
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			List<EvenementVO> list = new ArrayList<EvenementVO>();
+			try {
+				list = MainDAO.getEvenementsByMonthYear(pm, moisProgramme);
+				list.size(); // pour corriger "Object Manager has been closed"
+				for(EvenementVO event : list) {
+					pm.deletePersistent(event);
+				}
+				pm.refreshAll();
+				model.addAttribute("listeEvenements", list);
+				model.addAttribute("titleProgramme", FormatHelper.getMois(Integer.parseInt(moisProgramme.substring(moisProgramme.indexOf("/") + 1)) - 1) + " " + moisProgramme.substring(0, 4));
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pm.close();
+			}
+			
+			return new ModelAndView("redirect:/controller/parametrage/programme/list");
+		} else {
+			UserService userService = UserServiceFactory.getUserService();
+			setUrl(userService.createLoginURL(request.getRequestURI()));
+			return new ModelAndView("redirect:" + getUrl());
+		}
+	}
+	
 	@RequestMapping("/parametrage/programme/edit")
 	public ModelAndView editProgramme(ModelMap model, @RequestParam(value="moisProgramme", required=true) String moisProgramme, HttpServletRequest request, HttpServletResponse response) {
 		if(super.isLogged()) {
@@ -277,17 +305,17 @@ public class ParamEvenementController extends LoggerController {
 						if(!"-1".equals(predicateur)) {
 							event.getResponsables().add(1, KeyFactory.createKey("ContactVO", Long.parseLong(predicateur)));
 						} else {
-							event.getResponsables().add(0, null);
+							event.getResponsables().add(1, null);
 						}
 						if(!"-1".equals(traducteur)) {
 							event.getResponsables().add(2, KeyFactory.createKey("ContactVO", Long.parseLong(traducteur)));
 						} else {
-							event.getResponsables().add(0, null);
+							event.getResponsables().add(2, null);
 						}
 						if(!"-1".equals(offrande)) {
 							event.getResponsables().add(3, KeyFactory.createKey("ContactVO", Long.parseLong(offrande)));
 						} else {
-							event.getResponsables().add(0, null);
+							event.getResponsables().add(3, null);
 						}
 						event.setCreation(new Date(), user);
 						pm.makePersistent(event);

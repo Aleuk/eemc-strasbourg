@@ -169,9 +169,6 @@ public class ParamArticleController extends LoggerController {
 		mapCategories.put(IConstants.CATEGORIE_HISTORIQUE, IConstants.CATEGORIE_HISTORIQUE);
 		mapCategories.put(IConstants.CATEGORIE_ACTIVITES, IConstants.CATEGORIE_ACTIVITES);
 		mapCategories.put(IConstants.CATEGORIE_MESSAGES, IConstants.CATEGORIE_MESSAGES);
-		mapCategories.put(IConstants.CATEGORIE_MUSIQUE, IConstants.CATEGORIE_MUSIQUE);
-		mapCategories.put(IConstants.CATEGORIE_VIDEOS, IConstants.CATEGORIE_VIDEOS);
-		mapCategories.put(IConstants.CATEGORIE_PHOTOS, IConstants.CATEGORIE_PHOTOS);
 		mapCategories.put(IConstants.CATEGORIE_PROJETS, IConstants.CATEGORIE_PROJETS);
 		mapCategories.put(IConstants.CATEGORIE_VERSETS, IConstants.CATEGORIE_VERSETS);
 		mapCategories.put(IConstants.CATEGORIE_LIENS, IConstants.CATEGORIE_LIENS);
