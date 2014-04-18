@@ -5,7 +5,7 @@
 		
 			<display:table id="dataTable" name="listeArticles"
 				pagesize="15" requestURI="/controller/parametrage/article/list" 
-				class="table table-striped table-bordered table-hover" 
+				class="table" 
 				decorator="fr.eemcs.schedulemanager.decorator.ArticleDecorator">
 				<display:column property="dateCreationArticle" keyTitle="table.title.nom" />
 				<display:column property="auteur" keyTitle="table.title.auteur" />

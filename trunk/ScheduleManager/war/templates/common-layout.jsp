@@ -28,7 +28,7 @@
 	<link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="all" />
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.cluetip.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
     
     <!-- ckeditor -->
     <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
@@ -48,6 +48,7 @@
 			margin-top:20px;
 		}
 	</style>
+	
 		
   </head>
   <body>
@@ -79,5 +80,7 @@
 			</div>
 			<tiles:insertAttribute name="footer"/>
 		</div>
+		
+    
   </body>
 </html>

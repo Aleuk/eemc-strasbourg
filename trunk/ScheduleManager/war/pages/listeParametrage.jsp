@@ -1,7 +1,7 @@
 <%@ taglib uri="/WEB-INF/Taglibs.tld" prefix="t" %>
 
 	<% String url = (String) request.getAttribute("javax.servlet.forward.request_uri"); %>
-		<ul class="nav nav-tabs">
+		<ul class="nav nav-pills">
 			<% if(url.contains("programme")) {%>
 				<li class="active">
 			<% } else { %>

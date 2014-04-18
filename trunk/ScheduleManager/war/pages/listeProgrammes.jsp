@@ -6,7 +6,7 @@
 
 		
 		<display:table id="dataTable" name="listeProgrammes"
-			pagesize="13" requestURI="/controller/parametrage/programme" class="table table-striped table-bordered table-hover" decorator="fr.eemcs.schedulemanager.decorator.ProgrammeDecorator">
+			pagesize="13" requestURI="/controller/parametrage/programme" class="table" decorator="fr.eemcs.schedulemanager.decorator.ProgrammeDecorator">
 			<display:column property="mois" keyTitle="table.title.mois" />
 			<display:column property="actions" keyTitle="table.title.actions" />
 		</display:table>

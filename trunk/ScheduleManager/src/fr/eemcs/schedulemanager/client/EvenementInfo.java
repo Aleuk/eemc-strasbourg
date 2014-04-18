@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class EvenementInfo implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String date;
 	private LieuInfo lieu;
 	private String divers;
