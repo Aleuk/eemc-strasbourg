@@ -10,7 +10,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import fr.eemcs.schedulemanager.client.EvenementInfo;
@@ -25,6 +24,7 @@ import fr.eemcs.schedulemanager.helper.FormatHelper;
 public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxService {
 
 	@Override
+	@SuppressWarnings("unchecked")
     public List<EvenementInfo> getEventsServer(String sDate) {
 		List<EvenementInfo> list = new ArrayList<EvenementInfo>();
 		List<EvenementVO> events = new ArrayList<EvenementVO>();

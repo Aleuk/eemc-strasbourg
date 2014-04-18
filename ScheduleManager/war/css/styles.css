@@ -11,14 +11,14 @@
 }
 
 .planning {
-	background-image: linear-gradient(white, #3F8DCE);
+	background: #597491;
 }
 
 h1.title{
 	text-indent:-9000px;
-	background:transparent url(/images/title.png) no-repeat top left;
-	width:633px;
-	height:69px;
+	background:transparent url(/images/bandeau.png) no-repeat top left;
+	width:800px;
+	height:70px;
 }
 
 table{
@@ -32,4 +32,13 @@ table{
 	background-image:linear-gradient(white, #9ed9f7);
 	border:none;
 	border-radius: 10px;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+	color:#0B6AA1 !important;
+	background-image:linear-gradient(#f7cc4c, white) !important;
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+	background-image:linear-gradient(#587484, white) !important;
 }

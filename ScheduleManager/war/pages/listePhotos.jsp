@@ -19,7 +19,7 @@
 	%>
 		<jsp:include page="/pages/listeParametrage.jsp" /> 
 		
-		<table class="table table-striped table-bordered table-hover">
+		<table class="table">
 		<thead>
 			<tr>
 				<th>Dossier</th>
