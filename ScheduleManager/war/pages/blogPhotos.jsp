@@ -30,7 +30,7 @@
 					}
 					%>
 					
-						<td><a href="javascript:ouvrirDossier('<%= img.getKey()%>')"><img src="<%= url%>" /><br /><%= img.getDossier()%></a></td>
+						<td><a href="javascript:ouvrirDossier('<%= img.getKey()%>')"><img src="<%= url%>" class="dossierPhotos"/><br /><%= img.getDossier()%></a></td>
 				<%
 					i++;
 					if(i > 3) {

@@ -1,5 +1,16 @@
 @CHARSET "ISO-8859-1";
 
+/* GENERAL */
+html body{
+	background:#FAFAFA;
+	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
+}
+
+img {
+	margin: auto;
+	max-width: 100%;
+}
+
 @font-face {
 	font-family:"khmerUnicode";
 	src:url('lmns1.ttf');
@@ -11,27 +22,51 @@
 }
 
 .planning {
-	background: #597491;
+	background: #3F8DCE;
 }
 
-h1.title{
-	text-indent:-9000px;
-	background:transparent url(/images/bandeau.png) no-repeat top left;
-	width:800px;
-	height:70px;
+.titlePlanning {
+	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
 }
 
+.entetePlanning {
+	font-weight:bold;
+}
+
+.hrPlanning{
+	border: 1px solid #000;
+}
+
+.labelPlanning {
+	background: #3F8DCE;
+	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
+	color:#fff;
+}
+
+.title{
+	max-width: 100%;
+}
+
+span.reference a:hover{
+	color:#ddd;
+}
+		
 table{
 	margin-bottom:0px !important;
 }
-#blogTable {
+.blogTable {
 	border-collapse: separate;
+	background-color: #F5F6CE;
+	border-spacing: 0px !important;
+	border-radius: 2px;
+	padding:10px;
+	box-shadow:0px 0px 5px #000 inset;
 }
-#blogTable td{
-	/*background:#f7f7c3;*/
-	background-image:linear-gradient(white, #9ed9f7);
-	border:none;
-	border-radius: 10px;
+.blogTable td{
+	background-color: #F5F5F5;
+	border: none;
+	border-radius: 7px;
+	box-shadow:0px 0px 1px #000 inset;
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
@@ -41,4 +76,8 @@ table{
 
 .nav>li>a:hover, .nav>li>a:focus {
 	background-image:linear-gradient(#587484, white) !important;
+}
+
+.dossierPhotos {
+	border: 2px #000 solid;
 }

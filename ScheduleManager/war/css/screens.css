@@ -1,28 +1,52 @@
 @CHARSET "ISO-8859-1";
 /* GENERAL */
-html body{
-				background:#3F8DCE url(/images/bg.jpg) repeat top left;
-				font-family:Arial;
-			}
 
+body {
+  min-height: 100% !important;
+  margin:0px !important;
+  padding:0px !important;
+}
 
+.container {
+	position: relative;
+	margin-left: 5% !important;
+	background-image: linear-gradient(#3F8DCE, #FBFBFB);
+	width: 75% !important;
+    max-width: 1800px !important;
+    min-height: 800px !important;
+    padding-left:25px !important;
+    padding-right:25px !important;
+	box-shadow:0px 0px 5px #000 inset;
+}
 
-/* HEADER - bandeau*/
-/*img { 
-  max-width: 100%;
-  max-height: 100%;
-}*/
+.login {
+	position: absolute;
+	height:40px;
+	margin-top: -650px;
+	margin-left: 81%;
+}
+.planning {
+	position: absolute;
+	height:500px;
+	margin-top: -600px;
+	margin-left: 81%;
+}
 
-/* CORPS */
-/*
-.fond_corps {
-	font-size:.9em;
-	background-color:#FFFFFF;
-	border:1px solid black;
-	border-radius: 10px;
-	height:560px;
-	min-width:50px
-}*/
+.footer {
+	position: relative;
+	width : 100px; 
+	margin : auto;
+}
+
+.span12 {
+	width: 95% !important;
+}
+
+h1.title{
+	text-indent:-9000px;
+	width:800px;
+	height:70px;
+}
 
 /* MODAL */
 .modal-body {
@@ -31,16 +55,16 @@ html body{
 
 
 
-
 /* MENU */
 ul.sdt_menu{
 	margin-top:10px ! important;
 	margin:0;
+	margin-left:15px;
 	padding:0;
 	list-style: none;
 	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
 	font-size:14px;
-	width:960px;
+	width:100%;
 }
 ul.sdt_menu a{
 	text-decoration:none;
@@ -59,7 +83,6 @@ ul.sdt_menu li > a{
 	left:0px;
 	width:120px;
 	height:90px;
-	z-index:12;
 	background:transparent url(../images/overlay.png) no-repeat bottom right;
 	-moz-box-shadow:0px 0px 2px #000 inset;
 	-webkit-box-shadow:0px 0px 2px #000 inset;
@@ -111,7 +134,7 @@ ul.sdt_menu li div.sdt_box a{
 
 ul.sdt_menu li span span.sdt_link{
 	color:#fff;
-	font-size:24px;
+	font-size:18px;
 	float:left;
 	clear:both;
 }

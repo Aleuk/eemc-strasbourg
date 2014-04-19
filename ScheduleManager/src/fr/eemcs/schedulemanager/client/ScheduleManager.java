@@ -42,20 +42,33 @@ public class ScheduleManager implements EntryPoint {
 				VerticalPanel vp = new VerticalPanel();
 				
 				for(EvenementInfo event : result) {
-					final Label ligne = new Label(event.getDate() + " " + event.getLieu().getNom());
+					final Label ligne = new Label(event.getDate() + "      " + event.getLieu().getNom());
+					ligne.setStyleName("labelPlanning");
 					vp.add(ligne);
 					
-					final HorizontalPanel hp = new HorizontalPanel();
-					hp.add(new Label(event.getDate()));
-					hp.add(new Label(event.getLieu().getNom()));
-					hp.add(new Label(event.getDivers()));
+					final VerticalPanel vpPopup = new VerticalPanel();
+					Label lbEntete = new Label(event.getDate() + " " + event.getDivers());
+					Label lbHR = new Label("");
+					Label lbLieu = new Label(event.getLieu().getNom());
+					Label lbAdresse = new Label(event.getLieu().getAdresse());
+					Label lbVille = new Label(event.getLieu().getCodePostal() + " " + event.getLieu().getVille());
+					lbEntete.setStyleName("entetePlanning");
+					lbHR.setStyleName("hrPlanning");
+					lbLieu.setStyleName("titlePlanning");
+					lbAdresse.setStyleName("titlePlanning");
+					lbVille.setStyleName("titlePlanning");
+					vpPopup.add(lbEntete);
+					vpPopup.add(lbHR);
+					vpPopup.add(lbLieu);
+					vpPopup.add(lbAdresse);
+					vpPopup.add(lbVille);
 					
 					final PopupPlanning pp = new PopupPlanning();
 					ligne.addMouseOverHandler(new MouseOverHandler() {
 						
 						@Override
 						public void onMouseOver(MouseOverEvent event) {
-							pp.setWidget(hp);
+							pp.setWidget(vpPopup);
 							pp.showRelativeTo(ligne);
 						}
 					});

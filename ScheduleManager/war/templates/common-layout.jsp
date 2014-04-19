@@ -6,7 +6,15 @@
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page pageEncoding="UTF-8"%>
-
+<%@page import="com.google.appengine.api.users.User"%>
+<%@page import="com.google.appengine.api.users.UserServiceFactory"%>
+	<%@page import="com.google.appengine.api.users.UserService"%>
+	
+<% UserService userService = UserServiceFactory.getUserService();
+	User user = userService.getCurrentUser();
+	String urlConnexion = userService.createLoginURL("/controller/enter");
+%>
+    
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -35,19 +43,6 @@
     
     <!-- no cache -->
     <script type="text/javascript" src="/schedulemanager/schedulemanager.nocache.js"></script>
-
-    <style>
-		span.reference a:hover{
-			color:#ddd;
-		}
-		ul.sdt_menu{
-			margin-top:90px;
-		}
-		
-		.workspace{
-			margin-top:20px;
-		}
-	</style>
 	
 		
   </head>
@@ -63,24 +58,32 @@
       </div>
     </noscript>
     
-		
 		<div class="container">
-			<div class="row">
+			<div class="row entete">
 				<tiles:insertAttribute name="menu"/>
 			</div>
 			<!--<tiles:insertAttribute name="header" />-->
-			<tiles:insertAttribute name="path"/>
 			<div class="row workspace">
-				<div class="col-lg-9">
+				<tiles:insertAttribute name="path"/>
+			</div>
+			<div class="row workspace">
+				<div class="span12">
 					<tiles:insertAttribute name="body"/>
 				</div>
-				<div class="col-lg-3 planning" style="border:1px solid #EEEEEE">
-					<tiles:insertAttribute name="planning"/>
-				</div>
 			</div>
-			<tiles:insertAttribute name="footer"/>
 		</div>
 		
+		<div class="login">
+			<% if(user != null) {%>
+    			<a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" /></a>
+    		<% } else {%>
+    			<a href="<%= urlConnexion %>">Mon compte</a>
+    		<% }%>
+		</div>
+		<div class="planning" style="border:1px solid #EEEEEE">
+			<tiles:insertAttribute name="planning"/>
+		</div>
+		<tiles:insertAttribute name="footer"/>
     
   </body>
 </html>

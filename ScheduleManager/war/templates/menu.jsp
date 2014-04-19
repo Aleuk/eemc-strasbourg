@@ -1,12 +1,12 @@
-   	<%@page import="com.google.appengine.api.users.User"%>
+<%@page import="com.google.appengine.api.users.User"%>
 <%@page import="com.google.appengine.api.users.UserServiceFactory"%>
-	<%@page import="com.google.appengine.api.users.UserService"%>
+<%@page import="com.google.appengine.api.users.UserService"%>
 
-    <% UserService userService = UserServiceFactory.getUserService();
+    <%  UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		String urlConnexion = userService.createLoginURL("/controller/enter");
 		
-        		System.out.println("called page : " + request.getAttribute("javax.servlet.forward.request_uri"));
+        System.out.println("called page : " + request.getAttribute("javax.servlet.forward.request_uri"));
     %>
     
     		<!-- <div class="navbar navbar-inverse" style="margin-bottom:0;">
@@ -59,16 +59,9 @@
                 </div>
               </div>-->
               <div class="row">
-              	<div class="span10">
-	              <h1 class="title">Eglise Evangélique Cambodgienne</h1>
+              	<div class="span12">
+	              <img class="title" src="/images/bandeau.png" />
 	            </div>
-	            <div class="span2">
-	                   	<% if(user != null) {%>
-			    			<a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" /></a>
-			    		<% } else {%>
-			    			<a href="<%= urlConnexion %>">Mon compte</a>
-			    		<% }%>
-			    </div>
 			 </div>
 			 <div class="row">
 			 <div class="span12">
@@ -78,13 +71,13 @@
 						<li>
 							<a href="/controller/accueil/blog">
 								<img src="/images/menu_eglise.jpg" alt=""/>
-								<span class="sdt_active"></span>
-								<span class="sdt_wrap">
+								<span class="sdt_active" style="z-index:80;"></span>
+								<span class="sdt_wrap" style="z-index:80;">
 									<span class="sdt_link">Eglise</span>
 									<span class="sdt_descr">Nous connaître</span>
 								</span>
 							</a>
-							<div class="sdt_box">
+							<div class="sdt_box" style="z-index:80;">
 								<a href="/controller/historique/blog">Historique</a>
 								<a href="#">Comité Directeur</a>
 								<a href="/controller/activite/blog">Activités</a>
@@ -94,13 +87,13 @@
 						<li>
 							<a href="#">
 								<img src="/images/menu_medias.jpg" alt=""/>
-								<span class="sdt_active"></span>
-								<span class="sdt_wrap">
+								<span class="sdt_active" style="z-index:70;"></span>
+								<span class="sdt_wrap" style="z-index:70;">
 									<span class="sdt_link">Médias</span>
 									<span class="sdt_descr">Nos activités</span>
 								</span>
 							</a>
-							<div class="sdt_box">
+							<div class="sdt_box" style="z-index:70;">
 									<a href="/controller/message/blog">Messages</a>
 									<a href="/controller/photo/list">Photos</a>
 									<a href="/controller/video/blog">Vidéos</a>
@@ -110,8 +103,8 @@
 						<li>
 							<a href="/controller/projet/blog">
 								<img src="/images/menu_projets.jpg" alt=""/>
-								<span class="sdt_active"></span>
-								<span class="sdt_wrap">
+								<span class="sdt_active" style="z-index:60;"></span>
+								<span class="sdt_wrap" style="z-index:60;">
 									<span class="sdt_link">Projets</span>
 									<span class="sdt_descr">Notre projet de construction</span>
 								</span>
@@ -120,8 +113,8 @@
 						<li>
 							<a href="/controller/lecture/blog">
 								<img src="/images/menu_bible.png" alt=""/>
-								<span class="sdt_active"></span>
-								<span class="sdt_wrap">
+								<span class="sdt_active" style="z-index:50;"></span>
+								<span class="sdt_wrap" style="z-index:50;">
 									<span class="sdt_link">La Bible</span>
 									<span class="sdt_descr">Versets du jour</span>
 								</span>
@@ -130,8 +123,8 @@
 						<li>
 							<a href="/controller/lien/blog">
 								<img src="/images/menu_liens.jpg" alt=""/>
-								<span class="sdt_active"></span>
-								<span class="sdt_wrap">
+								<span class="sdt_active" style="z-index:40;"></span>
+								<span class="sdt_wrap" style="z-index:40;">
 									<span class="sdt_link">Liens</span>
 									<span class="sdt_descr">Partenaires</span>
 								</span>
@@ -140,8 +133,8 @@
 						<li>
 							<a href="/controller/nousContacter">
 								<img src="/images/menu_contact.png" alt=""/>
-								<span class="sdt_active"></span>
-								<span class="sdt_wrap">
+								<span class="sdt_active" style="z-index:30;"></span>
+								<span class="sdt_wrap" style="z-index:30;">
 									<span class="sdt_link">Contact</span>
 									<span class="sdt_descr">Nous écrire</span>
 								</span>
@@ -151,18 +144,18 @@
 							<li>
 								<a href="/controller/contact/list">
 									<img src="/images/menu_repertoire.png" alt=""/>
-									<span class="sdt_active"></span>
-									<span class="sdt_wrap">
+									<span class="sdt_active" style="z-index:20;"></span>
+									<span class="sdt_wrap" style="z-index:20;">
 										<span class="sdt_link">Adresses</span>
 										<span class="sdt_descr">Carnet d'adresses</span>
 									</span>
 								</a>
 							</li>
 							<li>
-								<a href="/controller/parametrage/list">
+								<a href="/controller/parametrage/list" style="position:absolute; z-index:10;">
 									<img src="/images/menu_parametrage.png" alt=""/>
-									<span class="sdt_active"></span>
-									<span class="sdt_wrap">
+									<span class="sdt_active" style="z-index:10;"></span>
+									<span class="sdt_wrap" style="z-index:10;">
 										<span class="sdt_link">Admin</span>
 										<span class="sdt_descr">Paramétrage</span>
 									</span>
