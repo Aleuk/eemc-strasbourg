@@ -9,6 +9,10 @@
 			pagesize="13" requestURI="/controller/parametrage/programme" class="table" decorator="fr.eemcs.schedulemanager.decorator.ProgrammeDecorator">
 			<display:column property="mois" keyTitle="table.title.mois" />
 			<display:column property="actions" keyTitle="table.title.actions" />
+			<display:setProperty name="paging.banner.onepage" value="" />
+			<display:setProperty name="paging.banner.one_item_found" value="" />
+			<display:setProperty name="paging.banner.some_items_found" value="" />
+			<display:setProperty name="paging.banner.all_items_found" value="" />
 		</display:table>
 		
 	<script>

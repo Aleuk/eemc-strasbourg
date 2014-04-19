@@ -4,7 +4,7 @@
 
 		
 			<display:table id="blogTable" style="border-spacing: 0px 10px;" name="listeArticles"
-				pagesize="7" requestURI="/controller/accueil/blog" class="table">
+				pagesize="7" requestURI="/controller/accueil/blog" class="table blogTable">
 				<display:setProperty name="basic.msg.empty_list" value="" />
 				<display:setProperty name="basic.show.header" value="false" />
 				<display:setProperty name="paging.banner.onepage" value="" />
