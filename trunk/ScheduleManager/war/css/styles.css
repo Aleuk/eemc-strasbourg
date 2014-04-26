@@ -2,8 +2,12 @@
 
 /* GENERAL */
 html body{
-	background:#FAFAFA;
+	background:#363636;
 	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
+}
+
+.container {
+	background: #BBBBBB;
 }
 
 img {
@@ -22,7 +26,7 @@ img {
 }
 
 .planning {
-	background: #3F8DCE;
+	background: #BBBBBB;
 }
 
 .titlePlanning {
@@ -38,7 +42,7 @@ img {
 }
 
 .labelPlanning {
-	background: #3F8DCE;
+	background: #01A1DF;
 	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
 	color:#fff;
 }
@@ -56,17 +60,16 @@ table{
 }
 .blogTable {
 	border-collapse: separate;
-	background-color: #F5F6CE;
+	background-color: #01A1DF;
 	border-spacing: 0px !important;
-	border-radius: 2px;
+	border-radius: 5px;
 	padding:10px;
 	box-shadow:0px 0px 5px #000 inset;
 }
 .blogTable td{
 	background-color: #F5F5F5;
 	border: none;
-	border-radius: 7px;
-	box-shadow:0px 0px 1px #000 inset;
+	box-shadow:3px 6px 3px #fff inset;
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {

@@ -73,7 +73,8 @@
 			</div>
 		</div>
 		
-		<div class="login">
+		<div class="login" style="text-align:center;">
+			<img src="/images/eemc.png" /><br />
 			<% if(user != null) {%>
     			<a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" /></a>
     		<% } else {%>

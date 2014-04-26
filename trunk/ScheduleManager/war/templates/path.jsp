@@ -1,4 +1,4 @@
 
-		<div class="span10">
+		<div class="span12">
 			&nbsp;
 		</div>
