@@ -34,7 +34,7 @@ public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxServic
 			query.setFilter("date > today");
 			query.declareParameters("java.util.Date today");
 			query.setOrdering("date");
-			query.setRange(0, 7);
+			query.setRange(0, 10);
 			
 			Date today = new Date();
 			GregorianCalendar cal = new GregorianCalendar();
