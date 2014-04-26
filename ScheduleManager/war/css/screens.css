@@ -23,11 +23,21 @@ body {
 	margin-top: -800px;
 	margin-left: 81%;
 }
+
 .planning {
 	position: absolute;
-	height:500px;
+	height:300px;
+	width: 18%;
 	margin-top: -600px;
 	margin-left: 81%;
+}
+
+#planning {
+	width: 100%;
+}
+
+.labelPlanning {
+	height: 30px;
 }
 
 .footer {

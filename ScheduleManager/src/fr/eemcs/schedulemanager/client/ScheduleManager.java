@@ -9,6 +9,8 @@ import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
@@ -40,6 +42,8 @@ public class ScheduleManager implements EntryPoint {
 			public void onSuccess(List<EvenementInfo> result) {
 				
 				VerticalPanel vp = new VerticalPanel();
+				vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+				vp.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 				
 				for(EvenementInfo event : result) {
 					final Label ligne = new Label(event.getDate() + "      " + event.getLieu().getNom());
