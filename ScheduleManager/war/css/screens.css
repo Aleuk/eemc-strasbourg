@@ -10,7 +10,6 @@ body {
 .container {
 	position: relative;
 	margin-left: 5% !important;
-	background-image: linear-gradient(#3F8DCE, #FBFBFB);
 	width: 75% !important;
     max-width: 1800px !important;
     min-height: 800px !important;
@@ -21,8 +20,7 @@ body {
 
 .login {
 	position: absolute;
-	height:40px;
-	margin-top: -650px;
+	margin-top: -800px;
 	margin-left: 81%;
 }
 .planning {
@@ -83,7 +81,7 @@ ul.sdt_menu li > a{
 	left:0px;
 	width:120px;
 	height:90px;
-	background:transparent url(../images/overlay.png) no-repeat bottom right;
+	background:#343434;
 	-moz-box-shadow:0px 0px 2px #000 inset;
 	-webkit-box-shadow:0px 0px 2px #000 inset;
 	box-shadow:0px 0px 2px #000 inset;
@@ -110,7 +108,7 @@ ul.sdt_menu li span.sdt_wrap{
 }
 ul.sdt_menu li span.sdt_active{
 	position:absolute;
-	background-image: linear-gradient(white, #3F8DCE);
+	background-image: linear-gradient(#343434, #01A1DF);
 	top:90px;
 	width:120px;
 	height:0px;
@@ -155,14 +153,14 @@ ul.sdt_menu li div.sdt_box{
 	top:90px;
 	left:0px;
 	display:none;
-	background-image: linear-gradient(white, #3F8DCE);
+	background-image: linear-gradient(#343434, #01A1DF);
 	z-index: 14;
 }
 ul.sdt_menu li div.sdt_box a{
 	float:left;
 	clear:both;
 	line-height:20px;
-	color:#0B75AF;
+	color:#ddd;
 }
 ul.sdt_menu li div.sdt_box a:first-child{
 	margin-top:15px;
