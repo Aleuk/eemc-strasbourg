@@ -1,18 +1,9 @@
 @CHARSET "ISO-8859-1";
 
-/* GENERAL */
+/*********** GENERAL ***********/
 html body{
 	background:#363636;
 	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
-}
-
-.container {
-	background: #BBBBBB;
-}
-
-img {
-	margin: auto;
-	max-width: 100%;
 }
 
 @font-face {
@@ -20,24 +11,51 @@ img {
 	src:url('lmns1.ttf');
 }
 
+.container {
+	background: #BBBBBB;
+	box-shadow:0px 0px 5px #000 inset;
+}
+
+img {
+	margin: auto;
+	max-width: 100%;
+}
+
+.title{
+	max-width: 100%;
+	height: 270px;
+}
+
 .inputKH {
 	font-size:22px;
 	font-family:"khmerUnicode";
 }
 
+span.reference a:hover{
+	color:#ddd;
+}
+		
+table{
+	margin-bottom:0px !important;
+}
+
+/******* PLANNING ***********/
 .planning {
 	background: #BBBBBB;
+	box-shadow:0px 0px 5px #000 inset;
 }
 
 #planning {
-	background: #01A1DF;
 	text-align: center;
 }
 
 .labelPlanning {
+	background-image: linear-gradient(#01A1DF, #343434);
 	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
+	font-size:13px;
 	color:#fff;
-	box-shadow: 0px 2px 0px #BBBBBB;
+	padding: 7px;
+	box-shadow:0px 0px 7px #23576B inset;
 }
 
 .titlePlanning {
@@ -50,40 +68,47 @@ img {
 	border: 1px solid #000;
 }
 
-.title{
-	max-width: 100%;
-}
 
-span.reference a:hover{
-	color:#ddd;
-}
-		
-table{
-	margin-bottom:0px !important;
-}
+
+
+/********* BLOGTABLE **********/
 .blogTable {
 	border-collapse: separate;
-	background-color: #01A1DF;
-	border-spacing: 0px !important;
+	background-color: #BBBBBB;
+	//border-spacing: 10px !important;
 	border-radius: 5px;
-	padding:10px;
-	box-shadow:0px 0px 5px #000 inset;
+	padding:0px;
+	//box-shadow:0px 0px 5px #000 inset;
 }
 .blogTable td{
-	background-color: #F5F5F5;
-	border: none;
-	box-shadow:3px 6px 3px #fff inset;
+	background-color: #fff;
+	border-top:0px !important;
+	border-radius: 5px;
+	box-shadow:0px 0px 7px #23576B inset;
 }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
-	color:#0B6AA1 !important;
-	background-image:linear-gradient(#f7cc4c, white) !important;
-}
 
-.nav>li>a:hover, .nav>li>a:focus {
-	background-image:linear-gradient(#587484, white) !important;
-}
 
+
+/********* PHOTOS ***********/
 .dossierPhotos {
 	border: 2px #000 solid;
 }
+
+
+
+
+
+/*********** ONGLETS **********/
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+	color:#fff !important;
+	background-image:linear-gradient(#01A1DF, #23576B) !important;
+	box-shadow:0px 2px 3px #fff inset;
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+	color:#fff !important;
+	background-image:linear-gradient(#23576B, #01A1DF) !important;
+	box-shadow:0px 2px 3px #fff inset;
+}
+

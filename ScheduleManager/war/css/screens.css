@@ -7,28 +7,34 @@ body {
   padding:0px !important;
 }
 
+.span12 {
+	width: 97% !important;
+}
+
 .container {
 	position: relative;
+	margin-top:30px;
 	margin-left: 5% !important;
 	width: 75% !important;
     max-width: 1800px !important;
     min-height: 800px !important;
     padding-left:25px !important;
     padding-right:25px !important;
-	box-shadow:0px 0px 5px #000 inset;
 }
 
 .login {
 	position: absolute;
-	margin-top: -800px;
+	top: 20px;
+	width: 18%;
 	margin-left: 81%;
+	text-align:right;
 }
 
 .planning {
 	position: absolute;
-	height:300px;
+	height:400px;
 	width: 18%;
-	margin-top: -600px;
+	top: 162px;
 	margin-left: 81%;
 }
 
@@ -36,8 +42,14 @@ body {
 	width: 100%;
 }
 
+.tablePlanning {
+	width: 100%;
+}
+
 .labelPlanning {
 	height: 30px;
+	margin-left: 2px;
+	margin-top: 10px;
 }
 
 .footer {
@@ -46,15 +58,6 @@ body {
 	margin : auto;
 }
 
-.span12 {
-	width: 95% !important;
-}
-
-h1.title{
-	text-indent:-9000px;
-	width:800px;
-	height:70px;
-}
 
 /* MODAL */
 .modal-body {
@@ -65,13 +68,13 @@ h1.title{
 
 /* MENU */
 ul.sdt_menu{
-	margin-top:10px ! important;
-	margin:0;
-	margin-left:15px;
+	margin-top:20px ! important;
+	//margin:0;
+	margin-left:30px;
 	padding:0;
 	list-style: none;
 	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
-	font-size:14px;
+	font-size:13px;
 	width:100%;
 }
 ul.sdt_menu a{
@@ -80,8 +83,8 @@ ul.sdt_menu a{
 }
 ul.sdt_menu li{
 	float:left;
-	width:120px;
-	height:90px;
+	width:110px;
+	height:80px;
 	position:relative;
 	cursor:pointer;
 }
@@ -89,9 +92,9 @@ ul.sdt_menu li > a{
 	position:absolute;
 	top:0px;
 	left:0px;
-	width:120px;
-	height:90px;
-	background:#343434;
+	width:110px;
+	height:80px;
+	background-image: linear-gradient(#343434, #01A1DF);
 	-moz-box-shadow:0px 0px 2px #000 inset;
 	-webkit-box-shadow:0px 0px 2px #000 inset;
 	box-shadow:0px 0px 2px #000 inset;
@@ -112,15 +115,15 @@ ul.sdt_menu li span.sdt_wrap{
 	position:absolute;
 	top:25px;
 	left:0px;
-	width:120px;
+	width:110px;
 	height:60px;
 	z-index:15;
 }
 ul.sdt_menu li span.sdt_active{
 	position:absolute;
-	background-image: linear-gradient(#343434, #01A1DF);
-	top:90px;
-	width:120px;
+	background-image: linear-gradient(#01A1DF, #343434);
+	top:80px;
+	width:110px;
 	height:0px;
 	left:0px;
 	z-index:2;
@@ -142,7 +145,7 @@ ul.sdt_menu li div.sdt_box a{
 
 ul.sdt_menu li span span.sdt_link{
 	color:#fff;
-	font-size:18px;
+	font-size:16px;
 	float:left;
 	clear:both;
 }
@@ -157,13 +160,13 @@ ul.sdt_menu li span span.sdt_descr{
 ul.sdt_menu li div.sdt_box{
 	display:block;
 	position:absolute;
-	width:146px;
+	width:140px;
 	overflow:hidden;
-	height:110px;
-	top:90px;
+	height:100px;
+	top:80px;
 	left:0px;
 	display:none;
-	background-image: linear-gradient(#343434, #01A1DF);
+	background-image: linear-gradient(#01A1DF, #343434);
 	z-index: 14;
 }
 ul.sdt_menu li div.sdt_box a{
@@ -173,7 +176,7 @@ ul.sdt_menu li div.sdt_box a{
 	color:#ddd;
 }
 ul.sdt_menu li div.sdt_box a:first-child{
-	margin-top:15px;
+	margin-top:11px;
 }
 ul.sdt_menu li div.sdt_box a:hover{
 	color:#fff;
