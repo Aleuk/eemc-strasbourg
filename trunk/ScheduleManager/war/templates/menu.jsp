@@ -59,8 +59,8 @@
                 </div>
               </div>-->
               <div class="row">
-              	<div class="span12">
-	              <img class="title" src="/images/bandeau.png" />
+              	<div class="span12" style="text-align:center;">
+	              <!-- <img class="title" src="/images/bandeau_eemc2.png" />-->
 	            </div>
 			 </div>
 			 <div class="row">
@@ -116,7 +116,7 @@
 								<span class="sdt_active" style="z-index:50;"></span>
 								<span class="sdt_wrap" style="z-index:50;">
 									<span class="sdt_link">La Bible</span>
-									<span class="sdt_descr">Versets du jour</span>
+									<span class="sdt_descr">Parole de Dieu</span>
 								</span>
 							</a>
 						</li>
@@ -147,12 +147,12 @@
 									<span class="sdt_active" style="z-index:20;"></span>
 									<span class="sdt_wrap" style="z-index:20;">
 										<span class="sdt_link">Adresses</span>
-										<span class="sdt_descr">Carnet d'adresses</span>
+										<span class="sdt_descr">Contacts</span>
 									</span>
 								</a>
 							</li>
 							<li>
-								<a href="/controller/parametrage/list" style="position:absolute; z-index:10;">
+								<a href="/controller/parametrage/list">
 									<img src="/images/menu_parametrage.png" alt=""/>
 									<span class="sdt_active" style="z-index:10;"></span>
 									<span class="sdt_wrap" style="z-index:10;">
@@ -181,8 +181,8 @@
 					$elem.find('img')
 						 .stop(true)
 						 .animate({
-							'width':'120px',
-							'height':'110px',
+							'width':'110px',
+							'height':'90px',
 							'left':'0px'
 						 },400,'easeOutBack')
 						 .andSelf()
@@ -192,12 +192,12 @@
 						 .andSelf()
 						 .find('.sdt_active')
 					     .stop(true)
-						 .animate({'height':'110px'},300,function(){
+						 .animate({'height':'100px'},300,function(){
 						var $sub_menu = $elem.find('.sdt_box');
 						if($sub_menu.length){
-							var left = '120px';
+							var left = '110px';
 							if($elem.parent().children().length == $elem.index()+1)
-								left = '-120px';
+								left = '-110px';
 							$sub_menu.show().animate({'left':left},200);
 						}	
 					});

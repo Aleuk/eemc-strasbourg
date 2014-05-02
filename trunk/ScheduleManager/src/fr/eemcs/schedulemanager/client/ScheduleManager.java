@@ -42,26 +42,28 @@ public class ScheduleManager implements EntryPoint {
 			public void onSuccess(List<EvenementInfo> result) {
 				
 				VerticalPanel vp = new VerticalPanel();
-				vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-				vp.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+				vp.setStyleName("tablePlanning");
 				
 				for(EvenementInfo event : result) {
-					final Label ligne = new Label(event.getDate() + "      " + event.getLieu().getNom());
+					final Label ligne = new Label(event.getDate() + " " + event.getLieu().getNom());
 					ligne.setStyleName("labelPlanning");
 					vp.add(ligne);
 					
 					final VerticalPanel vpPopup = new VerticalPanel();
-					Label lbEntete = new Label(event.getDate() + " " + event.getDivers());
+					Label lbEntete = new Label(event.getDate());
+					Label lbDivers = new Label(event.getDivers());
 					Label lbHR = new Label("");
 					Label lbLieu = new Label(event.getLieu().getNom());
 					Label lbAdresse = new Label(event.getLieu().getAdresse());
 					Label lbVille = new Label(event.getLieu().getCodePostal() + " " + event.getLieu().getVille());
 					lbEntete.setStyleName("entetePlanning");
+					lbDivers.setStyleName("entetePlanning");
 					lbHR.setStyleName("hrPlanning");
 					lbLieu.setStyleName("titlePlanning");
 					lbAdresse.setStyleName("titlePlanning");
 					lbVille.setStyleName("titlePlanning");
 					vpPopup.add(lbEntete);
+					vpPopup.add(lbDivers);
 					vpPopup.add(lbHR);
 					vpPopup.add(lbLieu);
 					vpPopup.add(lbAdresse);
@@ -81,7 +83,6 @@ public class ScheduleManager implements EntryPoint {
 						
 						@Override
 						public void onMouseOut(MouseOutEvent event) {
-							// TODO Auto-generated method stub
 							pp.hide();
 						}
 					});

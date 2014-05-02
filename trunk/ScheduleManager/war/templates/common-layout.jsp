@@ -57,12 +57,11 @@
         in order for this application to display correctly.
       </div>
     </noscript>
-    
+		<!--<tiles:insertAttribute name="header" />-->
 		<div class="container">
 			<div class="row entete">
 				<tiles:insertAttribute name="menu"/>
 			</div>
-			<!--<tiles:insertAttribute name="header" />-->
 			<div class="row workspace">
 				<tiles:insertAttribute name="path"/>
 			</div>
@@ -73,15 +72,15 @@
 			</div>
 		</div>
 		
-		<div class="login" style="text-align:center;">
-			<img src="/images/eemc.png" /><br />
+		<div class="login">
+			<img src="/images/cambodge.png" height="110px"/><br />
 			<% if(user != null) {%>
-    			<a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" /></a>
+    			<a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" height="32px"/></a>
     		<% } else {%>
-    			<a href="<%= urlConnexion %>">Mon compte</a>
+    			<a href="<%= urlConnexion %>"><img src="/images/monCompte.png" title="Se connecter" height="32px"/></a>
     		<% }%>
 		</div>
-		<div class="planning" style="border:1px solid #EEEEEE">
+		<div class="planning">
 			<tiles:insertAttribute name="planning"/>
 		</div>
 		<tiles:insertAttribute name="footer"/>
