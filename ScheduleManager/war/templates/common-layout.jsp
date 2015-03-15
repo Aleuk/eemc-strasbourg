@@ -18,11 +18,11 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache">
+    <!-- <meta http-equiv="Cache-Control" content="no-cache">
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Cache" content="no store">
 	<meta http-equiv="expires" content="0" />
-	<meta http-equiv="last-modified" content="" />
+	<meta http-equiv="last-modified" content="" />-->
 	<meta name="gwt:property" content="locale=fr_FR">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     
@@ -58,31 +58,39 @@
       </div>
     </noscript>
 		<!--<tiles:insertAttribute name="header" />-->
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row entete">
-				<tiles:insertAttribute name="menu"/>
+				<div class="col-xs-10">
+					<tiles:insertAttribute name="menu"/>
+				</div>
+				<div class="col-xs-2">
+					<div class="login">
+						<img src="/images/cambodge.png" />
+						<% if(user != null) {%>
+			    			<a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" height="24px"/></a>
+			    		<% } else {%>
+			    			<a href="<%= urlConnexion %>"><img src="/images/monCompte.png" title="Se connecter" height="24px"/></a>
+			    		<% }%>
+					</div>
+				</div>
 			</div>
-			<div class="row workspace">
+		</div>
+		<div class="container-fluid">
+			<div class="row">
 				<tiles:insertAttribute name="path"/>
 			</div>
-			<div class="row workspace">
-				<div class="span12">
+			<div class="row corps">
+				<div class="col-xs-9">
 					<tiles:insertAttribute name="body"/>
+				</div>
+				<div class="col-xs-3">
+					<tiles:insertAttribute name="planning"/>
 				</div>
 			</div>
 		</div>
 		
-		<div class="login">
-			<img src="/images/cambodge.png" height="110px"/><br />
-			<% if(user != null) {%>
-    			<a href='<%= userService.createLogoutURL("/") %>' ><img src="/images/deconnexion.png" height="32px"/></a>
-    		<% } else {%>
-    			<a href="<%= urlConnexion %>"><img src="/images/monCompte.png" title="Se connecter" height="32px"/></a>
-    		<% }%>
-		</div>
-		<div class="planning">
-			<tiles:insertAttribute name="planning"/>
-		</div>
+		
+		
 		<tiles:insertAttribute name="footer"/>
     
   </body>

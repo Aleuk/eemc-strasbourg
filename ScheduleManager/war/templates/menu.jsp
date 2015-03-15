@@ -58,14 +58,6 @@
                   </div>
                 </div>
               </div>-->
-              <div class="row">
-              	<div class="span12" style="text-align:center;">
-	              <!-- <img class="title" src="/images/bandeau_eemc2.png" />-->
-	            </div>
-			 </div>
-			 <div class="row">
-			 <div class="span12">
-	             <div class="content">
 					<ul id="sdt_menu" class="sdt_menu">
 						
 						<li>
@@ -106,7 +98,7 @@
 								<span class="sdt_active" style="z-index:60;"></span>
 								<span class="sdt_wrap" style="z-index:60;">
 									<span class="sdt_link">Projets</span>
-									<span class="sdt_descr">Notre projet de construction</span>
+									<span class="sdt_descr">Projet de construction</span>
 								</span>
 							</a>
 						</li>
@@ -163,9 +155,7 @@
 							</li>
 						<% } %>
 					</ul>
-				</div>
-			</div>
-		</div>
+				
 
 		<script type="text/javascript">
             $(function() {
@@ -181,23 +171,23 @@
 					$elem.find('img')
 						 .stop(true)
 						 .animate({
-							'width':'110px',
+							'width':'105px',
 							'height':'90px',
 							'left':'0px'
 						 },400,'easeOutBack')
 						 .andSelf()
 						 .find('.sdt_wrap')
 					     .stop(true)
-						 .animate({'top':'110px'},500,'easeOutBack')
+						 .animate({'top':'105px'},500,'easeOutBack')
 						 .andSelf()
 						 .find('.sdt_active')
 					     .stop(true)
 						 .animate({'height':'100px'},300,function(){
 						var $sub_menu = $elem.find('.sdt_box');
 						if($sub_menu.length){
-							var left = '110px';
+							var left = '105px';
 							if($elem.parent().children().length == $elem.index()+1)
-								left = '-110px';
+								left = '-105px';
 							$sub_menu.show().animate({'left':left},200);
 						}	
 					});

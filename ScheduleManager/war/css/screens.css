@@ -7,15 +7,14 @@ body {
   padding:0px !important;
 }
 
-.span12 {
-	width: 97% !important;
+.row {
+	margin-left: 10% !important;
+	width: 80% !important;
 }
 
-.container {
+.container-fluid .container{
 	position: relative;
 	margin-top:30px;
-	margin-left: 5% !important;
-	width: 75% !important;
     max-width: 1800px !important;
     min-height: 800px !important;
     padding-left:25px !important;
@@ -23,23 +22,12 @@ body {
 }
 
 .login {
-	position: absolute;
-	top: 20px;
-	width: 18%;
-	margin-left: 81%;
 	text-align:right;
 }
 
-.planning {
-	position: absolute;
-	height:400px;
-	width: 18%;
-	top: 162px;
-	margin-left: 81%;
-}
-
 #planning {
-	width: 100%;
+	//width: 100%;
+	height:400px;
 }
 
 .tablePlanning {
@@ -70,7 +58,7 @@ body {
 ul.sdt_menu{
 	margin-top:20px ! important;
 	//margin:0;
-	margin-left:30px;
+	margin-left:0px;
 	padding:0;
 	list-style: none;
 	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
@@ -83,7 +71,7 @@ ul.sdt_menu a{
 }
 ul.sdt_menu li{
 	float:left;
-	width:110px;
+	width:105px;
 	height:80px;
 	position:relative;
 	cursor:pointer;
@@ -92,7 +80,7 @@ ul.sdt_menu li > a{
 	position:absolute;
 	top:0px;
 	left:0px;
-	width:110px;
+	width:105px;
 	height:80px;
 	background-image: linear-gradient(#343434, #01A1DF);
 	-moz-box-shadow:0px 0px 2px #000 inset;
@@ -115,7 +103,7 @@ ul.sdt_menu li span.sdt_wrap{
 	position:absolute;
 	top:25px;
 	left:0px;
-	width:110px;
+	width:105px;
 	height:60px;
 	z-index:15;
 }
@@ -123,7 +111,7 @@ ul.sdt_menu li span.sdt_active{
 	position:absolute;
 	background-image: linear-gradient(#01A1DF, #343434);
 	top:80px;
-	width:110px;
+	width:105px;
 	height:0px;
 	left:0px;
 	z-index:2;
@@ -153,7 +141,7 @@ ul.sdt_menu li span span.sdt_descr{
 	color:#fff;
 	float:left;
 	clear:both;
-	width:110px; /*For dumbass IE7*/
+	width:105px; /*For dumbass IE7*/
 	font-size:10px;
 	letter-spacing:1px;
 }
