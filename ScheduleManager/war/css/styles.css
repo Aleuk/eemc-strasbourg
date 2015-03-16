@@ -47,18 +47,19 @@ table{
 }*/
 
 #planning {
-	background: #CCCCCC;
-	box-shadow:0px 0px 5px #000 inset;
+	//background: #CCCCCC;
+	//box-shadow:0px 0px 5px #000 inset;
 	text-align: center;
 }
 
 .labelPlanning {
-	background-image: linear-gradient(#01A1DF, #343434);
+	//background-image: linear-gradient(#01A1DF, #343434);
+	background-image: linear-gradient(#343434, #343434);
 	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
 	font-size:13px;
-	color:#fff;
+	color:orange;
 	padding: 3px;
-	box-shadow:0px 0px 7px #23576B inset;
+	box-shadow:0px 0px 3px #000 inset;
 }
 
 .titlePlanning {
@@ -88,6 +89,9 @@ table{
 	border-top:0px !important;
 	border-radius: 5px;
 	box-shadow:0px 0px 7px #23576B inset;
+	padding-left:30px !important;
+	padding-right:30px !important;
+	padding-bottom:30px !important;
 }
 
 

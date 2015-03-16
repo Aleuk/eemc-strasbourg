@@ -3,6 +3,11 @@ package fr.eemcs.schedulemanager.client;
 import java.io.Serializable;
 
 public class LieuInfo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -611013103767861816L;
+
 	private String nom;
 
 	private String nomKH;

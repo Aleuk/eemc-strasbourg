@@ -77,7 +77,9 @@
 		</div>
 		<div class="container-fluid">
 			<div class="row">
-				<tiles:insertAttribute name="path"/>
+				<div class="col-lg-9 text-right">
+					<tiles:insertAttribute name="path"/>
+				</div>
 			</div>
 			<div class="row corps">
 				<div class="col-xs-9">
@@ -88,9 +90,6 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		
 		<tiles:insertAttribute name="footer"/>
     
   </body>

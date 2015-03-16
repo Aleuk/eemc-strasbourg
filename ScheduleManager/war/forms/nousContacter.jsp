@@ -64,18 +64,18 @@
 				{
 					toolbar :
 					[
-						{ name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+						{ name: 'clipboard', items : [ 'Cut','Copy',/*'Paste',*/'PasteText','PasteFromWord','-','Undo','Redo' ] },
+						/*'/',*/
+						{ name: 'basicstyles', items : [ 'Bold','Italic','Underline',/*'Strike','Subscript','Superscript'*/,'-','RemoveFormat' ] },
+						{ name: 'links', items : [ 'Link','Unlink'/*,'Anchor'*/ ] },
 						'/',
-						{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
-						{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
-						'/',
-						{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+						{ name: 'styles', items : [ /*'Styles',*/'Format','Font','FontSize' ] },
 						{ name: 'colors', items : [ 'TextColor','BGColor' ] }
 					]
 				});
 		
 		function annuler() {
-			window.location.href = "/controller/nousContacter";
+			window.location.href = "/controller/accueil/blog";
 		}
 		function save() {
 			document.forms[0].submit();

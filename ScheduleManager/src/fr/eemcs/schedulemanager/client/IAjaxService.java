@@ -10,5 +10,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("ajax")
 public interface IAjaxService extends RemoteService {
-	public List<EvenementInfo> getEventsServer(String sDate) throws IllegalArgumentException;
+	public List<EvenementInfo> getEventsServer() throws IllegalArgumentException;
 }

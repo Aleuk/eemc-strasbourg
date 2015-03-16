@@ -9,9 +9,6 @@ import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -33,7 +30,7 @@ public class ScheduleManager implements EntryPoint {
 	public void onModuleLoad() {
 		// Create a handler for the sendButton and nameField
 		serviceProxy = GWT.create(IAjaxService.class);
-		serviceProxy.getEventsServer("02", new AsyncCallback<List<EvenementInfo>> () {
+		serviceProxy.getEventsServer(new AsyncCallback<List<EvenementInfo>> () {
 			public void onFailure(Throwable caught) {
 				// Show the RPC error message to the user
 				System.out.println("failure");
@@ -45,11 +42,12 @@ public class ScheduleManager implements EntryPoint {
 				vp.setStyleName("tablePlanning");
 				
 				for(EvenementInfo event : result) {
-					final Label ligne = new Label(event.getDate() + " " + event.getLieu().getNom());
+					final Label ligne = new Label(event.getDate() + " " + event.getDivers());
 					ligne.setStyleName("labelPlanning");
 					vp.add(ligne);
 					
 					final VerticalPanel vpPopup = new VerticalPanel();
+					vpPopup.setWidth("180px");
 					Label lbEntete = new Label(event.getDate());
 					Label lbDivers = new Label(event.getDivers());
 					Label lbHR = new Label("");

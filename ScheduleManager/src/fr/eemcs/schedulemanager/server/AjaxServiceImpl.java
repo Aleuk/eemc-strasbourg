@@ -23,9 +23,12 @@ import fr.eemcs.schedulemanager.helper.FormatHelper;
 @SuppressWarnings("serial")
 public class AjaxServiceImpl extends RemoteServiceServlet implements IAjaxService {
 
+	/**
+	 * Récupère les 10 prochains évenements.
+	 */
 	@Override
 	@SuppressWarnings("unchecked")
-    public List<EvenementInfo> getEventsServer(String sDate) {
+    public List<EvenementInfo> getEventsServer() {
 		List<EvenementInfo> list = new ArrayList<EvenementInfo>();
 		List<EvenementVO> events = new ArrayList<EvenementVO>();
 		PersistenceManager pm = PMF.get().getPersistenceManager();

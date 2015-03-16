@@ -21,7 +21,7 @@
 			<div class="carousel-inner">
 		<% int active=0; 
 			for(ImageVO img : listePhotos) {
-				String url = imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(img.getImage())) + "=s640";
+				String url = imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(img.getImage())) + "=s480";
 				if(url.contains("0.0.0.0")) {
 					url = url.substring(19);
 				} %>
@@ -48,8 +48,8 @@
 			%>
 			</div>
 			  <!-- Controls -->
-			  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">&nbsp;</a>
-			  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">&nbsp;</a>
+			  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">&nbsp;&lt;</a>
+			  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">&nbsp;&gt;</a>
 		</div>
 
 		<!--<table class="table table-striped table-bordered table-hover">
